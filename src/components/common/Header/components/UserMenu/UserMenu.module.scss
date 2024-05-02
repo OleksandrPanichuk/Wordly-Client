@@ -1,0 +1,17 @@
+.item {
+	@apply text-base  font-medium hover:text-tw-purple focus:text-tw-purple transition-all flex gap-2;
+	> svg {
+		@apply stroke-accent-foreground;
+	}
+}
+
+.sign-out-btn {
+	@apply p-4 flex items-center  gap-2 w-full text-[#dc3545] font-medium text-lg hover:bg-rose-200 transition-all duration-300;
+}
+
+.info {
+	@apply flex flex-col items-start;
+	> span {
+		@apply truncate max-w-[12.25rem];
+	}
+}

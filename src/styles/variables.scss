@@ -1,0 +1,12 @@
+$minWidth: 320;
+$maxWidth: 1920;
+$maxWidthContainer: 1320;
+$containerPadding: 25;
+$containerWidth: calc($maxWidthContainer + $containerPadding * 2);
+
+
+
+$screen-xs: 30rem; // 480px
+$screen-sm: 40rem; // 640px
+$screen-md: 48rem; // 768px
+$screen-lg: 64rem; // 1024px
