@@ -6,3 +6,8 @@
 .mobile-link {
 	@apply font-semibold flex gap-2 items-center text-left px-3 py-4 text-base hover:no-underline text-tw-black hover:bg-tw-blue-100 hover:text-tw-purple transition-all duration-300 ;
 }
+
+
+a.active {
+	@apply text-tw-purple;
+}

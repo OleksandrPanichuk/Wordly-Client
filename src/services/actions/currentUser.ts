@@ -16,7 +16,6 @@ export async function currentUser() {
 				headers: {
 					Cookie: cookies().toString(),
 				},
-				z,
 			})
 			user = response.data
 		}

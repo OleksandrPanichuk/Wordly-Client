@@ -15,7 +15,13 @@ const TextVariants = cva('', {
 			gray: 'text-tw-gray-200',
 			'light-gray': 'text-tw-gray-100',
 			'dark-gray': 'text-tw-gray-500',
-			"black":"text-tw-black"
+			"black":"text-tw-black",
+
+			'gray-500':'text-tw-gray-500',
+			'gray-400':'text-tw-gray-400',
+			'gray-200':'text-tw-gray-200',
+			'gray-100':'text-tw-gray-100',
+
 		},
 		weight: {
 			400: 'font-normal',

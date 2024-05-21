@@ -1,0 +1,1 @@
+export type PartOfSpeech = "VERB" | "NOUN" | "PRONOUN" | "ADJECTIVE" | "ADVERB" | "INTERJECTION" | "PREPOSITION" | "CONJUNCTION"

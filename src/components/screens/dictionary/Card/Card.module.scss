@@ -1,0 +1,15 @@
+.wrapper, .skeleton {
+	@apply  rounded-xl border-2 border-gray-100 p-5 lg:p-7 md:mx-4 mt-3 flex flex-col md:flex-row  md:items-start;
+}
+.wrapper {
+	cursor: pointer;
+}
+
+.image {
+	@apply relative mr-5 w-full md:w-[189px];
+	aspect-ratio: 330 / 264;
+}
+
+.skeleton {
+	gap: 1.25rem;
+}

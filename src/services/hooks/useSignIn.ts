@@ -1,7 +1,7 @@
 'use client'
 import { useMutation } from '@/hooks'
 import { useAuth } from '@/providers'
-import { AuthService } from '@/services'
+import { AuthApi } from '@/services'
 import { SignInInput } from '@/services/dto'
 import { TypeUser } from '@/shared/types'
 import { UseMutationOptions } from '@tanstack/react-query'
@@ -17,7 +17,7 @@ export const useSignIn = (
 
 	return useMutation({
 		...options,
-		mutationFn: (input: SignInInput) => AuthService.signIn(input),
+		mutationFn: AuthApi.signIn,
 		onSuccess: (response, ...rest) => {
 			setUser(response.data)
 			options?.onSuccess?.(response, ...rest)

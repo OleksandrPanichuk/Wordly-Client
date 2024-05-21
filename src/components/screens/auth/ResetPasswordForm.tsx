@@ -10,11 +10,7 @@ import {
 	Input,
 } from '@/components/ui'
 import { useMutation } from '@/hooks'
-import {
-	AuthService,
-	ResetPasswordInput,
-	resetPasswordSchema,
-} from '@/services'
+import { AuthApi, ResetPasswordInput, resetPasswordSchema } from '@/services'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -25,7 +21,7 @@ export const ResetPasswordForm = () => {
 	})
 
 	const { mutate: resetPassword, isPending } = useMutation({
-		mutationFn: AuthService.resetPassword,
+		mutationFn: AuthApi.resetPassword,
 		onSuccess: () => {
 			toast.success('Please, check your email')
 		},

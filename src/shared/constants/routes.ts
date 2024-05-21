@@ -1,6 +1,8 @@
 export enum Routes {
 	ROOT = '/',
 
+	PRIVACY_POLICY = '/privacy-policy',
+
 	// Auth links
 	SIGN_IN = '/sign-in',
 	SIGN_UP = '/sign-up',

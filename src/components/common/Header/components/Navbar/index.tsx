@@ -9,20 +9,23 @@ import {
 	SheetContent,
 	SheetTrigger,
 } from '@/components/ui'
+import { cn } from '@/lib'
 import { useAuth } from '@/providers'
 import { Routes } from '@/shared/constants'
 import { MenuIcon, UserIcon } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 import { UserMenu } from '../UserMenu'
 import styles from './Navbar.module.scss'
 
 export const Navbar = () => {
+	const pathname = usePathname()
 	return (
 		<Visibility bp='lg'>
 			<nav className='flex-1 hidden lg:block'>
 				<ul className='flex items-center xl:gap-9 gap-6'>
 					{links.map(link => (
 						<li key={link.id}>
-							<Link className={styles.link} href={link.href}>
+							<Link className={cn(styles.link, pathname.includes(link.href) && styles.active)} href={link.href}>
 								{link.label}
 							</Link>
 						</li>
@@ -35,6 +38,7 @@ export const Navbar = () => {
 
 Navbar.Mobile = function MobileNavbar() {
 	const { user } = useAuth()
+	const pathname = usePathname()
 	return (
 		<Visibility bp='max-lg'>
 			<Sheet>
@@ -53,7 +57,7 @@ Navbar.Mobile = function MobileNavbar() {
 						<ul className='flex flex-col '>
 							{links.map(link => (
 								<li key={link.id}>
-									<Link href={link.href} className={styles['mobile-link']}>
+									<Link href={link.href} className={cn(styles['mobile-link'], pathname.includes(link.href) && styles.active)}>
 										{link.label}
 									</Link>
 								</li>

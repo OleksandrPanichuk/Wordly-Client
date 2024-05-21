@@ -1,5 +1,5 @@
 import { useAuth } from '@/providers'
-import { AuthService } from '@/services'
+import { AuthApi } from '@/services'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
@@ -8,7 +8,7 @@ export const useSignOut = () => {
 	const router = useRouter()
 	const { setUser } = useAuth()
 	const { mutate, ...state } = useMutation({
-		mutationFn: () => AuthService.signOut(),
+		mutationFn: AuthApi.signOut,
 		onSuccess: () => {
 			router.refresh()
 			setUser(null)

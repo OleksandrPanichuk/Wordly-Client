@@ -40,7 +40,9 @@
 		--tw-blue-500: #0e336b; // rgb(14, 51, 107)
 		--tw-blue-400: #0e4ab8; // rgb(14, 74, 184)
 
-		--tw-blue-100: #e6eaf0 ; // rgb(230, 234, 240)
+		--tw-blue-300: #2959a2;
+
+		--tw-blue-100: #e6eaf0; // rgb(230, 234, 240)
 		--tw-blue-50: #f7f9fc; // rgb(247,249,252)
 
 		--tw-black: #0a0a0a;
@@ -50,9 +52,9 @@
 		--tw-light-gray: #e9ecef6e;
 
 		--gray-500: #212529;
+		--gray-400: #353738;
 		--gray-200: #6c757d;
 		--gray-100: #e9ecef6e;
-	
 
 		--screen-xs: $screen-xs;
 		--screen-sm: $screen-sm;
@@ -107,9 +109,8 @@ body {
 	height: 100%;
 }
 
-
 button {
 	&:focus-visible {
-		outline: none
+		outline: none;
 	}
 }

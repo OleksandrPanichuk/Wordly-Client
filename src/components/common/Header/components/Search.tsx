@@ -1,8 +1,16 @@
+"use client"
 import { Dialog, DialogContent, DialogTrigger, Label } from '@/components/ui'
+import { Routes } from '@/shared/constants'
 import { SearchIcon } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 //TODO: search functionality
 export const Search = () => {
+	const pathname = usePathname()
+
+	if(pathname.includes(Routes.DICTIONARY)) return null
+
+	
 	return (
 		<Dialog>
 			<DialogTrigger>

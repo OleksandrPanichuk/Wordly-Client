@@ -10,13 +10,29 @@ interface ILogoProps
 	width?: number
 	height?: number
 	withText?: boolean
+
+	variant?: 'default' | 'huge'
 }
 
+const variants = {
+	default: {
+		src: '/logo/logo.png',
+		width: 40,
+		height: 40,
+	},
+	huge: {
+		src: '/logo/logo-huge.png',
+		width: 130,
+		height: 130,
+	},
+} as const
+
 export const Logo = ({
-	width = 40,
-	height = 40,
+	width,
+	height,
 	withText,
 	className,
+	variant = 'default',
 	...props
 }: ILogoProps) => {
 	return (
@@ -25,7 +41,12 @@ export const Logo = ({
 			className={cn(withText && 'flex items-center gap-3', className)}
 			{...props}
 		>
-			<Image src='/logo.png' alt='logo' width={width} height={height} />
+			<Image
+				alt='logo'
+				src={variants[variant].src}
+				width={width ?? variants[variant].width}
+				height={height ?? variants[variant].height}
+			/>
 			{withText && (
 				<Text size={'lg'} weight={700} color={'black'} as='span'>
 					Wordly

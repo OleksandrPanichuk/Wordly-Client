@@ -9,7 +9,7 @@ import {
 	FormLabel,
 	Input,
 } from '@/components/ui'
-import { AuthService, SignUpInput, UpdatePasswordInput, updatePasswordSchema, useSignUp } from '@/services'
+import { AuthApi, UpdatePasswordInput, updatePasswordSchema } from '@/services'
 import { Routes } from '@/shared/constants'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
@@ -17,33 +17,31 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-export const UpdatePasswordForm = ({code}:{code:string}) => {
+export const UpdatePasswordForm = ({ code }: { code: string }) => {
 	const form = useForm<UpdatePasswordInput>({
 		resolver: zodResolver(updatePasswordSchema),
 		mode: 'onBlur',
 		defaultValues: {
-			code
-		}
+			code,
+		},
 	})
 
 	const router = useRouter()
 
 	const { control, handleSubmit } = form
 
-	const {mutate: updatePassword, isPending} = useMutation({
-		mutationFn: AuthService.updatePassword,
-		onSuccess:() => {
+	const { mutate: updatePassword, isPending } = useMutation({
+		mutationFn: AuthApi.updatePassword,
+		onSuccess: () => {
 			toast.success('Password updated')
 			router.push(Routes.SIGN_IN)
 		},
-		onError:() => {
+		onError: () => {
 			toast.error('Failed to update password')
-		}
+		},
 	})
 
-
 	const onSubmit = (values: UpdatePasswordInput) => updatePassword(values)
-	
 
 	return (
 		<Form {...form}>
