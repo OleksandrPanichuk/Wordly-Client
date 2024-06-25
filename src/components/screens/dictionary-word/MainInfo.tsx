@@ -19,21 +19,75 @@ export const MainInfo = ({
 		window.speechSynthesis.speak(new SpeechSynthesisUtterance(name))
 
 	return (
-		<div className='w-full border-[0.2rem] md:border-2 md:border-l-[1rem] border-l-[0.5rem] rounded-md border-blue-800 md:p-5 p-8 flex justify-between gap-2'>
-			<div className='flex-1 lg:flex-[2] flex flex-col gap-4'>
+		<div>
+			<div className='rounded-t-3xl bg-tw-blue-50 p-6 flex justify-between gap-4 md:gap-5 flex-col'>
 				<Title variant={'h1'} size={'5xl'} weight={700}>
 					<span>{name}</span>
 					<button className='ml-2' onClick={playPronunciation}>
 						<SvgIcon name='volume' width={25} />
 					</button>
 				</Title>
-				{phonetics?.general && (
-					<div className='text-gray-500 text-xl font-medium font-quicksand flex gap-4'>
-						{' '}
-						{phonetics.general}
-					</div>
-				)}
-				{phonetics?.en && (
+				<div className='flex flex-col gap-3'>
+					{phonetics?.general && (
+						<div className='text-gray-500 text-xl font-medium font-quicksand flex gap-4'>
+							{phonetics.general}
+						</div>
+					)}
+					{phonetics?.en && (
+						<div className='text-gray-500 text-xl font-medium font-quicksand flex gap-4'>
+							<Image
+								width={30}
+								height={30}
+								src={Images.EN_FLAG}
+								alt='en-pronunciation'
+								className='rounded-full'
+							/>
+							{phonetics.en}
+						</div>
+					)}
+					{phonetics?.us && (
+						<div className='text-gray-500 text-xl font-medium font-quicksand flex gap-4'>
+							<Image
+								width={30}
+								height={30}
+								src={Images.US_FLAG}
+								alt='us-pronunciation'
+								className='rounded-full'
+							/>
+							{phonetics.us}
+						</div>
+					)}
+				</div>
+			</div>
+			<div className='bg-[#F0F4FA] rounded-b-3xl md:py-3 md:px-6 py-2 px-4 font-medium'>
+				<div className='flex  flex-wrap items-center'>
+					{partsOfSpeech?.map((partOfSpeech, index) =>
+						index === 0 ? (
+							<a key={partOfSpeech} href={`#${partOfSpeech.toLowerCase()}`}>
+								<button className='bg-tw-blue-450 !leading-none text-white py-3 px-6 rounded-3xl md:text-base text-sm '>
+									{partOfSpeech}
+								</button>
+							</a>
+						) : (
+							<a key={partOfSpeech} href={`#${partOfSpeech.toLowerCase()}`}>
+								<button className='bg-transparent !leading-none text-tw-gray-400 py-3 px-6 rounded-3xl md:text-base text-sm '>
+									{partOfSpeech}
+								</button>
+							</a>
+						)
+					)}
+				</div>
+			</div>
+		</div>
+	)
+}
+
+MainInfo.Skeleton = function MainInfoSkeleton() {
+	return (
+		<div>
+			<div className='rounded-t-3xl bg-tw-blue-50 p-6 flex justify-between gap-4 md:gap-5 flex-col'>
+				<Skeleton className='h-10 w-[50%]' />
+				<div className='flex flex-col gap-3'>
 					<div className='text-gray-500 text-xl font-medium font-quicksand flex gap-4'>
 						<Image
 							width={30}
@@ -42,10 +96,9 @@ export const MainInfo = ({
 							alt='en-pronunciation'
 							className='rounded-full'
 						/>
-						{phonetics.en}
+						<Skeleton className='h-6 w-[15%]' />
 					</div>
-				)}
-				{phonetics?.us && (
+
 					<div className='text-gray-500 text-xl font-medium font-quicksand flex gap-4'>
 						<Image
 							width={30}
@@ -54,58 +107,12 @@ export const MainInfo = ({
 							alt='us-pronunciation'
 							className='rounded-full'
 						/>
-						{phonetics.us}
+						<Skeleton className='h-6 w-[15%]' />
 					</div>
-				)}
-			</div>
-			<div className='flex flex-wrap gap-x-2 gap-y-0.5 justify-end flex-1 items-start'>
-				{partsOfSpeech?.map(el => (
-					<a
-						key={el}
-						href={`#${el}`}
-						className='text-gray-500 hover:text-gray-700 transition-colors font-quicksand  text-lg md:text-xl'
-					>
-						[{el.toUpperCase()}]
-					</a>
-				))}
-			</div>
-		</div>
-	)
-}
-
-MainInfo.Skeleton = function MainInfoSkeleton() {
-	return (
-		<div className='w-full border-[0.2rem] md:border-2 md:border-l-[1rem] border-l-[0.5rem] rounded-md border-blue-800 md:p-5 p-8 flex justify-between gap-2'>
-			<div className='flex flex-col gap-4 w-full flex-[2]'>
-				<Skeleton className='w-[45%] h-10' />
-				<div className='flex gap-4 items-center'>
-					<Image
-						width={30}
-						height={30}
-						src={Images.EN_FLAG}
-						alt='en-pronunciation'
-						className='rounded-full'
-					/>
-					<Skeleton className='w-[25%] h-6' />
-				</div>
-				<div className='flex gap-4 items-center'>
-					<Image
-						width={30}
-						height={30}
-						src={Images.US_FLAG}
-						alt='us-pronunciation'
-						className='rounded-full'
-					/>
-					<Skeleton className='w-[25%] h-6' />
 				</div>
 			</div>
-			<div className='flex flex-wrap gap-x-2 gap-y-0.5 justify-end flex-1 items-start'>
-				<div className='flex items-center gap-1 text-gray-500 text-lg md:text-xl'>
-					[<Skeleton className='w-[80px] h-5' />]
-				</div>
-				<div className='flex items-center gap-1 text-gray-500 text-lg md:text-xl'>
-					[<Skeleton className='w-[80px] h-5' />]
-				</div>
+			<div className='bg-[#F0F4FA] rounded-b-3xl md:py-3 md:px-6 py-2 px-4 font-medium h-[4.5rem]'>
+			
 			</div>
 		</div>
 	)

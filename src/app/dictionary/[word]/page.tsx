@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui'
 import { DictionaryApi } from '@/services'
 import { Routes } from '@/shared/constants'
-import { DictionaryMode } from '@/shared/types'
+import { DictionaryMode, TypeDictionaryWord } from '@/shared/types'
 
 import { useQuery } from '@tanstack/react-query'
 import { ArrowLeft } from 'lucide-react'
@@ -35,11 +35,13 @@ const WordPage = () => {
 				)
 			).data,
 		retry: false,
+
 		enabled: !!params.word,
 	})
 
 	if (!data && isError) notFound()
 
+ 
 	return (
 		<>
 			<div className='mt-4 flex gap-4 justify-between max-w-[75rem] mx-auto'>
@@ -60,7 +62,7 @@ const WordPage = () => {
 						<>
 							<MainInfo {...data} />
 							{data?.meanings.map((meanings, index) => (
-								<Meanings {...meanings}  key={index} />
+								<Meanings {...meanings}  key={index} name={data.name} />
 							))}
 						</>
 					) : (

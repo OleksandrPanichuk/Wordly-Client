@@ -1,5 +1,5 @@
-"use client"
-import { VariantProps, cva } from 'class-variance-authority'
+'use client'
+import { cva, VariantProps } from 'class-variance-authority'
 import { HTMLAttributes } from 'react'
 
 const titleVariants = cva('', {
@@ -10,30 +10,30 @@ const titleVariants = cva('', {
 			h3: '',
 			h4: '',
 			h5: '',
-			h6: '',
+			h6: ''
 		},
 		size: {
 			default: '',
 			'6xl': 'text-5xl md:text-6xl',
-			"5xl":"text-4xl md:text-5xl",
-			'3xl': 'text-2xl md:text-3xl',
+			'5xl': 'text-4xl md:text-5xl',
+			'3xl': 'text-2xl md:text-3xl'
 		},
 		weight: {
 			700: 'font-bold',
 			600: 'font-semibold',
 			500: 'font-medium',
-			400: 'font-normal',
+			400: 'font-normal'
 		},
 		color: {
 			blue: 'text-tw-blue-500',
-			primary: 'text-[#333333]',
-		},
+			primary: 'text-[#333333]'
+		}
 	},
 	defaultVariants: {
 		variant: 'h3',
 		size: 'default',
-		weight: 700,
-	},
+		weight: 700
+	}
 })
 
 interface ITitleProps
@@ -54,7 +54,7 @@ export const Title = ({
 	const fullClassName = {
 		weight,
 		color,
-		className,
+		className
 	} as VariantProps<typeof titleVariants>
 
 	if (!!size) {

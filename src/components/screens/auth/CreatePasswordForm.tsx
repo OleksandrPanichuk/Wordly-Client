@@ -34,7 +34,6 @@ export const CreatePasswordForm = (googleData: ICreatePasswordFormProps) => {
 				onSubmit={handleSubmit(onSubmit)}
 				className='max-w-[24.375rem] w-full flex flex-col gap-4 mb-4'
 			>
-				
 				<FormField
 					control={control}
 					name='password'

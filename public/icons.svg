@@ -35,5 +35,19 @@
 </symbol>
 
 
+<symbol viewBox="0 0 32 40"  width="32" height="40" id="bookmark">
+
+<g clip-path="url(#clip0_11232_120150)">
+<path d="M3.51735 3.43156C2.23343 2.17895 3.12026 0 4.914 0H103V40H4.914C3.12026 40 2.23343 37.821 3.51735 36.5684L19.0326 21.4316C19.8371 20.6467 19.8371 19.3533 19.0326 18.5684L3.51735 3.43156Z" fill="#1ABC9C"/>
+</g>
+<defs>
+<clipPath id="clip0_11232_120150">
+<rect width="32" height="40" fill="white"/>
+</clipPath>
+</defs>
+
+</symbol>
+
+
 </defs>
 </svg>
