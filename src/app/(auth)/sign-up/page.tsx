@@ -1,5 +1,5 @@
 import { Logo } from "@/components/common"
-import { GoogleButton, SignUpForm } from "@/components/screens/auth"
+import { GoogleButton, SignUpForm } from "@/features/auth"
 import { Text, Title } from "@/components/ui"
 import { Routes } from "@/shared/constants"
 import Link from "next/link"

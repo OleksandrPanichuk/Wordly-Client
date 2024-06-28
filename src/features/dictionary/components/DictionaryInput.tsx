@@ -2,7 +2,7 @@
 
 import { SvgIcon } from '@/components/common'
 import { cn } from '@/lib'
-import { useDictionaryStore } from '@/store'
+import { useDictionaryStore } from '@/features/dictionary'
 import { X } from 'lucide-react'
 import { ElementRef, useRef, useState } from 'react'
 

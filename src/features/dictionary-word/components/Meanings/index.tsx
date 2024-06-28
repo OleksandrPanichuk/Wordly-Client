@@ -1,16 +1,16 @@
 import { SvgIcon } from '@/components/common'
-import { PartOfSpeech, TypeDictionaryWord } from '@/shared/types'
+import { useExamplesModal } from '@/components/modals'
+import { IconButton } from '@/components/ui'
 import {
 	capitalize,
 	capitalizeOnlyFirstLetter,
 	cn,
 	highlightWordInExample
 } from '@/lib'
-import Image from 'next/image'
-import { formatOrderNumber } from '@/components/screens/dictionary-word/Meanings/Meanings.helpers'
-import { IconButton } from '@/components/ui'
-import { useExamplesModal } from '@/components/modals'
+import { PartOfSpeech, TypeDictionaryWord } from '@/shared/types'
 import { BrainIcon, MessageCircleQuestionIcon } from 'lucide-react'
+import Image from 'next/image'
+import { formatOrderNumber } from './Meanings.helpers'
 
 interface IMeaningsProps {
 	definitions: TypeDictionaryWord['meanings'][0]['definitions']
@@ -79,7 +79,7 @@ export const Meanings = ({
 						</div>
 					</div>
 					{/*Examples*/}
-					{meaning.examples?.length && (
+					{meaning.examples?.length > 0 && (
 						<div
 							className={
 								'rounded-3xl bg-tw-blue-50 pt-3 pb-4 mt-4  md:py-6  px-4 md:px-6'

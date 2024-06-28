@@ -1,5 +1,6 @@
 import { Logo } from '@/components/common'
-import { CreatePasswordForm } from '@/components/screens/auth'
+
+import { CreatePasswordForm } from '@/features/auth'
 import { Text, Title } from '@/components/ui'
 import { Routes } from '@/shared/constants'
 import Link from 'next/link'
@@ -14,7 +15,7 @@ interface IPageProps {
 }
 
 const CreatePasswordPage = ({ searchParams }: IPageProps) => {
-	if (!searchParams.email || !searchParams.email) return notFound()
+	if (!searchParams.email || !searchParams.username) return notFound()
 	return (
 		<>
 			<Logo className='mb-6' />

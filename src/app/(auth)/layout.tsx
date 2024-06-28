@@ -1,7 +1,6 @@
 'use client'
-import { ImageSlider } from '@/components/screens/auth'
+import { ImageSlider } from '@/features/auth'
 import { useAuth } from '@/providers'
-import { notFound } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
 const AuthLayout = ({ children }: PropsWithChildren) => {

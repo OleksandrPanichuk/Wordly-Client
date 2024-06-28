@@ -1,6 +1,6 @@
 import { Logo } from '@/components/common'
-import { ResetPasswordForm } from '@/components/screens/auth'
 import { Text, Title } from '@/components/ui'
+import { ResetPasswordForm } from '@/features/auth'
 import { Routes } from '@/shared/constants'
 import Link from 'next/link'
 

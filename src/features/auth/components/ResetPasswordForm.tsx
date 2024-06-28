@@ -9,26 +9,17 @@ import {
 	FormLabel,
 	Input,
 } from '@/components/ui'
-import { useMutation } from '@/hooks'
-import { AuthApi, ResetPasswordInput, resetPasswordSchema } from '@/services'
+import { useResetPassword } from '@/features/auth'
+import { ResetPasswordInput, resetPasswordSchema } from '@/services'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 
 export const ResetPasswordForm = () => {
 	const form = useForm<ResetPasswordInput>({
 		resolver: zodResolver(resetPasswordSchema),
 	})
 
-	const { mutate: resetPassword, isPending } = useMutation({
-		mutationFn: AuthApi.resetPassword,
-		onSuccess: () => {
-			toast.success('Please, check your email')
-		},
-		onError: () => {
-			toast.error('Something went wrong')
-		},
-	})
+	const { mutate: resetPassword, isPending } = useResetPassword()
 
 	const onSubmit = (values: ResetPasswordInput) => resetPassword(values)
 

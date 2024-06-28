@@ -15,7 +15,7 @@ import {
 } from '@/components/ui'
 import { cn } from '@/lib'
 import { useAuth } from '@/providers'
-import { useSignOut } from '@/services'
+import { useSignOut } from '@/features/auth'
 import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
 import { links } from './UserMenu.data'
