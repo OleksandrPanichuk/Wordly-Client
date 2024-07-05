@@ -20,6 +20,7 @@ type Params = {
 	word: string
 }
 
+// TODO: Show something when there is no word(Сторінку, де пропонуємо користувачу змінити mode, бо можливо там буде це слово)
 const WordPage = () => {
 	const [mode, setMode] = useState<DictionaryMode>('DICTIONARY')
 	const params = useParams<Params>()
@@ -40,10 +41,10 @@ const WordPage = () => {
 						Back to search
 					</Link>
 				</Button>
-				<ModeTabs value={mode} onChange={setMode} />
+				<ModeTabs defaultValue={mode} onChange={setMode} />
 			</div>
-			<div className="mt-10 flex flex-col md:flex-row gap-6 max-w-[75rem] mx-auto">
-				<div className="md:flex-[784]">
+			<div className="mt-10 flex flex-col lg:flex-row gap-6 max-w-[75rem] mx-auto">
+				<div className="lg:flex-[784]">
 					{!isFetching ? (
 						<>
 							<MainInfo {...data} />
@@ -57,8 +58,8 @@ const WordPage = () => {
 						</>
 					)}
 				</div>
-				<div className="md:flex-[392] ">
-					<Examples data={data?.examples} />
+				<div className="lg:flex-[392] relative ">
+					<Examples data={data?.examples} name={data?.name} show={8} className="sticky top-[86px]" />
 				</div>
 			</div>
 		</>

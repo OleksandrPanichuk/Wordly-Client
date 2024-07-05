@@ -1,5 +1,5 @@
 export * from './env'
 export * from './images'
 export * from './routes'
+export * from './data'
 
-export const SESSION_NAME = 'wordly:session'

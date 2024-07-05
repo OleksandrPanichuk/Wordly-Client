@@ -12,7 +12,6 @@ export function highlightWordInExample(
 			? { value: word, highlighted: true, id: index }
 			: { value: word, id: index }
 	})
-	console.log(data)
 
 	return (
 		<>

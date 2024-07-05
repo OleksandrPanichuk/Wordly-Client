@@ -1,16 +1,12 @@
 import { SvgIcon } from '@/components/common'
 import { useExamplesModal } from '@/components/modals'
 import { IconButton } from '@/components/ui'
-import {
-	capitalize,
-	capitalizeOnlyFirstLetter,
-	cn,
-	highlightWordInExample
-} from '@/lib'
+import { capitalize, cn } from '@/lib'
 import { PartOfSpeech, TypeDictionaryWord } from '@/shared/types'
-import { BrainIcon, MessageCircleQuestionIcon } from 'lucide-react'
 import Image from 'next/image'
 import { formatOrderNumber } from './Meanings.helpers'
+
+import { Examples } from '@/features/dictionary-word'
 
 interface IMeaningsProps {
 	definitions: TypeDictionaryWord['meanings'][0]['definitions']
@@ -18,6 +14,7 @@ interface IMeaningsProps {
 	name: string
 }
 
+// TODO: Meaning loading state
 export const Meanings = ({
 	definitions,
 	partOfSpeech,
@@ -25,7 +22,7 @@ export const Meanings = ({
 }: IMeaningsProps) => {
 	const title =
 		partOfSpeech === 'VERB' ? `To ${name.toLowerCase()}` : capitalize(name)
-	const open = useExamplesModal((state) => state.open)
+
 	return (
 		<div className="mt-8 " id={partOfSpeech.toLowerCase()}>
 			<div className="flex justify-between bg-[#ebeeff] items-center py-4 pl-4 md:p-6 md:pr-0 rounded-t-3xl">
@@ -80,39 +77,12 @@ export const Meanings = ({
 					</div>
 					{/*Examples*/}
 					{meaning.examples?.length > 0 && (
-						<div
-							className={
-								'rounded-3xl bg-tw-blue-50 pt-3 pb-4 mt-4  md:py-6  px-4 md:px-6'
-							}
-						>
-							<div className={'flex items-center justify-between'}>
-								<div
-									className={'text-lg font-semibold flex gap-2 items-center'}
-								>
-									<MessageCircleQuestionIcon />
-									Examples
-								</div>
-								<button onClick={() => open(meaning.examples, name)}>
-									<BrainIcon className={'text-tw-blue-400'} />
-								</button>
-							</div>
-							<ul className={'mt-4 flex flex-col gap-4'}>
-								{meaning.examples.map((example, index) => (
-									<li
-										className={
-											'text-black/90 pl-6 relative text-base line-clamp-1 font-semibold before:absolute before:left-0 before:w-2 before:h-2 before:top-[50%] before:rounded-full before:bg-tw-orange-300 before:translate-y-[-50%] highlight-example'
-										}
-										key={index}
-										onClick={() => open(meaning.examples, name)}
-									>
-										{highlightWordInExample(
-											capitalizeOnlyFirstLetter(example),
-											name
-										)}
-									</li>
-								))}
-							</ul>
-						</div>
+						<Examples
+							data={meaning.examples}
+							name={name}
+							className="mt-4"
+							variant="meaning"
+						/>
 					)}
 				</div>
 			))}
