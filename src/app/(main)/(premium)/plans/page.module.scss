@@ -1,0 +1,14 @@
+
+
+.title {
+	@apply font-noto-sans mb-10  lg:mb-14 text-center;
+}
+
+.plans {
+	@apply flex gap-3 justify-between;
+
+	@media screen and (max-width: 840px) {
+		flex-direction:column;
+		justify-content: flex-start;
+	}
+}

@@ -21,3 +21,10 @@ export function capitalizeOnlyFirstLetter(str: string): string {
 		.map((el, i) => (i == 0 ? el.charAt(0).toUpperCase() + el.slice(1) : el))
 		.join(' ')
 }
+
+export function formatCurrency(num: number) {
+	return Intl.NumberFormat('de-DE', {
+		currency: 'EUR',
+		style: 'currency'
+	}).format(num)
+}

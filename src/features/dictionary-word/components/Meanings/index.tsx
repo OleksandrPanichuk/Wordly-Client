@@ -1,5 +1,4 @@
 import { SvgIcon } from '@/components/common'
-import { useExamplesModal } from '@/components/modals'
 import { IconButton } from '@/components/ui'
 import { capitalize, cn } from '@/lib'
 import { PartOfSpeech, TypeDictionaryWord } from '@/shared/types'
@@ -60,7 +59,7 @@ export const Meanings = ({
 						<div className={'flex gap-2 items-start '}>
 							<div
 								className={
-									'text-tw-purple text-xl rounded-lg bg-tw-blue-50 font-bold px-2 h-fot py-1'
+									'text-tw-purple-400 text-xl rounded-lg bg-tw-blue-50 font-bold px-2 h-fot py-1'
 								}
 							>
 								{formatOrderNumber(index + 1)}

@@ -25,7 +25,8 @@ const config = {
 				'max-lg': { max: '1023.98px' }
 			},
 			fontFamily: {
-				quicksand: 'var(--font-quicksand)'
+				quicksand: 'var(--font-quicksand)',
+				'noto-sans': 'var(--font-noto-sans)'
 			},
 			colors: {
 				'tw-gray-500': 'var(--gray-500)',
@@ -40,13 +41,15 @@ const config = {
 
 				'tw-blue-50': 'var(--tw-blue-50)',
 				'tw-blue-100': 'var(--tw-blue-100)',
+				'tw-blue-200':'var(--tw-blue-200)',
 				'tw-blue-300': 'var(--tw-blue-300)',
 				'tw-blue-400': 'var(--tw-blue-400)',
 				'tw-blue-450': 'var(--tw-blue-450)',
 				'tw-blue-500': 'var(--tw-blue-500)',
 
 				'tw-black': 'var(--tw-black)',
-				'tw-purple': 'var(--tw-purple)',
+				'tw-purple-400': 'var(--tw-purple-400)',
+				'tw-purple-500': 'var(--tw-purple-500)',
 
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

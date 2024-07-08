@@ -8,13 +8,13 @@ export default function Home() {
 		<div>
 			<Title
 				variant={'h2'}
-				as='h1'
-				className='text-tw-gray-500 text-center mt-12 mb-4'
+				as="h1"
+				className="text-tw-gray-500 text-center mt-12 mb-4"
 			>
-				Learn With <span className='text-tw-blue-300'>Word</span>
-				<span className='text-tw-purple'>ly</span>
+				Learn With <span className="text-tw-blue-300">Word</span>
+				<span className="text-tw-purple-400">ly</span>
 			</Title>
-			<Text className='text-center' color={'gray-400'} size='lg' weight={500}>
+			<Text className="text-center" color={'gray-400'} size="lg" weight={500}>
 				Wordly is a language learning platform that helps you learn easier,
 				faster and smarter.
 			</Text>

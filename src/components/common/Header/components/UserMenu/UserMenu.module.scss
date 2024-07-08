@@ -1,5 +1,5 @@
 .item {
-	@apply text-base  font-medium hover:text-tw-purple focus:text-tw-purple transition-all flex gap-2;
+	@apply text-base  font-medium hover:text-tw-purple-400 focus:text-tw-purple-400 transition-all flex gap-2;
 	> svg {
 		@apply stroke-accent-foreground;
 	}

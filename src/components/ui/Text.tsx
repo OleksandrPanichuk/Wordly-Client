@@ -16,7 +16,7 @@ const TextVariants = cva('', {
 			'light-gray': 'text-tw-gray-100',
 			'dark-gray': 'text-tw-gray-500',
 			black: 'text-tw-black',
-			purple: 'text-tw-purple',
+			purple: 'text-tw-purple-400',
 			'blue-450': 'text-tw-blue-450',
 
 			'gray-500': 'text-tw-gray-500',

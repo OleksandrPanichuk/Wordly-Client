@@ -12,6 +12,8 @@ export enum Routes {
 	VOCABULARY = '/vocab',
 	EXPRESSIONS = '/expressions',
 	DICTIONARY = '/dictionary',
+
+	PAYMENT = '/payment',
 	PREMIUM = '/plans',
 
 

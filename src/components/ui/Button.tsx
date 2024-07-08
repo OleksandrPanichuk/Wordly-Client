@@ -16,17 +16,20 @@ const buttonVariants = cva(
 				outline:
 					'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
 				primary:
-					'text-white rounded-[1.5rem] bg-tw-blue-400 hover:bg-tw-purple ',
+					'text-white rounded-[1.5rem] bg-tw-blue-400 hover:bg-tw-purple-400 ',
+				'primary-outline':
+					'text-tw-blue-400 hover:bg-tw-blue-400 hover:text-white border border-tw-blue-400',
 				secondary:
 					'rounded-full border-[3px] border-[#1e3a8a] transition-all text-[#1e3a8a] hover:bg-[#1e3a8a] hover:text-white',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
-				link: 'text-primary underline-offset-4 hover:underline',
+				link: 'text-primary underline-offset-4 hover:underline'
 			},
 			size: {
 				default: 'px-4 py-2',
 				sm: 'h-9 rounded-md px-3',
 				lg: 'h-11 rounded-md px-8',
-				icon: 'h-10 w-10',
+				xl: 'h-12 rounded-3xl px-10',
+				icon: 'h-10 w-10'
 			},
 			font: {
 				xs: 'text-xs',
@@ -34,21 +37,21 @@ const buttonVariants = cva(
 				base: 'text-base',
 				md: 'text-[1.125rem] leading-[1.75rem]',
 				lg: 'text-lg',
-				xl: 'text-xl',
+				xl: 'text-xl'
 			},
 			weight: {
 				400: 'font-normal',
 				500: 'font-medium',
 				600: 'font-semibold',
-				700: 'font-bold',
-			},
+				700: 'font-bold'
+			}
 		},
 		defaultVariants: {
 			variant: 'default',
 			size: 'default',
 			weight: 500,
-			font: 'sm',
-		},
+			font: 'sm'
+		}
 	}
 )
 
@@ -83,7 +86,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				ref={ref}
 				{...props}
 			>
-				{loading ? <Loader2 className='animate-spin ' /> : props.children}
+				{loading ? <Loader2 className="animate-spin " /> : props.children}
 			</Comp>
 		)
 	}
