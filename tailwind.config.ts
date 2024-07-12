@@ -22,6 +22,7 @@ const config = {
 				'2/1': '2 / 1'
 			},
 			screens: {
+				"xs": '440px',
 				'max-lg': { max: '1023.98px' }
 			},
 			fontFamily: {
@@ -38,10 +39,12 @@ const config = {
 				'tw-gray-25': 'var(--gray-25)',
 
 				'tw-orange-300': 'var(--orange-300)',
+				'tw-orange-50': 'var(--orange-50)',
 
 				'tw-blue-50': 'var(--tw-blue-50)',
+				'tw-blue-75': 'var(--tw-blue-75)',
 				'tw-blue-100': 'var(--tw-blue-100)',
-				'tw-blue-200':'var(--tw-blue-200)',
+				'tw-blue-200': 'var(--tw-blue-200)',
 				'tw-blue-300': 'var(--tw-blue-300)',
 				'tw-blue-400': 'var(--tw-blue-400)',
 				'tw-blue-450': 'var(--tw-blue-450)',
@@ -50,6 +53,28 @@ const config = {
 				'tw-black': 'var(--tw-black)',
 				'tw-purple-400': 'var(--tw-purple-400)',
 				'tw-purple-500': 'var(--tw-purple-500)',
+
+				"tw-secondary-500":"var(--secondary-500)",
+				"tw-secondary-450":"var(--secondary-450)",
+				"tw-secondary-400":"var(--secondary-400)",
+				"tw-secondary-300":"var(--secondary-300)",
+				"tw-secondary-200":"var(--secondary-200)",
+				"tw-secondary-100":"var(--secondary-100)",
+				"tw-secondary-000":"var(--secondary-000)",
+
+				"tw-info-500":"var(--info-500)",
+				"tw-info-400":"var(--info-400)",
+				"tw-info-300":"var(--info-300)",
+				"tw-info-200":"var(--info-200)",
+				"tw-info-100":"var(--info-100)",
+
+
+				"tw-neutral-500":"var(--neutral-500)",
+				"tw-neutral-400":"var(--neutral-400)",
+				"tw-neutral-300":"var(--neutral-300)",
+				"tw-neutral-200":"var(--neutral-200)",
+				"tw-neutral-100":"var(--neutral-100)",
+				"tw-neutral-000":"var(--neutral-000)",
 
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

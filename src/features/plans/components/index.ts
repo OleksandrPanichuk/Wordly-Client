@@ -1,2 +1,5 @@
+export * from './ComparisonTable'
+export * from './Help'
 export * from './PlanCard'
+export * from './Reviews'
 export * from './TextBox'

@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
 export type TypePlan = {
 	planId: number
@@ -8,7 +8,17 @@ export type TypePlan = {
 	discount?: number
 
 	features: {
-		icon: ReactNode 
+		icon: ReactNode
 		text: string
 	}[]
+}
+
+export type TypeReview = {
+	username: string
+	avatarUrl: string
+
+	text: string
+	rating: number
+
+	id: number
 }

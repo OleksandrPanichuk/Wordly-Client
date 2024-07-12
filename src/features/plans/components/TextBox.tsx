@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { HTMLAttributes } from 'react'
 
 interface ITextBoxProps extends HTMLAttributes<HTMLDivElement> {

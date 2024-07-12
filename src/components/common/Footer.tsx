@@ -1,4 +1,4 @@
 
 export const Footer = () => {
-	return <footer>Footer</footer>;
+	return <footer className="bg-blue-100">Footer</footer>;
 };

@@ -8,8 +8,8 @@ const titleVariants = cva('', {
 			h1: ' text-[2rem] md:text-[2.8rem] ',
 			h2: ' text-4xl md:text-[2.5rem] ',
 			h3: '',
-			h4: '',
-			h5: '',
+			h4: 'text-base md:text-lg',
+			h5: 'md:text-base text-sm',
 			h6: ''
 		},
 		size: {
@@ -17,7 +17,8 @@ const titleVariants = cva('', {
 			'6xl': 'text-5xl md:text-6xl',
 			'5xl': 'text-4xl md:text-5xl',
 			'3xl': 'text-2xl md:text-3xl',
-			"40px":'text-xl sm:text-2xl lg:text-[40px]'
+			'2xl': 'text-base sm:text-lg lg:text-2xl',
+			'40px': 'text-xl sm:text-2xl lg:text-[40px]'
 		},
 		weight: {
 			700: 'font-bold',

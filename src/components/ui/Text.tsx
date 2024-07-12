@@ -7,7 +7,8 @@ const TextVariants = cva('', {
 			xs: 'text-xs',
 			sm: 'text-sm',
 			base: 'text-base',
-			lg: 'text-lg',
+			'base-sm': 'xl:text-base text-sm',
+			lg: 'text-sm sm:text-base lg:text-lg',
 			xl: 'text-xl',
 			'2xl': 'text-2xl'
 		},

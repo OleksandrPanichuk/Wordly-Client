@@ -15,6 +15,7 @@ export enum Routes {
 
 	PAYMENT = '/payment',
 	PREMIUM = '/plans',
+	CONTACT_US = '/contact-us',
 
 
 	SETTINGS = '/dashboard/settings',
