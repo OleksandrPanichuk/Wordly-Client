@@ -43,5 +43,5 @@ export const Rating: React.FC<RatingProps> = ({
 		)
 	}
 
-	return <div className={className}>{stars}</div>
+	return <div className={cn('flex', className)}>{stars}</div>
 }

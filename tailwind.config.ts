@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 
 const config = {
 	darkMode: ['class'],
+
 	content: [
 		'./pages/**/*.{ts,tsx}',
 		'./components/**/*.{ts,tsx}',
@@ -22,7 +23,10 @@ const config = {
 				'2/1': '2 / 1'
 			},
 			screens: {
-				"xs": '440px',
+				xs: '440px',
+				'max-xs': { max: '439.98px' },
+				'max-sm': { max: '639.98px' },
+				'max-md': { max: '767.98px' },
 				'max-lg': { max: '1023.98px' }
 			},
 			fontFamily: {
@@ -54,27 +58,26 @@ const config = {
 				'tw-purple-400': 'var(--tw-purple-400)',
 				'tw-purple-500': 'var(--tw-purple-500)',
 
-				"tw-secondary-500":"var(--secondary-500)",
-				"tw-secondary-450":"var(--secondary-450)",
-				"tw-secondary-400":"var(--secondary-400)",
-				"tw-secondary-300":"var(--secondary-300)",
-				"tw-secondary-200":"var(--secondary-200)",
-				"tw-secondary-100":"var(--secondary-100)",
-				"tw-secondary-000":"var(--secondary-000)",
+				'tw-secondary-500': 'var(--secondary-500)',
+				'tw-secondary-450': 'var(--secondary-450)',
+				'tw-secondary-400': 'var(--secondary-400)',
+				'tw-secondary-300': 'var(--secondary-300)',
+				'tw-secondary-200': 'var(--secondary-200)',
+				'tw-secondary-100': 'var(--secondary-100)',
+				'tw-secondary-000': 'var(--secondary-000)',
 
-				"tw-info-500":"var(--info-500)",
-				"tw-info-400":"var(--info-400)",
-				"tw-info-300":"var(--info-300)",
-				"tw-info-200":"var(--info-200)",
-				"tw-info-100":"var(--info-100)",
+				'tw-info-500': 'var(--info-500)',
+				'tw-info-400': 'var(--info-400)',
+				'tw-info-300': 'var(--info-300)',
+				'tw-info-200': 'var(--info-200)',
+				'tw-info-100': 'var(--info-100)',
 
-
-				"tw-neutral-500":"var(--neutral-500)",
-				"tw-neutral-400":"var(--neutral-400)",
-				"tw-neutral-300":"var(--neutral-300)",
-				"tw-neutral-200":"var(--neutral-200)",
-				"tw-neutral-100":"var(--neutral-100)",
-				"tw-neutral-000":"var(--neutral-000)",
+				'tw-neutral-500': 'var(--neutral-500)',
+				'tw-neutral-400': 'var(--neutral-400)',
+				'tw-neutral-300': 'var(--neutral-300)',
+				'tw-neutral-200': 'var(--neutral-200)',
+				'tw-neutral-100': 'var(--neutral-100)',
+				'tw-neutral-000': 'var(--neutral-000)',
 
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

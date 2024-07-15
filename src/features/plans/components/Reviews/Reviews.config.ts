@@ -1,20 +1,29 @@
-import { Navigation, Pagination } from "swiper/modules"
-import { SwiperProps } from "swiper/react"
-
-import styles from './Reviews.module.scss'
+import { Navigation, Pagination } from 'swiper/modules'
+import { SwiperProps } from 'swiper/react'
 
 export const swiperSettings: SwiperProps = {
-	slidesPerView: 3,
-	centeredSlides: true,
-	modules: [Pagination, Navigation],
+	initialSlide: 1,
+	slidesPerView: 1,
+	spaceBetween: 0,
+	breakpoints: {
+		'640': {
+			slidesPerView: 'auto',
+			spaceBetween: 48
+		},
+		'1024': {
+			slidesPerView: 3,
+			spaceBetween: 32
+		}
+	},
+	modules: [Navigation, Pagination],
 	navigation: {
-		nextEl: styles.next,
-		prevEl: styles.prev
+		enabled: true
 	},
 	pagination: {
-		bulletActiveClass: styles['dot--active'],
-		bulletClass: styles.dot,
+		enabled: true,
 		clickable: true,
 		dynamicBullets: true
-	}
+	},
+	centeredSlides: true,
+	autoHeight: true
 }

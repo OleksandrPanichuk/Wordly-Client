@@ -66,10 +66,5 @@ export const data: TypeData[] = [
 		id: 8,
 		cellName: 'Advanced vocabulary features',
 		freePlan: false
-	},
-	{
-		id: 9,
-		cellName: 'Daily vocabulary feature',
-		freePlan: false
 	}
 ]
