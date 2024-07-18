@@ -1,0 +1,107 @@
+@import '@/styles/mixins.scss';
+
+.footer {
+	@apply bg-tw-blue-50;
+}
+
+.top {
+	@apply flex flex-col md:grid  xl:grid-cols-6 gap-x-20 md:gap-y-8 px-4 py-4 md:px-8 md:py-6 grid-cols-3 grid-rows-2 xl:grid-rows-1 mx-auto;
+	max-width: 82.5rem;
+
+	@include screen-xl-min {
+		> div:first-child {
+			grid-column: span 2 / span 2;
+		}
+	}
+
+	>div:nth-child(2) {
+		@apply mt-5 md:mt-0
+	}
+}
+
+.info {
+	@apply xl:col-span-2 flex flex-col;
+
+	> div:first-child {
+		@apply flex items-center gap-3;
+		img {
+			@apply size-8 sm:size-10 md:size-12;
+		}
+
+	}
+
+	>p:nth-child(2) {
+		@apply mt-3
+	}
+
+	.email {
+		@apply mt-7 flex items-center gap-2;
+		
+		a span {
+			transition: color .3s ease-in-out;
+		}
+		a:hover {
+			span {
+				@apply text-tw-purple-500;
+			}
+		}
+	}
+}
+
+
+.item {
+	> h5 {
+		@apply text-tw-blue-450 truncate md:mb-6 hidden md:block;
+	}
+	>div {
+		@apply truncate flex items-center justify-between w-full cursor-pointer mb-5  md:hidden;
+		> h5 {
+			@apply truncate transition-colors text-tw-blue-450 ;
+		}
+		> svg { 
+			@apply transition-colors stroke-tw-blue-450;
+		}
+		
+
+		&:hover {
+			> h5 {
+				@apply text-tw-purple-500;
+			}
+			> svg {
+				@apply stroke-tw-purple-500
+			}
+		}
+	}
+
+	.list {
+		@apply max-h-[40rem] md:max-h-max m-0 p-0 list-none flex flex-col gap-4 overflow-hidden transition-all duration-700 mb-5;
+	}
+
+	.link {
+		@apply inline-block w-full truncate text-tw-black transition-colors duration-300 text-sm font-normal hover:text-tw-purple-500;
+	}
+}
+
+
+.bottom {
+	@apply bg-[#0E4AA4] w-full;
+
+	&Container {
+		@apply max-w-[1200px] xl:mx-auto md:mx-8 mx-4 flex flex-col md:flex-row items-center md:justify-between gap-4 py-6;
+
+		> small {
+			@apply order-2 md:order-1 text-white text-center;
+			> br {
+				@apply md:hidden
+			}
+
+			> a {
+				@apply text-white underline hover:underline;
+			}
+		}
+	}
+
+	.socialLinks {
+		@apply flex gap-5 order-1 md:order-2;
+	}
+}

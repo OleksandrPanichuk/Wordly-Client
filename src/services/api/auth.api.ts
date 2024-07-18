@@ -7,7 +7,7 @@ import {
 	resetPasswordSchema,
 	signInSchema,
 	signUpSchema,
-	updatePasswordSchema,
+	updatePasswordSchema
 } from '@/services/dto'
 import { TypeUser } from '@/shared/types'
 import { AxiosResponse } from 'axios'

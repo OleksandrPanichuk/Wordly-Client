@@ -1,11 +1,11 @@
-import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 
-import '@/styles/globals.scss'
 import { cn } from '@/lib'
-import { AuthProvider, ModalsProvider, QueryProvider } from '@/providers'
+import { QueryProvider, StoreProvider } from '@/providers'
+
 import { currentUser } from '@/services'
 import { constructRootMetadata } from '@/shared/metadata'
+import '@/styles/globals.scss'
 import { Noto_Sans, Quicksand } from 'next/font/google'
 import { Toaster } from 'sonner'
 
@@ -17,9 +17,9 @@ const quicksand = Quicksand({
 })
 
 const notoSans = Noto_Sans({
-	weight: ['700', '500'],
+	weight: ['700', '400', '500', '600'],
 	display: 'swap',
-	subsets: ['latin'],
+	subsets: ['latin', 'latin-ext'],
 	variable: '--font-noto-sans'
 })
 
@@ -34,15 +34,15 @@ export default async function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={cn(quicksand.variable, GeistSans.className, notoSans.variable)}
+			className={cn(quicksand.variable, notoSans.className, notoSans.variable)}
+			suppressHydrationWarning
 		>
 			<body>
 				<QueryProvider>
-					<AuthProvider initialUser={user}>
-						<ModalsProvider />
+					<StoreProvider initialUser={user}>
 						<Toaster richColors expand />
 						{children}
-					</AuthProvider>
+					</StoreProvider>
 				</QueryProvider>
 			</body>
 		</html>

@@ -1,14 +1,17 @@
 'use client'
 
 import { SvgIcon } from '@/components/common'
-import { useDictionaryStore } from '@/features/dictionary'
+import { selectDictionarySearchValue,dictionaryActions } from '@/features/dictionary'
 import { cn } from '@/lib'
+import { useAppActions, useAppSelector } from '@/store'
 import { X } from 'lucide-react'
 import { ElementRef, useRef, useState } from 'react'
 
 export const DictionaryInput = () => {
 	const [focused, setFocused] = useState<boolean>(false)
-	const { searchValue, setSearchValue } = useDictionaryStore()
+
+	const searchValue = useAppSelector(selectDictionarySearchValue)
+	const {setSearchValue} = useAppActions(dictionaryActions)
 
 	const ref = useRef<ElementRef<'input'>>(null)
 

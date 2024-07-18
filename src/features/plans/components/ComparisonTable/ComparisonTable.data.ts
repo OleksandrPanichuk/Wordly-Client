@@ -12,7 +12,7 @@ type TypeData = {
 export const data: TypeData[] = [
 	{
 		id: 1,
-		cellName: 'Grammar Section',
+		cellName: '*Grammar Section',
 		freePlan: true,
 		hint: {
 			title: 'Grammar Section',
@@ -21,7 +21,7 @@ export const data: TypeData[] = [
 	},
 	{
 		id: 2,
-		cellName: 'Pronunciation Lessons',
+		cellName: '*Pronunciation Lessons',
 		freePlan: true,
 		hint: {
 			title: 'Pronunciation Lessons',
@@ -39,18 +39,17 @@ export const data: TypeData[] = [
 		freePlan: true
 	},
 	{
-		id: 5,
-		cellName: 'Phrasal Verbs',
-		freePlan: true
+		id:5,
+		cellName:"Vocabulary",
+		freePlan:true
 	},
 	{
 		id: 6,
-
-		cellName: 'Personalized Wordlists',
+		cellName: 'Personalized Lists',
 		freePlan: false,
 		hint: {
-			title: 'Personalized Wordlists',
-			text: 'On free plan you have only one wordlist. To create more and share them with everyone else you need to buy premium plan'
+			title: 'Personalized lists',
+			text: 'On free plan you have only one List. To create more and share them with everyone else you need to buy premium plan'
 		}
 	},
 	{
@@ -64,7 +63,12 @@ export const data: TypeData[] = [
 	},
 	{
 		id: 8,
-		cellName: 'Advanced vocabulary features',
+		cellName: 'Custom expressions',
+		freePlan: false,
+	},
+	{
+		id: 9,
+		cellName: '*Advanced vocabulary features',
 		freePlan: false
 	}
 ]

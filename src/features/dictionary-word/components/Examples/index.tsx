@@ -1,5 +1,5 @@
 import { SvgIcon } from '@/components/common'
-import { useExamplesModal } from '@/components/modals'
+import { ExamplesModal } from '@/components/modals'
 import { capitalizeOnlyFirstLetter, cn, highlightWordInExample } from '@/lib'
 import { TypeDictionaryWord } from '@/shared/types'
 import { BrainIcon } from 'lucide-react'
@@ -20,8 +20,6 @@ export const Examples = ({
 	className,
 	variant = 'default'
 }: IExamplesProps) => {
-	const open = useExamplesModal((state) => state.open)
-
 	if (!data?.length || !name) return null
 
 	const examplesToShow = show ? [...data].splice(0, show) : data
@@ -30,7 +28,7 @@ export const Examples = ({
 		<div
 			className={cn(
 				'rounded-3xl bg-tw-blue-50 pt-3 pb-4   md:py-6  px-4 md:px-6',
-				className,
+				className
 			)}
 		>
 			{variant === 'default' && (
@@ -61,26 +59,33 @@ export const Examples = ({
 					</div>
 				</div>
 			)}
-			<div className={cn('flex items-center justify-between', variant === 'default' && 'mt-3')}>
+			<div
+				className={cn(
+					'flex items-center justify-between',
+					variant === 'default' && 'mt-3'
+				)}
+			>
 				<div className={'text-lg font-semibold flex gap-2 items-center'}>
 					<SvgIcon name="message-question" stroke="var(--gray-400)" />
 					Examples
 				</div>
-				<button onClick={() => open(data, name)}>
-					<BrainIcon className={'text-blue-400'} />
-				</button>
+				<ExamplesModal data={data} word={name}>
+					<button>
+						<BrainIcon className={'text-blue-400'} />
+					</button>
+				</ExamplesModal>
 			</div>
 			<ul className={'mt-4 flex flex-col gap-4'}>
 				{examplesToShow.map((example, index) => (
-					<li
-						className={
-							'text-black/90 pl-6 relative text-base line-clamp-1 font-semibold before:absolute before:left-0 before:w-2 before:h-2 before:top-[50%] before:rounded-full before:bg-orange-300 before:translate-y-[-50%] highlight-example'
-						}
-						key={index}
-						onClick={() => open(data, name)}
-					>
-						{highlightWordInExample(capitalizeOnlyFirstLetter(example), name)}
-					</li>
+					<ExamplesModal key={index} word={name} data={data}>
+						<li
+							className={
+								'text-black/90 pl-6 relative text-base line-clamp-1 font-semibold before:absolute before:left-0 before:w-2 before:h-2 before:top-[50%] before:rounded-full before:bg-orange-300 before:translate-y-[-50%] highlight-example'
+							}
+						>
+							{highlightWordInExample(capitalizeOnlyFirstLetter(example), name)}
+						</li>
+					</ExamplesModal>
 				))}
 			</ul>
 		</div>

@@ -84,3 +84,16 @@
 		@content;
 	}
 }
+
+
+@mixin screen-xl-max {
+	@media screen and (width < $screen-xl) {
+		@content;
+	}
+}
+
+@mixin screen-xl-min {
+	@media screen and (width >= $screen-xl) {
+		@content;
+	}
+}

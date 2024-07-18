@@ -7,25 +7,32 @@ import {
 	Separator,
 	Sheet,
 	SheetContent,
-	SheetTrigger,
+	SheetTrigger
 } from '@/components/ui'
+import { selectAuthUser } from '@/features/auth'
 import { cn } from '@/lib'
-import { useAuth } from '@/providers'
 import { Routes } from '@/shared/constants'
 import { MenuIcon, UserIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { UserMenu } from '../UserMenu'
 import styles from './Navbar.module.scss'
+import { useAppSelector } from '@/store'
 
 export const Navbar = () => {
 	const pathname = usePathname()
 	return (
-		<Visibility bp='lg'>
-			<nav className='flex-1 hidden lg:block'>
-				<ul className='flex items-center xl:gap-9 gap-6'>
-					{links.map(link => (
+		<Visibility bp="lg">
+			<nav className="flex-1 hidden lg:block">
+				<ul className="flex items-center xl:gap-9 gap-6">
+					{links.map((link) => (
 						<li key={link.id}>
-							<Link className={cn(styles.link, pathname.includes(link.href) && styles.active)} href={link.href}>
+							<Link
+								className={cn(
+									styles.link,
+									pathname.includes(link.href) && styles.active
+								)}
+								href={link.href}
+							>
 								{link.label}
 							</Link>
 						</li>
@@ -37,27 +44,33 @@ export const Navbar = () => {
 }
 
 Navbar.Mobile = function MobileNavbar() {
-	const { user } = useAuth()
+	const user = useAppSelector(selectAuthUser)
 	const pathname = usePathname()
 	return (
-		<Visibility bp='max-lg'>
+		<Visibility bp="max-lg">
 			<Sheet>
-				<SheetTrigger className='lg:hidden hover:bg-tw-blue-50 transition duration-300 p-2 rounded-md'>
+				<SheetTrigger className="lg:hidden hover:bg-tw-blue-50 transition duration-300 p-2 rounded-md">
 					<MenuIcon />
 				</SheetTrigger>
 				<SheetContent
-					side='left'
-					className='flex flex-col gap-0 lg:hidden p-0 overflow-auto max-w-[25rem] w-full '
+					side="left"
+					className="flex flex-col gap-0 lg:hidden p-0 overflow-auto max-w-[25rem] w-full "
 				>
-					<div className='px-3 mt-6 my-4 '>
+					<div className="px-3 mt-6 my-4 ">
 						<Logo withText width={35} height={35} />
 					</div>
 					<Separator />
 					<nav>
-						<ul className='flex flex-col '>
-							{links.map(link => (
+						<ul className="flex flex-col ">
+							{links.map((link) => (
 								<li key={link.id}>
-									<Link href={link.href} className={cn(styles['mobile-link'], pathname.includes(link.href) && styles.active)}>
+									<Link
+										href={link.href}
+										className={cn(
+											styles['mobile-link'],
+											pathname.includes(link.href) && styles.active
+										)}
+									>
 										{link.label}
 									</Link>
 								</li>
@@ -69,12 +82,12 @@ Navbar.Mobile = function MobileNavbar() {
 						<UserMenu.Mobile />
 					) : (
 						<>
-							<Separator className='mt-auto mb-4' />
+							<Separator className="mt-auto mb-4" />
 							<Button
 								asChild
-								font='base'
+								font="base"
 								variant={'primary'}
-								className='px-5 mx-3 mb-4'
+								className="px-5 mx-3 mb-4"
 							>
 								<Link href={Routes.SIGN_IN}>
 									<UserIcon />

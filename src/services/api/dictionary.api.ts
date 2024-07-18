@@ -1,6 +1,8 @@
 import { axios } from '@/lib'
 import { DictionaryMode, TypeDictionaryWord, TypeSearchDictionaryWord } from '@/shared/types'
 import qs from 'query-string'
+
+
 export class DictionaryApi {
 	public static async searchWords(q: string) {
 		const url = qs.stringifyUrl({

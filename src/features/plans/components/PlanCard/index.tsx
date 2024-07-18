@@ -9,10 +9,11 @@ import {
 	CardTitle,
 	Skeleton
 } from '@/components/ui'
+import { selectAuthUser } from '@/features/auth'
 import { TextBox, type TypePlan } from '@/features/plans'
 import { formatCurrency } from '@/lib'
-import { useAuth } from '@/providers'
 import { Routes } from '@/shared/constants'
+import { useAppSelector } from '@/store'
 import { getProduct, lemonSqueezySetup } from '@lemonsqueezy/lemonsqueezy.js'
 import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
@@ -26,7 +27,7 @@ interface IPlanCardProps {
 }
 
 export const PlanCard = ({ plan }: IPlanCardProps) => {
-	const { user } = useAuth()
+	const user = useAppSelector(selectAuthUser)
 
 	useEffect(() => {
 		lemonSqueezySetup({

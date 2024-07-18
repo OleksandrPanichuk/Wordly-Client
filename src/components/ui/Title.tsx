@@ -18,7 +18,13 @@ const titleVariants = cva('', {
 			'5xl': 'text-4xl md:text-5xl',
 			'3xl': 'text-2xl md:text-3xl',
 			'2xl': 'text-base sm:text-lg lg:text-2xl',
-			'40px': 'text-xl sm:text-2xl lg:text-[40px]'
+			'40px': 'text-xl sm:text-2xl lg:text-[40px]',
+			xs: 'text-xs',
+			sm: 'text-sm',
+			base: 'text-base',
+			'base-sm': 'xl:text-base text-sm',
+			lg: 'text-sm sm:text-base lg:text-lg',
+			xl: 'text-xl',
 		},
 		weight: {
 			700: 'font-bold',
@@ -33,8 +39,7 @@ const titleVariants = cva('', {
 	},
 	defaultVariants: {
 		variant: 'h3',
-		size: 'default',
-		weight: 700
+		weight: 700,
 	}
 })
 
@@ -46,7 +51,7 @@ interface ITitleProps
 
 export const Title = ({
 	className,
-	variant,
+	variant ='h3',
 	color,
 	size,
 	weight,
@@ -58,6 +63,7 @@ export const Title = ({
 		color,
 		className
 	} as VariantProps<typeof titleVariants>
+
 
 	if (!!size) {
 		fullClassName.size = size

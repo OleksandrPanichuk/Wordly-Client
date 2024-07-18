@@ -1,3 +1,4 @@
+"use client"
 import { useMutation } from '@/hooks'
 import { AuthApi } from '@/services'
 import { toast } from 'sonner'

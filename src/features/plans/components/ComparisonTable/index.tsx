@@ -35,8 +35,8 @@ export const ComparisonTable = () => {
 					<TableRow
 						key={el.id}
 						className={cn(
-							'h-20 p-4 sm:p-6 text-sm sm:text-base lg:text-lg font-noto-sans font-bold text-tw-black',
-							index % 2 === 0 ? 'bg-white' : 'bg-tw-blue-75'
+							'h-20 p-4 sm:p-6 text-xs sm:text-sm md:text-base lg:text-lg font-noto-sans font-bold text-tw-black',
+							index % 2 === 1 ? 'bg-white' : 'bg-tw-blue-75'
 						)}
 					>
 						<TableCell
@@ -52,7 +52,7 @@ export const ComparisonTable = () => {
 							{el.freePlan ? (
 								<div className="w-full flex items-center justify-center">
 									<CheckCircle2Icon
-										className="size-5 sm:size-7"
+										className="size-4 sm:size-7"
 										stroke="var(--tw-purple-400)"
 									/>
 								</div>
@@ -79,7 +79,7 @@ export const ComparisonTable = () => {
 				))}
 			</TableBody>
 			<TableCaption>
-				*Most of the features are currently in developing state
+				*Feature is in developing state
 			</TableCaption>
 		</Table>
 	)

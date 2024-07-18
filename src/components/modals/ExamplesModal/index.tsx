@@ -1,22 +1,29 @@
-import { useExamplesModal } from './ExamplesModal.store'
 import {
 	Dialog,
 	DialogClose,
 	DialogContent,
 	DialogHeader,
 	DialogTitle,
+	DialogTrigger,
 	Text
 } from '@/components/ui'
-import { BrainIcon } from 'lucide-react'
 import { capitalizeOnlyFirstLetter, highlightWordInExample } from '@/lib'
+import { BrainIcon } from 'lucide-react'
+import { PropsWithChildren } from 'react'
 
-const ExamplesModal = () => {
-	const { isOpen, data, word, close } = useExamplesModal()
+interface IExamplesModalProps {
+	data: string[]
+	word: string
+}
 
-	if (!data || !word) return null
-
+const ExamplesModal = ({
+	data,
+	word,
+	children
+}: PropsWithChildren<IExamplesModalProps>) => {
 	return (
-		<Dialog open={isOpen} onOpenChange={(opn) => !opn && close()}>
+		<Dialog>
+			<DialogTrigger asChild>{children}</DialogTrigger>
 			<DialogContent
 				className={
 					'md:h-[90vh] w-[95vw] sm:w-[80vw]  p-0 flex flex-col rounded-3xl'
@@ -58,4 +65,4 @@ const ExamplesModal = () => {
 	)
 }
 
-export { useExamplesModal, ExamplesModal }
+export { ExamplesModal }

@@ -5,14 +5,15 @@ import {
 	DictionaryInput,
 	Feed,
 	LearningCategory,
-	useDictionarySearch,
-	useDictionaryStore
+	selectDictionarySearchValue,
+	useDictionarySearch
 } from '@/features/dictionary'
 import { useDebounce } from '@/hooks'
+import { useAppSelector } from '@/store'
 import { learningCategories } from './page.data'
 
 const DictionaryPage = () => {
-	const searchValue = useDictionaryStore((state) => state.searchValue)
+	const searchValue = useAppSelector(selectDictionarySearchValue)
 	const debouncedSearchValue = useDebounce(searchValue, 300)
 
 	const { data, isFetching } = useDictionarySearch(debouncedSearchValue)

@@ -1,7 +1,7 @@
 import { Routes } from '@/shared/constants'
 
 type NavLink = {
-	href: string
+	href: Routes
 	label: string
 	id: number
 }

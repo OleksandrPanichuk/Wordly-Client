@@ -1,13 +1,14 @@
 'use client'
 import { useMutation } from '@/hooks'
-import { useAuth } from '@/providers'
 import { AuthApi } from '@/services'
 import { SignInInput } from '@/services/dto'
 import { Routes } from '@/shared/constants'
 import { TypeUser } from '@/shared/types'
+import { useAppActions } from '@/store'
 import { UseMutationOptions } from '@tanstack/react-query'
 import { AxiosResponse } from 'axios'
 import { useRouter } from 'next/navigation'
+import { authActions } from '../store'
 
 export const useSignIn = (
 	options?: Omit<
@@ -15,7 +16,7 @@ export const useSignIn = (
 		'mutationFn'
 	>
 ) => {
-	const { setUser } = useAuth()
+	const { setUser } = useAppActions(authActions)
 	const router = useRouter()
 
 	return useMutation({
@@ -25,6 +26,6 @@ export const useSignIn = (
 			setUser(response.data)
 			options?.onSuccess?.(response, ...rest)
 			router.push(Routes.ROOT)
-		},
+		}
 	})
 }
