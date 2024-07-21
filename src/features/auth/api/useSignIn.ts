@@ -1,7 +1,6 @@
 'use client'
+import { AuthApi, SignInInput } from '@/features/auth'
 import { useMutation } from '@/hooks'
-import { AuthApi } from '@/services'
-import { SignInInput } from '@/services/dto'
 import { Routes } from '@/shared/constants'
 import { TypeUser } from '@/shared/types'
 import { useAppActions } from '@/store'

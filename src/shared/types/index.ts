@@ -1,3 +1,4 @@
+export * from './billing.types'
 export * from './common.types'
 export * from './dictionary.types'
 export * from './user.types'

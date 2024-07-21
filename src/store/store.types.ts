@@ -1,11 +1,11 @@
-import { makeStore } from '@/store'
+import { store } from '@/store'
 import {
 	ActionCreator,
 	ActionCreatorsMapObject,
 	AsyncThunk
 } from '@reduxjs/toolkit'
 
-export type AppStore = ReturnType<typeof makeStore>
+export type AppStore = typeof store
 export type RootState = ReturnType<AppStore['getState']>
 export type AppDispatch = AppStore['dispatch']
 

@@ -1,15 +1,18 @@
 import { axios } from '@/lib'
-import { DictionaryMode, TypeDictionaryWord, TypeSearchDictionaryWord } from '@/shared/types'
+import {
+	DictionaryMode,
+	TypeDictionaryWord,
+	TypeSearchDictionaryWord
+} from '@/shared/types'
 import qs from 'query-string'
-
 
 export class DictionaryApi {
 	public static async searchWords(q: string) {
 		const url = qs.stringifyUrl({
 			url: '/dictionary',
 			query: {
-				q,
-			},
+				q
+			}
 		})
 		return await axios.get<TypeSearchDictionaryWord[]>(url)
 	}
@@ -18,6 +21,8 @@ export class DictionaryApi {
 		word: string,
 		mode: DictionaryMode = 'DICTIONARY'
 	) {
-		return await axios.get<TypeDictionaryWord>(`/dictionary/${word}?mode=${mode}`)
+		return await axios.get<TypeDictionaryWord>(
+			`/dictionary/${word}?mode=${mode}`
+		)
 	}
 }

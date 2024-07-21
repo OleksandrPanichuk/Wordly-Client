@@ -1,4 +1,3 @@
-import { axios } from '@/lib'
 import {
 	ResetPasswordInput,
 	SignInInput,
@@ -8,7 +7,8 @@ import {
 	signInSchema,
 	signUpSchema,
 	updatePasswordSchema
-} from '@/services/dto'
+} from '@/features/auth'
+import { axios } from '@/lib'
 import { TypeUser } from '@/shared/types'
 import { AxiosResponse } from 'axios'
 

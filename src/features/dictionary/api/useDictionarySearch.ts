@@ -1,4 +1,4 @@
-import { DictionaryApi } from '@/services'
+import { DictionaryApi } from '@/features/dictionary'
 import { useQuery } from '@tanstack/react-query'
 import { toast } from 'sonner'
 

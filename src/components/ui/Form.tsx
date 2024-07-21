@@ -8,7 +8,7 @@ import {
 	FieldPath,
 	FieldValues,
 	FormProvider,
-	useFormContext,
+	useFormContext
 } from 'react-hook-form'
 
 import { Label } from '@/components/ui/Label'
@@ -61,7 +61,7 @@ const useFormField = () => {
 		formDescriptionId: `${id}-form-item-description`,
 		formMessageId: `${id}-form-item-message`,
 		formErrorId: `${id}-form-item-error`,
-		...fieldState,
+		...fieldState
 	}
 }
 
@@ -120,6 +120,7 @@ const FormControl = React.forwardRef<
 					: `${formDescriptionId} ${formMessageId}`
 			}
 			aria-invalid={!!error}
+			data-invalid={!!error}
 			{...props}
 		/>
 	)
@@ -180,12 +181,12 @@ const FormError = React.forwardRef<
 
 	return (
 		<div
-    {...props}
+			{...props}
 			ref={ref}
 			id={formErrorId}
-			className='flex items-center font-medium mt-2 text-xs text-rose-500 p-2 border border-rose-500 bg-rose-500/10 rounded-sm'
+			className="flex items-center font-medium mt-2 text-xs text-rose-500 p-2 border border-rose-500 bg-rose-500/10 rounded-sm"
 		>
-			<XCircle className='h-4 w-4 mr-2' />
+			<XCircle className="h-4 w-4 mr-2" />
 			{body}
 		</div>
 	)
@@ -201,5 +202,5 @@ export {
 	FormItem,
 	FormLabel,
 	FormMessage,
-	useFormField,
+	useFormField
 }

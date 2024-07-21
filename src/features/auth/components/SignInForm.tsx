@@ -9,8 +9,7 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import { useSignIn } from '@/features/auth'
-import { SignInInput, signInSchema } from '@/services/dto'
+import { SignInInput, signInSchema, useSignIn } from '@/features/auth'
 import { Routes } from '@/shared/constants'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -22,7 +21,12 @@ export const SignInForm = () => {
 		mode: 'onBlur'
 	})
 
-	const { control, handleSubmit } = form
+	const {
+		control,
+		handleSubmit,
+		formState: { isValid }
+	} = form
+
 	const { mutate: signIn, isPending } = useSignIn()
 
 	const onSubmit = (values: SignInInput) => signIn(values)
@@ -70,7 +74,7 @@ export const SignInForm = () => {
 				<Button
 					size="lg"
 					loading={isPending}
-					disabled={isPending}
+					disabled={isPending || !isValid}
 					variant="primary"
 					className="rounded-[15px] w-full text-base"
 				>

@@ -1,4 +1,5 @@
 export * from './axios'
-export * from './isStrongPassword'
-export * from './utils'
 export * from './highlightWordInExample'
+export * from './isStrongPassword'
+export * from './merge-refs'
+export * from './utils'

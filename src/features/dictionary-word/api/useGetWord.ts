@@ -1,4 +1,4 @@
-import { DictionaryApi } from '@/services'
+import { DictionaryApi } from '@/features/dictionary'
 import { DictionaryMode } from '@/shared/types'
 import { useQuery } from '@tanstack/react-query'
 

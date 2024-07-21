@@ -32,8 +32,7 @@ export const PlanCard = ({ plan }: IPlanCardProps) => {
 	useEffect(() => {
 		lemonSqueezySetup({
 			apiKey: process.env.NEXT_PUBLIC_LEMON_SQUEEZY_API_KEY,
-			onError: (err) =>
-				console.error('Failed to connect to lemon squeezy: ', err)
+			onError: (err) => console.error('Failed to connect to lemon squeezy: ', err)
 		})
 	}, [])
 

@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 import { ZodError } from 'zod'
 
 interface IUseMutationProps<T, U>
-	extends UseMutationOptions<AxiosResponse<T>, Error, U> {}
+	extends UseMutationOptions<AxiosResponse<T> | T, Error, U> {}
 
 export const useMutation = <T, U>(options?: IUseMutationProps<T, U>) => {
 	return useMutationDefault({
