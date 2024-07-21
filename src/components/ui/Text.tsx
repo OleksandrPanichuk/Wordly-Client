@@ -1,7 +1,7 @@
 import { cva, VariantProps } from 'class-variance-authority'
-import { HTMLAttributes } from 'react'
+import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react'
 
-const TextVariants = cva('', {
+const textVariants = cva('', {
 	variants: {
 		size: {
 			xs: 'text-xs',
@@ -39,23 +39,23 @@ const TextVariants = cva('', {
 	}
 })
 
-interface ITextProps
-	extends Omit<HTMLAttributes<HTMLElement>, 'color'>,
-		VariantProps<typeof TextVariants> {
-	as?: keyof HTMLElementTagNameMap
+type TypeTextProps <T extends ElementType> = 
+	 Omit<ComponentPropsWithoutRef<T>, 'color' | 'size' | 'weight'> &
+		VariantProps<typeof textVariants>  &{
+	as?: T
 }
 
-export const Text = ({
+export function Text <T extends ElementType>({
 	className,
 	size,
 	color,
-	as: child,
+	as: asComp,
 	weight,
 	...props
-}: ITextProps) => {
-	const fullClassName = TextVariants({ className, size, color, weight })
+}: TypeTextProps<T>) {
+	const fullClassName = textVariants({ className, size, color, weight })
 
-	const Comp = child ?? 'p'
+	const Component = asComp ?? 'p'
 
-	return <Comp {...props} className={fullClassName} />
+	return <Component {...props} className={fullClassName} />
 }

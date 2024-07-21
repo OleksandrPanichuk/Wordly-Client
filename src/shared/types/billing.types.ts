@@ -6,7 +6,7 @@ export type TypeBillingInfo = {
 	country: string
 	city: string
 	address: string
-	phoneNumber: number
+	phoneNumber: string
 	postalCode: string
 	userId: string
 }

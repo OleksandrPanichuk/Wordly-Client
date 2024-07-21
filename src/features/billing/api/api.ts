@@ -22,6 +22,7 @@ export class BillingApi {
 		}
 
 		billingInfoSchema.parse(dto)
+
 		return await axios.post<TypeBillingInfo>(
 			`/users/${userId}/billing-info`,
 			dto

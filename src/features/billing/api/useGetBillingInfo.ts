@@ -9,6 +9,7 @@ export const useGetBillingInfo = (props: UseQueryHookProps<TypeBillingInfo>) => 
 	return useQuery({
 		queryKey: ['users', user?.id, 'billingInfo'],
 		queryFn: BillingApi.get,
+		retry:false,
 		...props
 	})
 }

@@ -1,5 +1,7 @@
 import { FormErrors } from '@/shared/constants'
 import { z } from 'zod'
+import { PhoneNumberUtil } from 'google-libphonenumber';
+const phoneNumberUtil = PhoneNumberUtil.getInstance();
 
 export const billingInfoSchema = z.object({
 	firstName: z
@@ -21,9 +23,19 @@ export const billingInfoSchema = z.object({
 		.trim()
 		.min(1, FormErrors.required.city),
 	phoneNumber: z
-		.number({ required_error: FormErrors.required.phoneNumber })
+		.string({ required_error: FormErrors.required.phoneNumber }).trim()
 		.min(1, FormErrors.required.phoneNumber)
-		.min(5, FormErrors.length.phoneNumber),
+		.min(5, FormErrors.length.phoneNumber).refine(
+      (value) => {
+        try {
+          const phoneNumber = phoneNumberUtil.parseAndKeepRawInput(`+${value}`);
+          return phoneNumberUtil.isValidNumber(phoneNumber);
+        } catch (error) {
+          return false;
+        }
+      },
+      { message: FormErrors.invalid.phoneNumber },
+    ),
 	email: z
 		.string({ required_error: FormErrors.required.email })
 		.trim()

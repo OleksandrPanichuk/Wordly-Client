@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.47.0",
+    "@types/google-libphonenumber": "^7.4.30",
     "@types/node": "^20.3.1",
     "@types/query-string": "^6.3.0",
     "@types/react": "^18",

@@ -23,7 +23,8 @@ export const FormErrors = {
 	},
 	invalid: {
 		email: 'Invalid email address',
-		password: 'Password is too weak'
+		password: 'Password is too weak',
+		phoneNumber: 'Invalid phone number'
 	},
 	match: {
 		passwords: 'Passwords do not match'
