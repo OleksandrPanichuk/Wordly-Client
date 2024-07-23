@@ -1,13 +1,13 @@
+'use client'
 import {
 	UseMutationOptions,
-	useMutation as useMutationDefault,
+	useMutation as useMutationDefault
 } from '@tanstack/react-query'
-import { AxiosError, AxiosResponse } from 'axios'
+import { AxiosError } from 'axios'
 import { toast } from 'sonner'
 import { ZodError } from 'zod'
 
-interface IUseMutationProps<T, U>
-	extends UseMutationOptions<AxiosResponse<T>, Error, U> {}
+interface IUseMutationProps<T, U> extends UseMutationOptions<T, Error, U> {}
 
 export const useMutation = <T, U>(options?: IUseMutationProps<T, U>) => {
 	return useMutationDefault({
@@ -17,7 +17,7 @@ export const useMutation = <T, U>(options?: IUseMutationProps<T, U>) => {
 			if (error instanceof AxiosError) {
 				const message = error.response?.data.message
 				if (Array.isArray(message)) {
-					message.forEach(msg => toast.error(msg))
+					message.forEach((msg) => toast.error(msg))
 					return
 				}
 				if (message) {
@@ -30,6 +30,6 @@ export const useMutation = <T, U>(options?: IUseMutationProps<T, U>) => {
 			}
 
 			return toast.error('Something went wrong')
-		},
+		}
 	})
 }

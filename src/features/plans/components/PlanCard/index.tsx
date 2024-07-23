@@ -20,7 +20,7 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { toast } from 'sonner'
 import { getFormattedPrice, getPriceWithoutDiscount } from './PlanCard.helpers'
-import styles from './PriceItem.module.scss'
+import styles from './PlanCard.module.scss'
 
 interface IPlanCardProps {
 	plan: TypePlan
@@ -32,8 +32,7 @@ export const PlanCard = ({ plan }: IPlanCardProps) => {
 	useEffect(() => {
 		lemonSqueezySetup({
 			apiKey: process.env.NEXT_PUBLIC_LEMON_SQUEEZY_API_KEY,
-			onError: (err) =>
-				console.error('Failed to connect to lemon squeezy: ', err)
+			onError: (err) => console.error('Failed to connect to lemon squeezy: ', err)
 		})
 	}, [])
 

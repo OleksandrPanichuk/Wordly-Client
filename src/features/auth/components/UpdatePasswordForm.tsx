@@ -9,8 +9,11 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import { useUpdatePassword } from '@/features/auth'
-import { UpdatePasswordInput, updatePasswordSchema } from '@/services'
+import {
+	UpdatePasswordInput,
+	updatePasswordSchema,
+	useUpdatePassword
+} from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 

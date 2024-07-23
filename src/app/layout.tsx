@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { cn } from '@/lib'
 import { QueryProvider, StoreProvider } from '@/providers'
 
-import { currentUser } from '@/services'
+import { currentUser } from '@/features/profile'
 import { constructRootMetadata } from '@/shared/metadata'
 import '@/styles/globals.scss'
 import { Noto_Sans, Quicksand } from 'next/font/google'
@@ -31,6 +31,7 @@ export default async function RootLayout({
 	children: React.ReactNode
 }>) {
 	const user = await currentUser()
+
 	return (
 		<html
 			lang="en"

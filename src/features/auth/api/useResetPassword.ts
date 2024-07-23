@@ -1,6 +1,6 @@
 "use client"
 import { useMutation } from '@/hooks'
-import { AuthApi } from '@/services'
+import { AuthApi } from '@/features/auth'
 import { toast } from 'sonner'
 
 export const useResetPassword = () => {

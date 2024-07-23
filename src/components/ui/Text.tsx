@@ -1,16 +1,19 @@
 import { cva, VariantProps } from 'class-variance-authority'
-import { HTMLAttributes } from 'react'
+import { ComponentPropsWithoutRef, ElementType } from 'react'
 
-const TextVariants = cva('', {
+const textVariants = cva('', {
 	variants: {
 		size: {
 			xs: 'text-xs',
 			sm: 'text-sm',
 			base: 'text-base',
-			'base-sm': 'xl:text-base text-sm',
+			'base-sm': 'sm:text-base text-sm',
 			lg: 'text-sm sm:text-base lg:text-lg',
+			"lg-base":"sm:text-lg text-base",
 			xl: 'text-xl',
-			'2xl': 'text-2xl'
+			'2xl': 'text-2xl',
+			"2xl-lg":"sm:text-2xl text-lg",
+			"40px-2xl":"text-2xl sm:text-4xl lg:text-[40px]"
 		},
 		color: {
 			gray: 'text-tw-gray-200',
@@ -39,23 +42,23 @@ const TextVariants = cva('', {
 	}
 })
 
-interface ITextProps
-	extends Omit<HTMLAttributes<HTMLElement>, 'color'>,
-		VariantProps<typeof TextVariants> {
-	as?: keyof HTMLElementTagNameMap
+type TypeTextProps <T extends ElementType> = 
+	 Omit<ComponentPropsWithoutRef<T>, 'color' | 'size' | 'weight'> &
+		VariantProps<typeof textVariants>  &{
+	as?: T
 }
 
-export const Text = ({
+export function Text <T extends ElementType>({
 	className,
 	size,
 	color,
-	as: child,
+	as: asComp,
 	weight,
 	...props
-}: ITextProps) => {
-	const fullClassName = TextVariants({ className, size, color, weight })
+}: TypeTextProps<T>) {
+	const fullClassName = textVariants({ className, size, color, weight })
 
-	const Comp = child ?? 'p'
+	const Component = asComp ?? 'p'
 
-	return <Comp {...props} className={fullClassName} />
+	return <Component {...props} className={fullClassName} />
 }

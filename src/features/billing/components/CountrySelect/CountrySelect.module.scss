@@ -1,0 +1,28 @@
+.input {
+	@apply w-full border-0 placeholder:text-muted-foreground focus:outline-tw-purple-500 focus:outline-[1.5px] placeholder:text-sm hover:bg-tw-blue-100 bg-tw-blue-75 rounded-3xl px-4 py-3 text-tw-black ;
+
+	&Invalid {
+		@apply outline-[1.5px] outline;
+		outline-color: hsl(var(--destructive)) !important;
+	}
+}
+
+
+.indicator {
+	@apply absolute  right-2 border-none p-2 bg-transparent hover:bg-tw-blue-100 rounded-full;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.options {
+	@apply absolute list-none z-[9999] bg-background shadow-md overflow-y-scroll mt-2 rounded-md p-0 w-[var(--input-width)];
+	max-height: 320px !important;
+}
+
+.option {
+	@apply flex gap-2 items-center cursor-pointer px-4 py-2 ;
+
+	> span{
+		@apply text-tw-gray-400;
+	}
+}

@@ -10,10 +10,8 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import { useSignUp } from '@/features/auth'
-import { SignUpInput, signUpSchema } from '@/services'
+import { SignUpInput, signUpSchema, useSignUp } from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 interface ICreatePasswordFormProps {

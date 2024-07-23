@@ -1,3 +1,4 @@
+"use client"
 import type { AppDispatch, AppStore, BoundActions, RootState } from '@/store'
 import { ActionCreatorsMapObject, bindActionCreators } from '@reduxjs/toolkit'
 import { useDispatch, useSelector, useStore } from 'react-redux'

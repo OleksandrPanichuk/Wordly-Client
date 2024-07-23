@@ -1,6 +1,6 @@
 'use server'
 
-import { axios } from '@/lib'
+import { fetcher } from '@/lib'
 import { SESSION_NAME } from '@/shared/constants'
 import { TypeUser } from '@/shared/types'
 import { cookies } from 'next/headers'
@@ -12,14 +12,12 @@ export async function currentUser() {
 		const hasSessionCookie = cookies().has(SESSION_NAME)
 
 		if (hasSessionCookie) {
-			const response = await axios<TypeUser>('/users/current', {
-				headers: {
-					Cookie: cookies().toString(),
-				},
-			})
-			user = response.data
+			user = await fetcher.get<TypeUser>('/users/current')
 		}
+	} catch (err) {
+		console.log(err)
 	} finally {
 		return user
 	}
+	
 }

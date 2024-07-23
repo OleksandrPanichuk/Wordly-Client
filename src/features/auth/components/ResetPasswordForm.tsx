@@ -7,16 +7,19 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
-	Input,
+	Input
 } from '@/components/ui'
-import { useResetPassword } from '@/features/auth'
-import { ResetPasswordInput, resetPasswordSchema } from '@/services'
+import {
+	ResetPasswordInput,
+	resetPasswordSchema,
+	useResetPassword
+} from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
 export const ResetPasswordForm = () => {
 	const form = useForm<ResetPasswordInput>({
-		resolver: zodResolver(resetPasswordSchema),
+		resolver: zodResolver(resetPasswordSchema)
 	})
 
 	const { mutate: resetPassword, isPending } = useResetPassword()
@@ -27,11 +30,11 @@ export const ResetPasswordForm = () => {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className='w-full max-w-[24.375rem] flex flex-col gap-4 mb-4'
+				className="w-full max-w-[24.375rem] flex flex-col gap-4 mb-4"
 			>
 				<FormField
 					control={form.control}
-					name='email'
+					name="email"
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Your email</FormLabel>
@@ -43,11 +46,11 @@ export const ResetPasswordForm = () => {
 					)}
 				/>
 				<Button
-					size='lg'
+					size="lg"
 					loading={isPending}
 					disabled={isPending}
-					variant='primary'
-					className='rounded-[15px] w-full text-base'
+					variant="primary"
+					className="rounded-[15px] w-full text-base"
 				>
 					Send
 				</Button>

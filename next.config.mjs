@@ -10,9 +10,14 @@ const nextConfig = {
 			}
 		]
 	},
-	experimental: {
-		reactCompiler: true
-	}
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'flagpedia.net'
+			}
+		]
+	},
 }
 
 export default nextConfig

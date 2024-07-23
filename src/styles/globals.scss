@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './mixins.scss';
 @import './variables.scss';
+@import './mixins.scss';
 
 @layer base {
 	:root {
@@ -55,7 +55,7 @@
 		--tw-purple-400: #7b56bd; // rgb(123, 86 ,189)
 
 		--gray-500: #212529;
-		--gray-400: #353738; // rgb(53, 55, 56)
+		--gray-400: #353738; // rgb(53, 55, 56) - sub-title
 		--gray-200: #6c757d;
 		--gray-100: #e9ecef6e;
 		--gray-75: #d6d6d6; // rgb(214, 214, 214)
@@ -65,7 +65,8 @@
 		--orange-300: rgb(255, 169, 68);
 		--orange-50: #fff3e5; // 255, 243, 229
 
-
+		--red-alarm: rgb(221, 51, 49);
+		--green-light: rgb(201, 248, 225);
 
 		--secondary-500: rgb(34, 34, 34);
     --secondary-450: rgb(51, 51, 51);  // #333333
@@ -92,6 +93,7 @@
 		--screen-sm: $screen-sm;
 		--screen-md: $screen-md;
 		--screen-lg: $screen-lg;
+		--screen-xl: $screen-xl;
 	}
 
 	.dark {
