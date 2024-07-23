@@ -10,3 +10,13 @@ export type TypeBillingInfo = {
 	postalCode: string
 	userId: string
 }
+
+export type TypeSubscription = {
+	id: string
+	lsSubscriptionId: string
+	productId: number
+	endsAt?: Date
+	createdAt: Date
+	userId: string
+	isUnlimite: boolean
+}

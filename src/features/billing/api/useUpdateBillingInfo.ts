@@ -1,4 +1,4 @@
-import { BillingApi, type BillingInfoInput } from '@/features/billing'
+import { BillingInfoApi, type BillingInfoInput } from '@/features/billing'
 import { useMutation } from '@/hooks'
 
 export const useUpdateBillingInfo = () => {
@@ -9,6 +9,6 @@ export const useUpdateBillingInfo = () => {
 		}: {
 			id: string
 
-		} & Partial<BillingInfoInput>) => (await BillingApi.update(id, dto)).data
+		} & Partial<BillingInfoInput>) => (await BillingInfoApi.update(id, dto)).data
 	})
 }

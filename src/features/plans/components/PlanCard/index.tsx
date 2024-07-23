@@ -20,7 +20,7 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { toast } from 'sonner'
 import { getFormattedPrice, getPriceWithoutDiscount } from './PlanCard.helpers'
-import styles from './PriceItem.module.scss'
+import styles from './PlanCard.module.scss'
 
 interface IPlanCardProps {
 	plan: TypePlan

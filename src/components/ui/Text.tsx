@@ -1,5 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority'
-import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react'
+import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 const textVariants = cva('', {
 	variants: {
@@ -7,10 +7,13 @@ const textVariants = cva('', {
 			xs: 'text-xs',
 			sm: 'text-sm',
 			base: 'text-base',
-			'base-sm': 'xl:text-base text-sm',
+			'base-sm': 'sm:text-base text-sm',
 			lg: 'text-sm sm:text-base lg:text-lg',
+			"lg-base":"sm:text-lg text-base",
 			xl: 'text-xl',
-			'2xl': 'text-2xl'
+			'2xl': 'text-2xl',
+			"2xl-lg":"sm:text-2xl text-lg",
+			"40px-2xl":"text-2xl sm:text-4xl lg:text-[40px]"
 		},
 		color: {
 			gray: 'text-tw-gray-200',

@@ -10,7 +10,7 @@ import {
 } from '@headlessui/react'
 import { getCode, getNames } from 'country-list'
 import { ChevronDownIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ControllerRenderProps } from 'react-hook-form'
 import styles from './CountrySelect.module.scss'
 
@@ -33,7 +33,7 @@ export const CountrySelect = ({
 	const countries = getNames().sort()
 
 	const [query, setQuery] = useState<string>('')
-	const [selected, setSelected] = useState<string>(value)
+	const [selected, setSelected] = useState<string>('')
 
 	const handleChange = (value: string) => {
 		if (value) {
@@ -42,6 +42,13 @@ export const CountrySelect = ({
 		}
 	}
 
+	useEffect(() => {
+		if(!selected && value) {
+			setSelected(value)
+		}
+	}, [value, selected])
+
+
 	const handleBlur = () => {
 		setQuery('')
 		onBlur()
@@ -49,7 +56,7 @@ export const CountrySelect = ({
 
 	return (
 		<Combobox
-			value={selected}
+			value={selected ?? value}
 			onChange={handleChange}
 			disabled={disabled}
 			onClose={() => setQuery('')}

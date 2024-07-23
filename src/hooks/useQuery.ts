@@ -1,3 +1,4 @@
+"use client"
 import {
 	QueryFunction,
 	UseQueryOptions,
@@ -6,10 +7,7 @@ import {
 import { AxiosResponse } from 'axios'
 
 interface IQueryHookProps<T>
-	extends Omit<
-		UseQueryOptions<T| undefined, Error>,
-		'queryFn'
-	> {
+	extends Omit<UseQueryOptions<T | undefined, Error>, 'queryFn'> {
 	onSuccess?: (data: T) => void
 	onError?: (error: Error) => void
 	queryFn?: QueryFunction<T extends AxiosResponse ? T : AxiosResponse<T>>

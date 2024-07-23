@@ -1,10 +1,14 @@
-import { BillingInfoInput, billingInfoSchema } from '@/features/billing'
-import { plans } from '@/features/plans'
+import {
+	BillingInfoInput,
+	billingInfoSchema,
+	billingPlans
+} from '@/features/billing'
 import { axios } from '@/lib'
 import { TypeBillingInfo } from '@/shared/types'
 import { store } from '@/store'
 
-export class BillingApi {
+
+export class BillingInfoApi {
 	public static async get() {
 		const userId = store.getState().auth.user?.id
 
@@ -46,9 +50,17 @@ export class BillingApi {
 			dto
 		)
 	}
+}
+
+export class BillingApi {
+	public static async getSubscription() {
+		return await axios.get('/subscription')
+	}
 
 	public static async checkout(productId: number) {
-		const isValidProductId = plans.some((plan) => plan.planId === productId)
+		const isValidProductId = billingPlans.some(
+			(plan) => plan.variantId === productId
+		)
 
 		if (!isValidProductId) {
 			throw new Error('Invalid product id')

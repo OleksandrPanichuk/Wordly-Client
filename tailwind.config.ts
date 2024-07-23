@@ -35,6 +35,7 @@ const config = {
 			},
 			colors: {
 				'tw-green-light': 'var(--green-light)',
+				"tw-red-alarm":"var(--red-alarm)",
 
 				'tw-gray-500': 'var(--gray-500)',
 				'tw-gray-400': 'var(--gray-400)',

@@ -14,5 +14,5 @@ export async function middleware(req: NextRequest) {
 
 // TODO: Add /payment to matcher
 export const config: MiddlewareConfig = {
-	matcher: ['/dashboard/:path*']
+	matcher: ['/payment','/dashboard/:path*']
 }

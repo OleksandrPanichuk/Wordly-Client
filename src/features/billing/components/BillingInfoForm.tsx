@@ -13,6 +13,7 @@ import { selectAuthUser } from '@/features/auth'
 import {
 	BillingInfoInput,
 	billingInfoSchema,
+	billingPlans,
 	CountrySelect,
 	PhoneNumberInput,
 	useAddBillingInfo,
@@ -22,9 +23,8 @@ import {
 } from '@/features/billing'
 import { useAppSelector } from '@/store'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { getCode } from 'country-list'
+import isEqual from 'lodash.isequal'
 import { useForm } from 'react-hook-form'
-import { isDeepStrictEqual } from 'util'
 
 interface IBillingInfoFormProps {
 	planId?: number
@@ -36,7 +36,7 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 	const form = useForm<BillingInfoInput>({
 		resolver: zodResolver(billingInfoSchema),
 		mode: 'onBlur',
-		defaultValues:{
+		defaultValues: {
 			email: user?.email
 		}
 	})
@@ -58,7 +58,7 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 		control,
 		handleSubmit,
 		watch,
-		formState: {isSubmitting },
+		formState: { isSubmitting }
 	} = form
 
 	const onSubmit = async (values: BillingInfoInput) => {
@@ -66,7 +66,11 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 			await createBillingInfo(values)
 		}
 
-		if (billingInfoFromDB && !isDeepStrictEqual(billingInfoFromDB, values)) {
+		const compareObject = { ...billingInfoFromDB }
+		delete compareObject.userId
+		delete compareObject.id
+
+		if (billingInfoFromDB && !isEqual(compareObject, values)) {
 			await updateBillingInfo({
 				id: billingInfoFromDB.id,
 				...values
@@ -74,18 +78,18 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 		}
 
 		if (planId) {
-			const url = await getCheckoutUrl(planId)
+			const url = await getCheckoutUrl(
+				billingPlans.find((el) => el.planId === planId)!.variantId
+			)
 			window.location.href = url
 		}
 	}
-
-	const country = watch('country')
 
 	return (
 		<Form {...form}>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="grid grid-cols-2 w-full gap-x-3 gap-y-6"
+				className="flex flex-col xs:grid grid-cols-2 w-full gap-x-3 gap-y-6"
 			>
 				<FormField
 					control={control}
@@ -163,9 +167,10 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 							<FormControl>
 								<PhoneNumberInput
 									{...field}
-									countryCode={country ? getCode(country) : undefined}
 									isInvalid={fieldState.invalid}
 									disabled={isSubmitting}
+									country={watch('country')}
+									billingInfoFromDB={billingInfoFromDB}
 								/>
 							</FormControl>
 							<FormMessage />
