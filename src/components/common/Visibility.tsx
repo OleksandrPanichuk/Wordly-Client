@@ -11,7 +11,7 @@ type VisibilityProps = {
 } & ({ breakpoint: string } | { bp: BreakpointsType | BreakpointsType[] })
 
 export function Visibility(props: VisibilityProps) {
-	const { hide, children, ssr = true, fallback = [true] } = props
+	const { hide, children, ssr = true, fallback } = props
 
 	const show = useMediaQuery(
 		'bp' in props ? getBreakpoints(props.bp) : [props.breakpoint],

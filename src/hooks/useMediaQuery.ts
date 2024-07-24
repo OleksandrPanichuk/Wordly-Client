@@ -10,7 +10,8 @@ export function useMediaQuery(
   query: string | string[],
   options: UseMediaQueryOptions = {},
 ): boolean[] {
-  const { ssr = true, fallback = [true] } = options
+  const { ssr = true, fallback = !Array.isArray(query) ? [true] : Array(query.length).fill(true)} = options
+
 
   const queries = Array.isArray(query) ? query : [query]
 

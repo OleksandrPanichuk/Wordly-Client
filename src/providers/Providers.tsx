@@ -1,9 +1,9 @@
 
+import { currentUser } from "@/features/profile"
 import { PropsWithChildren } from "react"
+import { Toaster } from "sonner"
 import { QueryProvider } from "./QueryProvider"
 import { StoreProvider } from "./StoreProvider"
-import { currentUser } from "@/features/profile"
-import { Toaster } from "sonner"
 
 
 export const Providers = async ({children}:PropsWithChildren) => {

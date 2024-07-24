@@ -1,6 +1,7 @@
 'use server'
 import { cookies } from 'next/headers'
 import type { RequestOptions } from './types'
+import { APP_URL } from '@/shared/constants'
 
 export async function request<T>(
 	method: string,
@@ -18,7 +19,7 @@ export async function request<T>(
 	headers.Cookie = cookies().toString()
 
 	// Construct the full URL with query parameters if provided
-	let fullURL = `${process.env.NEXT_PUBLIC_APP_URL}/api/${url}`
+	let fullURL = `${APP_URL}/api/${url}`
 	if (params) {
 		const queryString = new URLSearchParams(params).toString()
 		fullURL += `?${queryString}`

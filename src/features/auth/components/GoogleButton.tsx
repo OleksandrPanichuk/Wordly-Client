@@ -8,7 +8,7 @@ export const GoogleButton = () => {
 		<Button
 			variant="outline"
 			size="lg"
-			className="rounded-[15px] justify-start  min-h-[2.75rem] w-[24.375rem]"
+			className="rounded-[15px] justify-start  min-h-[2.75rem] w-full  max-w-[24.375rem]"
 			onClick={AuthApi.signInWithGoogle}
 		>
 			<SvgIcon name="google" />
