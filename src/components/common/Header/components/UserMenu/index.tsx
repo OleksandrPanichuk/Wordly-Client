@@ -15,6 +15,7 @@ import {
 } from '@/components/ui'
 import { selectAuthUser, useSignOut } from '@/features/auth'
 import { cn } from '@/lib'
+import { Routes } from '@/shared/constants'
 import { useAppSelector } from '@/store'
 import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -46,7 +47,10 @@ export const UserMenu = () => {
 					</Text>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent className="mr-2 p-0 ">
-					<div className="flex items-center gap-3 p-4 bg-tw-blue-50 ">
+					<Link
+						href={Routes.PROFILE}
+						className="flex items-center gap-3 p-4 bg-tw-blue-50 "
+					>
 						<Avatar>
 							<AvatarImage src={user.avatar?.url} />
 							<AvatarFallback>{user.username[0]}</AvatarFallback>
@@ -59,7 +63,7 @@ export const UserMenu = () => {
 								{user.email}
 							</Text>
 						</div>
-					</div>
+					</Link>
 					<DropdownMenuSeparator />
 					<div className="p-1 space-y-1">
 						{links.map((link) => {

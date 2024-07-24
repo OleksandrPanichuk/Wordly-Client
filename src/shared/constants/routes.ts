@@ -40,6 +40,7 @@ export enum Routes {
 	PREMIUM = '/plans',
 
 	// Dashboard
+	PROFILE = '/dashboard/profile',
 	SETTINGS = '/dashboard/settings',
 	MY_LISTS = '/dashboard/my-lists',
 	BOOKMARKS = '/dashboard/bookmarks',
