@@ -23,7 +23,7 @@ export const Header = () => {
 		<header className="flex items-center p-4 w-full">
 			{!!leftSection && (
 				<div className="flex items-center gap-2">
-					{!wordlistId && (
+					{wordlistId && (
 						<button
 							onClick={router.back}
 							className="transition-transform hover:scale-125"
