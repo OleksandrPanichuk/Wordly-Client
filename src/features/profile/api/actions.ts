@@ -11,9 +11,9 @@ export async function currentUser() {
 	try {
 		const hasSessionCookie = cookies().has(SESSION_NAME)
 
-		if (hasSessionCookie) {
+		// if (hasSessionCookie) {
 			user = await fetcher.get<TypeUser>('/users/current')
-		}
+		// }
 	} catch (err) {
 		console.log(err)
 	} finally {

@@ -9,11 +9,11 @@ const textVariants = cva('', {
 			base: 'text-base',
 			'base-sm': 'sm:text-base text-sm',
 			lg: 'text-sm sm:text-base lg:text-lg',
-			"lg-base":"sm:text-lg text-base",
+			'lg-base': 'sm:text-lg text-base',
 			xl: 'text-xl',
 			'2xl': 'text-2xl',
-			"2xl-lg":"sm:text-2xl text-lg",
-			"40px-2xl":"text-2xl sm:text-4xl lg:text-[40px]"
+			'2xl-lg': 'sm:text-2xl text-lg',
+			'40px-2xl': 'text-2xl sm:text-4xl lg:text-[40px]',
 		},
 		color: {
 			gray: 'text-tw-gray-200',
@@ -26,29 +26,31 @@ const textVariants = cva('', {
 			'gray-500': 'text-tw-gray-500',
 			'gray-400': 'text-tw-gray-400',
 			'gray-200': 'text-tw-gray-200',
-			'gray-100': 'text-tw-gray-100'
+			'gray-100': 'text-tw-gray-100',
 		},
 		weight: {
 			400: 'font-normal',
 			500: 'font-medium',
 			600: 'font-semibold',
-			700: 'font-bold'
-		}
+			700: 'font-bold',
+		},
 	},
 	defaultVariants: {
 		weight: 400,
 		size: 'base',
-		color: 'gray'
-	}
+		color: 'gray',
+	},
 })
 
-type TypeTextProps <T extends ElementType> = 
-	 Omit<ComponentPropsWithoutRef<T>, 'color' | 'size' | 'weight'> &
-		VariantProps<typeof textVariants>  &{
-	as?: T
-}
+type TypeTextProps<T extends ElementType> = Omit<
+	ComponentPropsWithoutRef<T>,
+	'color' | 'size' | 'weight'
+> &
+	VariantProps<typeof textVariants> & {
+		as?: T
+	}
 
-export function Text <T extends ElementType>({
+export function Text<T extends ElementType = 'p'>({
 	className,
 	size,
 	color,

@@ -1,13 +1,11 @@
 import type { Metadata } from 'next'
 
 import { cn } from '@/lib'
-import { QueryProvider, StoreProvider } from '@/providers'
+import { Providers } from '@/providers'
 
-import { currentUser } from '@/features/profile'
 import { constructRootMetadata } from '@/shared/metadata'
 import '@/styles/globals.scss'
 import { Noto_Sans, Quicksand } from 'next/font/google'
-import { Toaster } from 'sonner'
 
 const quicksand = Quicksand({
 	weight: ['400', '500', '700'],
@@ -30,8 +28,6 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const user = await currentUser()
-
 	return (
 		<html
 			lang="en"
@@ -39,12 +35,7 @@ export default async function RootLayout({
 			suppressHydrationWarning
 		>
 			<body>
-				<QueryProvider>
-					<StoreProvider initialUser={user}>
-						<Toaster richColors expand />
-						{children}
-					</StoreProvider>
-				</QueryProvider>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	)
