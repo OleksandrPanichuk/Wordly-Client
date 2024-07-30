@@ -1,6 +1,6 @@
 import { currentUser } from '@/features/profile'
 import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server'
-import { Routes } from './shared/constants'
+import { Routes } from '@/shared/constants'
 
 export async function middleware(req: NextRequest) {
 	const user = await currentUser()
@@ -12,5 +12,5 @@ export async function middleware(req: NextRequest) {
 	return NextResponse.next()
 }
 export const config: MiddlewareConfig = {
-	matcher: ['/payment']
+	matcher: ['/payment', '/dashboard/:path*']
 }

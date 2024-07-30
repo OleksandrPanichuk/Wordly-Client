@@ -19,7 +19,8 @@ export const FormErrors = {
 		address: 'Address must be at least 5 characters',
 		postalCode: 'Postal code must be at least 5 characters',
 		phoneNumber: 'Your phone number must be at least 5 characters',
-		password: 'Password is too short'
+		password: 'Password is too short',
+		nativeLanguages: 'Language name is too short'
 	},
 	invalid: {
 		email: 'Invalid email address',

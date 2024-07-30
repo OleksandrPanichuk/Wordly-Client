@@ -67,6 +67,7 @@ const config = {
 				'tw-secondary-300': 'var(--secondary-300)',
 				'tw-secondary-200': 'var(--secondary-200)',
 				'tw-secondary-100': 'var(--secondary-100)',
+				"tw-secondary-50":"var(--secondary-50)",
 				'tw-secondary-000': 'var(--secondary-000)',
 
 				'tw-info-500': 'var(--info-500)',

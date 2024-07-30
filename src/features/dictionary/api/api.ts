@@ -14,15 +14,15 @@ export class DictionaryApi {
 				q
 			}
 		})
-		return await axios.get<TypeSearchDictionaryWord[]>(url)
+		return (await axios.get<TypeSearchDictionaryWord[]>(url)).data
 	}
 
 	public static async getWordByName(
 		word: string,
 		mode: DictionaryMode = 'DICTIONARY'
 	) {
-		return await axios.get<TypeDictionaryWord>(
-			`/dictionary/${word}?mode=${mode}`
-		)
+		return (
+			await axios.get<TypeDictionaryWord>(`/dictionary/${word}?mode=${mode}`)
+		).data
 	}
 }

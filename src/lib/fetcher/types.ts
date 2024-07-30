@@ -1,10 +1,15 @@
-export interface FetchOptions {
-	headers?: Record<string, any>
-	params?: Record<string, any>
-	next?: NextFetchRequestConfig
-	cache?: RequestCache
+export interface FetchResponse<T> {
+	data: T
+	status: number
+	statusText: string
+	headers: Headers
 }
 
-export interface RequestOptions extends FetchOptions {
-	body?: any
+export interface FetchConfig {
+	headers?: HeadersInit
+	next?: NextFetchRequestConfig
+	cache?: RequestCache
+	params?: Record<string, any>
 }
+
+export type FetchMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'

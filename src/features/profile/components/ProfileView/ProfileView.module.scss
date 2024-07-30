@@ -1,0 +1,55 @@
+.wrapper {
+	@apply flex-1  sm:p-4 bg-tw-blue-50;
+}
+
+.content {
+	@apply sm:rounded-[1.875rem] w-full lg:w-[70%] lg:mx-auto h-[43.75rem] bg-white flex flex-col;
+}
+
+.top {
+	@apply relative min-h-[150px] sm:rounded-t-[1.875rem] bg-cover  mix-blend-multiply sm:bg-auto;
+	background: linear-gradient(0deg, #0d469ee6, #0d469ee6),
+		url('/images/alphabets.png');
+
+	> div {
+		@apply absolute top-[100%] translate-y-[-70%] left-[5%] flex items-center gap-2;
+	}
+}
+
+.avatar {
+	@apply w-[5.5rem]  h-[5.5rem]  border-tw-blue-450 border-[4px] border-solid text-2xl;
+}
+
+.username {
+	@apply text-[1.5rem] sm:text-[2rem] text-white font-bold ml-2;
+}
+
+.main {
+	@apply flex flex-col gap-16 p-3 flex-1; 
+}
+
+.infoList {
+	@apply flex flex-col gap-4;
+
+	> li {
+		@apply flex items-center gap-2;
+		> div:first-of-type {
+			@apply w-12 h-12 rounded-xl flex justify-center items-center bg-tw-secondary-50;
+			> svg {
+				@apply stroke-tw-black;
+			}
+		}
+		> div:last-of-type {
+			@apply flex flex-col;
+		}
+	}
+}
+
+
+.deleteWrapper {
+	@apply px-4 mb-8;
+}
+
+.deleteButton {
+	@apply text-rose-400 hover:text-rose-700 transition-colors cursor-pointer;
+}

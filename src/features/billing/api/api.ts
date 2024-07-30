@@ -3,19 +3,27 @@ import {
 	billingInfoSchema,
 	billingPlans
 } from '@/features/billing'
-import { axios } from '@/lib'
+import { axios, fetcher } from '@/lib'
 import { TypeBillingInfo } from '@/shared/types'
 import { store } from '@/store'
-
+import { isServer } from '@tanstack/react-query'
 
 export class BillingInfoApi {
-	public static async get() {
-		const userId = store.getState().auth.user?.id
+	public static async get(id?: string) {
+		const userId = id ?? store?.getState()?.auth?.user?.id
 
 		if (!userId) {
 			throw new Error('Unauthorized')
 		}
-		return await axios.get<TypeBillingInfo>(`/users/${userId}/billing-info`)
+
+		if (isServer) {
+			return (
+				await fetcher.get<TypeBillingInfo>(`/users/${userId}/billing-info`)
+			).data
+		}
+
+		return (await axios.get<TypeBillingInfo>(`/users/${userId}/billing-info`))
+			.data
 	}
 
 	public static async create(dto: BillingInfoInput) {
@@ -54,7 +62,10 @@ export class BillingInfoApi {
 
 export class BillingApi {
 	public static async getSubscription() {
-		return await axios.get('/subscription')
+		if (isServer) {
+			return (await fetcher.get('/subscription')).data
+		}
+		return (await axios.get('/subscription')).data
 	}
 
 	public static async checkout(productId: number) {

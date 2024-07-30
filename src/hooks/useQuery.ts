@@ -1,16 +1,15 @@
-"use client"
+'use client'
 import {
 	QueryFunction,
 	UseQueryOptions,
 	useQuery as useQueryDefault
 } from '@tanstack/react-query'
-import { AxiosResponse } from 'axios'
 
 interface IQueryHookProps<T>
 	extends Omit<UseQueryOptions<T | undefined, Error>, 'queryFn'> {
 	onSuccess?: (data: T) => void
 	onError?: (error: Error) => void
-	queryFn?: QueryFunction<T extends AxiosResponse ? T : AxiosResponse<T>>
+	queryFn?: QueryFunction<T>
 }
 
 export type UseQueryHookProps<T> = Omit<
@@ -29,11 +28,11 @@ export const useQuery = <T>({
 			try {
 				const response = await queryFn?.(ctx)
 
-				if (response?.data) {
-					onSuccess?.(response.data)
+				if (response) {
+					onSuccess?.(response)
 				}
 
-				return response?.data
+				return response
 			} catch (err) {
 				onError?.(err as Error)
 				throw err

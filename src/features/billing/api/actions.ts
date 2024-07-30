@@ -1,11 +1,10 @@
 'use server'
 
-import { fetcher } from '@/lib'
-import type { TypeSubscription } from '@/shared/types'
+import { BillingApi } from '@/features/billing'
 
 export async function getSubscription() {
 	try {
-		return await fetcher.get<TypeSubscription>('/subscription')
+		return await BillingApi.getSubscription()
 	} catch (error) {
 		return
 	}

@@ -50,7 +50,7 @@ const PaymentPage = async ({ searchParams }: IPaymentPageProps) => {
 					<Text className="mb-10" color={'gray-400'} size="base-sm">
 						This information would be on your invoice
 					</Text>
-					<BillingInfoForm planId={planId} />
+					<BillingInfoForm planId={planId}  />
 				</div>
 			</div>
 			<div className="w-[90%] sm:w-[70%] lg:!w-2/5 justify-evenly lg:bg-tw-blue-50 min-h-[53vh] lg:min-h-[90vh] flex flex-col ">

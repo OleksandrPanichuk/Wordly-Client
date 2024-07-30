@@ -1,5 +1,7 @@
-const ProfilePage = () => {
-	return <div>ProfilePage</div>;
-};
+import { ProfileView } from '@/features/profile'
 
-export default ProfilePage;
+const ProfilePage = () => {
+	return <ProfileView />
+}
+
+export default ProfilePage

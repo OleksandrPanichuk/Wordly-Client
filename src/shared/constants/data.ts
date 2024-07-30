@@ -1,6 +1,6 @@
 import { BreakpointsType, DictionaryMode } from '../types'
 
-export const SESSION_NAME = 'wordly:session'
+export const SESSION_COOKIE_NAME = 'wordly:session'
 
 export const DictionaryModes: Record<DictionaryMode, string> = {
 	DICTIONARY: 'DICTIONARY',
