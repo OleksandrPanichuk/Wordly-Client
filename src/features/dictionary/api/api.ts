@@ -1,4 +1,5 @@
 import { axios } from '@/lib'
+import { ApiRoutes } from '@/shared/constants'
 import {
 	DictionaryMode,
 	TypeDictionaryWord,
@@ -9,7 +10,7 @@ import qs from 'query-string'
 export class DictionaryApi {
 	public static async searchWords(q: string) {
 		const url = qs.stringifyUrl({
-			url: '/dictionary',
+			url: ApiRoutes.DICTIONARY.ROOT,
 			query: {
 				q
 			}
@@ -21,8 +22,14 @@ export class DictionaryApi {
 		word: string,
 		mode: DictionaryMode = 'DICTIONARY'
 	) {
+		const url = qs.stringifyUrl({
+			url: ApiRoutes.DICTIONARY.WORD(word),
+			query: {
+				mode
+			}
+		})
 		return (
-			await axios.get<TypeDictionaryWord>(`/dictionary/${word}?mode=${mode}`)
+			await axios.get<TypeDictionaryWord>(url)
 		).data
 	}
 }

@@ -1,3 +1,4 @@
+import { APP_URL } from '@/shared/constants'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -27,4 +28,9 @@ export function formatCurrency(num: number) {
 		currency: 'EUR',
 		style: 'currency'
 	}).format(num)
+}
+
+
+export function absoluteApiUrl(url:string = '') {
+	return APP_URL + '/api' + url
 }

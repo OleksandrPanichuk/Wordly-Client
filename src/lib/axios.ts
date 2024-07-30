@@ -1,9 +1,9 @@
 
 import baseAxios from 'axios'
 
-import { APP_URL } from '@/shared/constants'
+import { absoluteApiUrl } from '@/lib'
 
 export const axios = baseAxios.create({
-	baseURL: APP_URL + '/api',
+	baseURL: absoluteApiUrl(),
 	withCredentials: true,
 })

@@ -10,5 +10,6 @@ export const updateProfileSchema = z.object({
 	gender: z.nativeEnum(Gender).optional(),
 	nativeLanguages: z
 		.array(z.string().trim().min(1, FormErrors.length.nativeLanguages))
-		.optional()
+		.optional(),
+	avatar: z.instanceof(File).optional(),
 })

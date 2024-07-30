@@ -41,6 +41,7 @@ export enum Routes {
 
 	// Dashboard
 	PROFILE = '/dashboard/profile',
+	EDIT_PROFILE  ='/dashboard/profile/edit',
 	SETTINGS = '/dashboard/settings',
 	MY_LISTS = '/dashboard/my-lists',
 	BOOKMARKS = '/dashboard/bookmarks',

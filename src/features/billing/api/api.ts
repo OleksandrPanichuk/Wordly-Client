@@ -4,6 +4,7 @@ import {
 	billingPlans
 } from '@/features/billing'
 import { axios, fetcher } from '@/lib'
+import { ApiRoutes } from '@/shared/constants'
 import { TypeBillingInfo } from '@/shared/types'
 import { store } from '@/store'
 import { isServer } from '@tanstack/react-query'
@@ -18,12 +19,13 @@ export class BillingInfoApi {
 
 		if (isServer) {
 			return (
-				await fetcher.get<TypeBillingInfo>(`/users/${userId}/billing-info`)
+				await fetcher.get<TypeBillingInfo>(ApiRoutes.BILLING_INFO.ROOT(userId))
 			).data
 		}
 
-		return (await axios.get<TypeBillingInfo>(`/users/${userId}/billing-info`))
-			.data
+		return (
+			await axios.get<TypeBillingInfo>(ApiRoutes.BILLING_INFO.ROOT(userId))
+		).data
 	}
 
 	public static async create(dto: BillingInfoInput) {
@@ -36,7 +38,7 @@ export class BillingInfoApi {
 		billingInfoSchema.parse(dto)
 
 		return await axios.post<TypeBillingInfo>(
-			`/users/${userId}/billing-info`,
+			ApiRoutes.BILLING_INFO.ROOT(userId),
 			dto
 		)
 	}
@@ -54,7 +56,7 @@ export class BillingInfoApi {
 		billingInfoSchema.partial().parse(dto)
 
 		return await axios.patch<TypeBillingInfo>(
-			`/users/${userId}/billing-info/${billingInfoId}`,
+			ApiRoutes.BILLING_INFO.UPDATE(userId, billingInfoId),
 			dto
 		)
 	}
@@ -63,9 +65,9 @@ export class BillingInfoApi {
 export class BillingApi {
 	public static async getSubscription() {
 		if (isServer) {
-			return (await fetcher.get('/subscription')).data
+			return (await fetcher.get(ApiRoutes.BILLING.SUBSCRIPTION)).data
 		}
-		return (await axios.get('/subscription')).data
+		return (await axios.get(ApiRoutes.BILLING.SUBSCRIPTION)).data
 	}
 
 	public static async checkout(productId: number) {
@@ -77,7 +79,7 @@ export class BillingApi {
 			throw new Error('Invalid product id')
 		}
 
-		return await axios.post<string>('/subscription', {
+		return await axios.post<string>(ApiRoutes.BILLING.SUBSCRIPTION, {
 			productId
 		})
 	}

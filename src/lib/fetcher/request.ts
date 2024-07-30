@@ -1,5 +1,5 @@
 'use server'
-import { APP_URL } from '@/shared/constants'
+import { absoluteApiUrl } from '@/lib'
 import { cookies } from 'next/headers'
 import type { FetchConfig, FetchResponse } from './types'
 
@@ -15,7 +15,7 @@ export async function request<T>(
 	}
 	const body = config?.body
 
-	let fullURL = APP_URL + '/api' + url
+	let fullURL = absoluteApiUrl(url) 
 
 	if (config?.params) {
 		const queryString = new URLSearchParams(config.params).toString()
