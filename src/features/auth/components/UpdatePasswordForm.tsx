@@ -12,7 +12,7 @@ import {
 import {
 	UpdatePasswordInput,
 	updatePasswordSchema,
-	useUpdatePassword
+	useUpdatePasswordMutation
 } from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -28,7 +28,7 @@ export const UpdatePasswordForm = ({ code }: { code: string }) => {
 
 	const { control, handleSubmit } = form
 
-	const { mutate: updatePassword, isPending } = useUpdatePassword()
+	const { mutate: updatePassword, isPending } = useUpdatePasswordMutation()
 
 	const onSubmit = (values: UpdatePasswordInput) => updatePassword(values)
 

@@ -10,7 +10,7 @@ export const DashboardLayout = async ({ children }: PropsWithChildren) => {
 			<Sidebar subscription={subscription} />
 			<div className="flex flex-col flex-1">
 				<Header />
-				<main >{children}</main>
+				<main className='flex-1'>{children}</main>
 			</div>
 		</div>
 	)

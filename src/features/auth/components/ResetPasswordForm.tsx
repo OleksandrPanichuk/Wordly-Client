@@ -12,7 +12,7 @@ import {
 import {
 	ResetPasswordInput,
 	resetPasswordSchema,
-	useResetPassword
+	useResetPasswordMutation
 } from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -22,7 +22,7 @@ export const ResetPasswordForm = () => {
 		resolver: zodResolver(resetPasswordSchema)
 	})
 
-	const { mutate: resetPassword, isPending } = useResetPassword()
+	const { mutate: resetPassword, isPending } = useResetPasswordMutation()
 
 	const onSubmit = (values: ResetPasswordInput) => resetPassword(values)
 

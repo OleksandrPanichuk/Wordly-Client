@@ -1,5 +1,5 @@
 import { Text } from '@/components/ui'
-import { Routes } from '@/shared/constants'
+import { Routes } from '@/constants'
 import { MailIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'

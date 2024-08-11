@@ -1,0 +1,16 @@
+.wrapper {
+	@apply flex gap-2 items-center;
+}
+
+.avatar {
+	@apply cursor-pointer;
+}
+
+.input {
+	@apply absolute top-0 left-0 w-full h-full appearance-none opacity-0 disabled:cursor-not-allowed;
+}
+
+
+.button {
+@apply disabled:opacity-50 disabled:cursor-not-allowed
+}

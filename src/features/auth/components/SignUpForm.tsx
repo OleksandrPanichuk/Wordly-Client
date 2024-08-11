@@ -9,7 +9,7 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import { SignUpInput, signUpSchema, useSignUp } from '@/features/auth'
+import { SignUpInput, signUpSchema, useSignUpMutation } from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -20,7 +20,7 @@ export const SignUpForm = () => {
 	})
 
 	const { control, handleSubmit } = form
-	const { mutate: signUp, isPending } = useSignUp()
+	const { mutate: signUp, isPending } = useSignUpMutation()
 
 	const onSubmit = (values: SignUpInput) => signUp(values)
 

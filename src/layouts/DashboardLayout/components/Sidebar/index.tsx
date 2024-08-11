@@ -2,10 +2,10 @@
 
 import { Hint, Logo, Visibility } from '@/components/common'
 import { Sheet, SheetContent, SheetTrigger, Text } from '@/components/ui'
-import { useSignOut } from '@/features/auth'
+import { Routes } from '@/constants'
+import { useSignOutMutation } from '@/features/auth'
 import { cn } from '@/lib'
-import { Routes } from '@/shared/constants'
-import type { TypeSubscription } from '@/shared/types'
+import type { TypeSubscription } from '@/types'
 import { CrownIcon, LogOutIcon, MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -32,7 +32,7 @@ export const Sidebar = ({ subscription }: ISidebarProps) => {
 					<Sidebar.Laptop />
 				</Visibility>
 
-				<Visibility bp='lg'>
+				<Visibility bp="lg">
 					<Sidebar.Desktop />
 				</Visibility>
 			</aside>
@@ -45,7 +45,7 @@ Sidebar.Desktop = function Desktop({
 	...props
 }: ComponentPropsWithoutRef<'div'>) {
 	const pathname = usePathname()
-	const { mutate: signOut } = useSignOut()
+	const { mutate: signOut } = useSignOutMutation()
 	const { subscription } = useSidebarContext()
 
 	return (
@@ -56,11 +56,11 @@ Sidebar.Desktop = function Desktop({
 			)}
 			{...props}
 		>
-			<div className='w-full'>
-				<Logo className='mb-4 w-min' withText />
+			<div className="w-full">
+				<Logo className="mb-4 w-min" withText />
 			</div>
 
-			{links.map(link => {
+			{links.map((link) => {
 				const Icon = link.icon
 
 				const isActive = pathname.startsWith(link.href)
@@ -75,11 +75,11 @@ Sidebar.Desktop = function Desktop({
 						href={link.href}
 					>
 						<Icon
-							className='group-hover:stroke-tw-purple-400'
+							className="group-hover:stroke-tw-purple-400"
 							stroke={isActive ? 'var(--tw-purple-400)' : 'var(--tw-black)'}
 						/>
 						<Text
-							as='span'
+							as="span"
 							color={'black'}
 							className={cn(
 								' group-hover:text-tw-purple-400',
@@ -92,12 +92,12 @@ Sidebar.Desktop = function Desktop({
 				)
 			})}
 
-			<div className='w-full flex justify-center flex-1'>
+			<div className="w-full flex justify-center flex-1">
 				<button
-					className='h-min px-3 py-2 rounded-md transition-all duration-300 hover:bg-rose-200 ease-linear text-tw-red-alarm w-full flex items-center gap-2'
+					className="h-min px-3 py-2 rounded-md transition-all duration-300 hover:bg-rose-200 ease-linear text-tw-red-alarm w-full flex items-center gap-2"
 					onClick={signOut}
 				>
-					<LogOutIcon className='stroke-tw-red-alarm' />
+					<LogOutIcon className="stroke-tw-red-alarm" />
 					Sign Out
 				</button>
 			</div>
@@ -105,9 +105,9 @@ Sidebar.Desktop = function Desktop({
 			{!subscription && (
 				<Link
 					href={Routes.PREMIUM}
-					className='rounded-3xl p-3 bg-tw-blue-450 flex items-center gap-2 w-full justify-center text-white'
+					className="rounded-3xl p-3 bg-tw-blue-450 flex items-center gap-2 w-full justify-center text-white"
 				>
-					<CrownIcon stroke='white' />
+					<CrownIcon stroke="white" />
 					Premium
 				</Link>
 			)}
@@ -117,20 +117,20 @@ Sidebar.Desktop = function Desktop({
 
 Sidebar.Laptop = function Laptop() {
 	const pathname = usePathname()
-	const { mutate: signOut } = useSignOut()
+	const { mutate: signOut } = useSignOutMutation()
 	const { subscription } = useSidebarContext()
 
 	return (
-		<div className='hidden sm:flex flex-col py-4 sticky top-0 z-10 min-h-screen border-solid border-[1px] border-black/10 items-center w-[4.875rem] gap-3 lg:hidden'>
-			<Logo className='mb-4' />
+		<div className="hidden sm:flex flex-col py-4 sticky top-0 z-10 min-h-screen border-solid border-[1px] border-black/10 items-center w-[4.875rem] gap-3 lg:hidden">
+			<Logo className="mb-4" />
 
-			{links.map(link => {
+			{links.map((link) => {
 				const Icon = link.icon
 
 				const isActive = pathname.startsWith(link.href)
 
 				return (
-					<Hint label={link.text} key={link.href} side='right'>
+					<Hint label={link.text} key={link.href} side="right">
 						<Link
 							className={cn(
 								'p-3  ease-linear transition-all duration-300 rounded-xl group',
@@ -139,7 +139,7 @@ Sidebar.Laptop = function Laptop() {
 							href={link.href}
 						>
 							<Icon
-								className='group-hover:stroke-tw-purple-400'
+								className="group-hover:stroke-tw-purple-400"
 								stroke={isActive ? 'var(--tw-purple-400)' : 'black'}
 							/>
 						</Link>
@@ -147,24 +147,24 @@ Sidebar.Laptop = function Laptop() {
 				)
 			})}
 
-			<div className='w-full flex justify-center flex-1'>
-				<Hint label='Sign Out' side='right'>
+			<div className="w-full flex justify-center flex-1">
+				<Hint label="Sign Out" side="right">
 					<button
-						className='size-min p-3 rounded-md transition-all duration-300 hover:bg-rose-200 ease-linear '
+						className="size-min p-3 rounded-md transition-all duration-300 hover:bg-rose-200 ease-linear "
 						onClick={signOut}
 					>
-						<LogOutIcon className='stroke-tw-red-alarm' />
+						<LogOutIcon className="stroke-tw-red-alarm" />
 					</button>
 				</Hint>
 			</div>
 
 			{!subscription && (
-				<Hint label='Premium' side='right'>
+				<Hint label="Premium" side="right">
 					<Link
 						href={Routes.PREMIUM}
-						className='size-12 rounded-full p-3 bg-tw-blue-450'
+						className="size-12 rounded-full p-3 bg-tw-blue-450"
 					>
-						<CrownIcon stroke='white' />
+						<CrownIcon stroke="white" />
 					</Link>
 				</Hint>
 			)}
@@ -174,13 +174,13 @@ Sidebar.Laptop = function Laptop() {
 
 Sidebar.Mobile = function Mobile() {
 	return (
-		<Visibility bp='max-sm'>
+		<Visibility bp="max-sm">
 			<Sheet>
-				<SheetTrigger className='sm:hidden hover:bg-tw-blue-50 transition duration-300 p-2 rounded-md'>
+				<SheetTrigger className="sm:hidden hover:bg-tw-blue-50 transition duration-300 p-2 rounded-md">
 					<MenuIcon />
 				</SheetTrigger>
-				<SheetContent className='p-0 '>
-					<Sidebar.Desktop className='flex sm:hidden border-none w-full' />
+				<SheetContent className="p-0 ">
+					<Sidebar.Desktop className="flex sm:hidden border-none w-full" />
 				</SheetContent>
 			</Sheet>
 		</Visibility>

@@ -1,4 +1,4 @@
-import { Routes } from "@/shared/constants"
+import { Routes } from '@/constants'
 
 export const headerContentMap: {
 	title: string
@@ -8,26 +8,26 @@ export const headerContentMap: {
 	{
 		pathname: Routes.PROFILE,
 		title: 'User Profile',
-		subtitle: 'Dashboard / Profile',
+		subtitle: 'Dashboard / Profile'
 	},
 	{
 		pathname: Routes.MY_LISTS,
-		title: 'My Wordlists',
+		title: 'My Wordlists'
 	},
 	{
 		pathname: Routes.BOOKMARKS,
-		title: 'Bookmarks',
+		title: 'Bookmarks'
 	},
 	{
 		pathname: Routes.BILLING,
-		title: 'Billing',
+		title: 'Billing'
 	},
 	{
 		pathname: Routes.STATS,
-		title: 'Stats',
+		title: 'Stats'
 	},
 	{
 		pathname: Routes.SETTINGS,
-		title: 'Settings',
-	},
+		title: 'Settings'
+	}
 ]

@@ -1,4 +1,4 @@
-import { TypeUser } from '@/shared/types'
+import { TypeUser } from '@/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface AuthState {
@@ -29,4 +29,4 @@ export const authSlice = createSlice({
 
 export * from './store.selectors'
 export const authActions = authSlice.actions
-export const authReducer =  authSlice.reducer
+export const authReducer = authSlice.reducer

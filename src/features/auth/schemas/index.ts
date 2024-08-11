@@ -1,34 +1,21 @@
-import { isStrongPassword } from '@/lib'
-import { FormErrors } from '@/shared/constants'
+import { FormErrors } from '@/constants'
+import { zRequired } from '@/lib'
+import { isStrongPassword } from 'validator'
 import { z } from 'zod'
 
 export const signInSchema = z.object({
-	email: z
-		.string({ required_error: FormErrors.required.email })
-		.trim()
-		.min(1, FormErrors.required.email)
-		.email(FormErrors.invalid.email),
-	password: z
-		.string({ required_error: FormErrors.required.password })
+	email: zRequired(FormErrors.required.email).email(FormErrors.invalid.email),
+	password: zRequired(FormErrors.required.password)
 		.min(8, FormErrors.length.password)
-		.refine(
-			(password) => isStrongPassword(password),
-			FormErrors.invalid.password
-		)
+		.refine(isStrongPassword, FormErrors.invalid.password)
 })
 
 export const signUpSchema = signInSchema
 	.merge(
 		z.object({
-			username: z
-				.string({ required_error: FormErrors.required.username })
-				.trim()
-				.min(1, FormErrors.required.username),
+			username: zRequired(FormErrors.required.username),
 			avatarUrl: z.string().url().optional(),
-			confirmPassword: z
-				.string({ required_error: FormErrors.required.confirmPassword })
-				.trim()
-				.min(1, FormErrors.required.confirmPassword)
+			confirmPassword: zRequired(FormErrors.required.confirmPassword)
 		})
 	)
 	.refine(
@@ -46,29 +33,16 @@ export const signUpSchema = signInSchema
 	)
 
 export const resetPasswordSchema = z.object({
-	email: z
-		.string({ required_error: FormErrors.required.email })
-		.trim()
-		.min(1, FormErrors.required.email)
-		.email(FormErrors.invalid.email)
+	email: zRequired(FormErrors.required.email).email(FormErrors.invalid.email)
 })
 
 export const updatePasswordSchema = z
 	.object({
 		code: z.string().uuid(),
-		password: z
-			.string({ required_error: FormErrors.required.password })
-			.trim()
-			.min(1, FormErrors.required.password)
+		password: zRequired(FormErrors.required.password)
 			.min(8, FormErrors.length.password)
-			.refine(
-				(password) => isStrongPassword(password),
-				FormErrors.invalid.password
-			),
-		confirmPassword: z
-			.string({ required_error: FormErrors.required.confirmPassword })
-			.trim()
-			.min(1, FormErrors.required.confirmPassword)
+			.refine(isStrongPassword, FormErrors.invalid.password),
+		confirmPassword: zRequired(FormErrors.required.confirmPassword)
 	})
 	.refine(
 		(data) => {

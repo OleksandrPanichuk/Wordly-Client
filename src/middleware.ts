@@ -1,6 +1,6 @@
+import { Routes } from '@/constants'
 import { currentUser } from '@/features/profile'
 import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server'
-import { Routes } from '@/shared/constants'
 
 export async function middleware(req: NextRequest) {
 	const user = await currentUser()

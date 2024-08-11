@@ -9,14 +9,14 @@ import {
 	SheetContent,
 	SheetTrigger
 } from '@/components/ui'
+import { Routes } from '@/constants'
 import { selectAuthUser } from '@/features/auth'
 import { cn } from '@/lib'
-import { Routes } from '@/shared/constants'
+import { useAppSelector } from '@/store'
 import { MenuIcon, UserIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { UserMenu } from '../UserMenu'
 import styles from './Navbar.module.scss'
-import { useAppSelector } from '@/store'
 
 export const Navbar = () => {
 	const pathname = usePathname()

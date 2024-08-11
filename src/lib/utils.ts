@@ -1,4 +1,4 @@
-import { APP_URL } from '@/shared/constants'
+import { APP_URL } from '@/constants'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -11,7 +11,7 @@ export function capitalize(str: string): string {
 	const result: string[] = []
 
 	words.forEach((word) => {
-		result.push(word.charAt(0).toUpperCase() + word.slice(1))
+		result.push(word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
 	})
 	return result.join(' ')
 }
@@ -30,7 +30,6 @@ export function formatCurrency(num: number) {
 	}).format(num)
 }
 
-
-export function absoluteApiUrl(url:string = '') {
+export function absoluteApiUrl(url: string = '') {
 	return APP_URL + '/api' + url
 }

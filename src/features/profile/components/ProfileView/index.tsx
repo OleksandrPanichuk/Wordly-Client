@@ -9,10 +9,10 @@ import {
 	Button,
 	Text
 } from '@/components/ui'
+import { Routes } from '@/constants'
 import { selectAuthUser } from '@/features/auth'
-import { useDeleteProfile } from '@/features/profile'
-import { capitalizeOnlyFirstLetter } from '@/lib'
-import { Routes } from '@/shared/constants'
+import { useDeleteProfileMutation } from '@/features/profile'
+import { capitalize, getLanguageName } from '@/lib'
 import { useAppSelector } from '@/store'
 import { EditIcon, GlobeIcon, MailIcon, PersonStandingIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -21,7 +21,7 @@ import styles from './ProfileView.module.scss'
 export const ProfileView = () => {
 	const user = useAppSelector(selectAuthUser)!
 
-	const { mutate: deleteProfile, isPending } = useDeleteProfile()
+	const { mutate: deleteProfile, isPending } = useDeleteProfileMutation()
 
 	const handleDelete = () => {
 		deleteProfile({})
@@ -44,7 +44,7 @@ export const ProfileView = () => {
 						asChild
 						variant={'primary-outline'}
 						size="xs"
-						className="self-end rounded-x;"
+						className={styles.editButton}
 					>
 						<Link href={Routes.EDIT_PROFILE}>
 							Edit profile <EditIcon />
@@ -57,36 +57,21 @@ export const ProfileView = () => {
 							</div>
 							<div>
 								<Text size="xl">Email</Text>
-								<Text
-									color="blue-450"
-									size="2xl-lg"
-									className="line-clamp-1 break-all"
-								>
+								<Text color="blue-450" size="2xl-lg" className={styles.email}>
 									{user.email}
 								</Text>
 							</div>
 						</li>
-						{!!user.nativeLanguages?.length && (
+						{!!user.nativeLanguage && (
 							<li>
 								<div>
 									<GlobeIcon />
 								</div>
 								<div>
-									<Text size="xl">Native Languages</Text>
-									<ul className="flex gap-1 flex-wrap">
-										{user.nativeLanguages.slice(0, 3).map((language) => (
-											<li key={language}>
-												<Badge variant={'gray'}>{language}</Badge>
-											</li>
-										))}
-										{user.nativeLanguages.length - 3 > 0 && (
-											<li>
-												<Badge
-													variant={'gray'}
-												>{`+${user.nativeLanguages.length - 3} more`}</Badge>
-											</li>
-										)}
-									</ul>
+									<Text size="xl">Native Language</Text>
+									<Badge variant={'gray'} className="w-min">
+										{getLanguageName(user.nativeLanguage)}
+									</Badge>
 								</div>
 							</li>
 						)}
@@ -98,7 +83,7 @@ export const ProfileView = () => {
 								<div>
 									<Text size="xl">Gender</Text>
 									<Text color="blue-450" size="2xl-lg">
-										{capitalizeOnlyFirstLetter(user.gender)}
+										{capitalize(user.gender)}
 									</Text>
 								</div>
 							</li>

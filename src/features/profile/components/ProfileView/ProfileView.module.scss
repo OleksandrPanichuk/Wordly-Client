@@ -1,5 +1,5 @@
 .wrapper {
-	@apply flex-1  sm:p-4 bg-tw-blue-50;
+	@apply sm:p-4 bg-tw-blue-50;
 }
 
 .content {
@@ -24,8 +24,16 @@
 	@apply text-[1.5rem] sm:text-[2rem] text-white font-bold ml-2;
 }
 
+.email {
+	@apply line-clamp-1 break-all;
+}
+
 .main {
-	@apply flex flex-col gap-16 p-3 flex-1; 
+	@apply flex flex-col gap-16 p-3 flex-1;
+}
+
+.editButton {
+	@apply self-end rounded-sm;
 }
 
 .infoList {
@@ -44,7 +52,6 @@
 		}
 	}
 }
-
 
 .deleteWrapper {
 	@apply px-4 mb-8;

@@ -1,5 +1,5 @@
+import { Images } from '@/constants'
 import { TypeReview } from '@/features/plans'
-import { Images } from '@/shared/constants'
 
 export const reviews: TypeReview[] = [
 	{

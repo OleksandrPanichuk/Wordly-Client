@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { cn } from '@/lib'
 import { Providers } from '@/providers'
 
-import { constructRootMetadata } from '@/shared/metadata'
+import { constructRootMetadata } from '@/metadata'
 import '@/styles/globals.scss'
 import { Noto_Sans, Quicksand } from 'next/font/google'
 

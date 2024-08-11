@@ -1,7 +1,7 @@
 'use client'
+import { breakpoints } from '@/constants'
 import { useMediaQuery } from '@/hooks'
-import { breakpoints } from '@/shared/constants'
-import { BreakpointsType } from '@/shared/types'
+import { BreakpointsType } from '@/types'
 
 type VisibilityProps = {
 	ssr?: boolean

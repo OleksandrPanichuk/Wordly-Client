@@ -16,10 +16,10 @@ import {
 	billingPlans,
 	CountrySelect,
 	PhoneNumberInput,
-	useAddBillingInfo,
+	useAddBillingInfoMutation,
 	useCheckoutMutation,
-	useGetBillingInfo,
-	useUpdateBillingInfo
+	useGetBillingInfoQuery,
+	useUpdateBillingInfoMutation
 } from '@/features/billing'
 import { useAppSelector } from '@/store'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -41,7 +41,7 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 		}
 	})
 
-	const { data: billingInfoFromDB } = useGetBillingInfo({
+	const { data: billingInfoFromDB } = useGetBillingInfoQuery({
 		onSuccess: (billingInfo) => {
 			form.reset({
 				...billingInfo,
@@ -51,8 +51,8 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 	})
 
 	const { mutateAsync: getCheckoutUrl } = useCheckoutMutation()
-	const { mutateAsync: createBillingInfo } = useAddBillingInfo()
-	const { mutateAsync: updateBillingInfo } = useUpdateBillingInfo()
+	const { mutateAsync: createBillingInfo } = useAddBillingInfoMutation()
+	const { mutateAsync: updateBillingInfo } = useUpdateBillingInfoMutation()
 
 	const {
 		control,

@@ -1,7 +1,7 @@
 'use client'
 import { type BillingInfoInput } from '@/features/billing'
 import { cn } from '@/lib'
-import type { TypeBillingInfo } from '@/shared/types'
+import type { TypeBillingInfo } from '@/types'
 import { ControllerRenderProps } from 'react-hook-form'
 import PhoneInput from 'react-phone-input-2'
 

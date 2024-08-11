@@ -1,7 +1,7 @@
 
 import baseAxios from 'axios'
 
-import { absoluteApiUrl } from '@/lib'
+import { absoluteApiUrl } from './utils'
 
 export const axios = baseAxios.create({
 	baseURL: absoluteApiUrl(),

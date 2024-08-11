@@ -1,0 +1,25 @@
+.wrapper {
+	@apply flex-1;
+}
+
+.input {
+	@apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[invalid=true]:border-destructive data-[invalid=true]:focus-visible:ring-destructive;
+}
+
+.indicator {
+	@apply absolute  right-3 border-none;
+	top: 50%;
+	transform: translateY(-50%);
+	svg {
+		@apply size-4 opacity-50;
+	}
+}
+
+.options {
+	@apply absolute list-none  z-[9999] bg-background shadow-md overflow-y-auto my-2 rounded-md p-1 w-[var(--input-width)] transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0;
+	max-height: 200px !important;
+}
+
+.option {
+	@apply flex items-center cursor-pointer px-4 py-2 text-tw-gray-400 data-[focus]:bg-accent rounded-sm;
+}

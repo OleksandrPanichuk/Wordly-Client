@@ -1,5 +1,3 @@
-import type { Routes } from '@/shared/constants'
-
 export type TypeFooterItem = {
 	href: Routes
 	text: string

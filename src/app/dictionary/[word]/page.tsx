@@ -1,15 +1,16 @@
 'use client'
 
 import { Button } from '@/components/ui'
+
+import { Routes } from '@/constants'
 import {
-	Examples,
-	MainInfo,
-	Meanings,
 	ModeTabs,
-	useGetWord
-} from '@/features/dictionary-word'
-import { Routes } from '@/shared/constants'
-import { DictionaryMode } from '@/shared/types'
+	useGetWordQuery,
+	WordExamples,
+	WordMainInfo,
+	WordMeanings
+} from '@/features/dictionary'
+import { DictionaryMode } from '@/types'
 
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
@@ -21,13 +22,14 @@ type Params = {
 }
 
 // TODO: Show something when there is no word(Сторінку, де пропонуємо користувачу змінити mode, бо можливо там буде це слово)
+
 const WordPage = () => {
 	const [mode, setMode] = useState<DictionaryMode>('DICTIONARY')
 	const params = useParams<Params>()
-	
+
 	const word = params.word.toLowerCase().trim()
 
-	const { data, isFetching } = useGetWord({ word, mode })
+	const { data, isFetching } = useGetWordQuery({ word, mode })
 
 	return (
 		<>
@@ -47,19 +49,24 @@ const WordPage = () => {
 				<div className="lg:flex-[784]">
 					{!isFetching ? (
 						<>
-							<MainInfo {...data} />
+							<WordMainInfo {...data} />
 							{data?.meanings.map((meanings, index) => (
-								<Meanings {...meanings} key={index} name={data.name} />
+								<WordMeanings {...meanings} key={index} name={data.name} />
 							))}
 						</>
 					) : (
 						<>
-							<MainInfo.Skeleton />
+							<WordMainInfo.Skeleton />
 						</>
 					)}
 				</div>
 				<div className="lg:flex-[392] relative ">
-					<Examples data={data?.examples} name={data?.name} show={8} className="sticky top-[86px]" />
+					<WordExamples
+						data={data?.examples}
+						name={data?.name}
+						show={8}
+						className="sticky top-[86px]"
+					/>
 				</div>
 			</div>
 		</>

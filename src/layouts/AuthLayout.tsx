@@ -1,12 +1,14 @@
 'use client'
+import { Routes } from '@/constants'
 import { ImageSlider, selectAuthUser } from '@/features/auth'
 import { useAppSelector } from '@/store'
+import { redirect } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
 export const AuthLayout = ({ children }: PropsWithChildren) => {
 	const user = useAppSelector(selectAuthUser)
 
-	if (user) return null
+	if (user) return redirect(Routes.ROOT)
 
 	return (
 		<div className="flex ">

@@ -3,10 +3,10 @@ import { Logo } from '@/components/common'
 import { Text, Title } from '@/components/ui'
 import {
 	DictionaryInput,
-	Feed,
+	DictionaryFeed,
 	LearningCategory,
 	selectDictionarySearchValue,
-	useDictionarySearch
+	useDictionarySearchQuery
 } from '@/features/dictionary'
 import { useDebounce } from '@/hooks'
 import { useAppSelector } from '@/store'
@@ -16,7 +16,7 @@ const DictionaryPage = () => {
 	const searchValue = useAppSelector(selectDictionarySearchValue)
 	const debouncedSearchValue = useDebounce(searchValue, 300)
 
-	const { data, isFetching } = useDictionarySearch(debouncedSearchValue)
+	const { data, isFetching } = useDictionarySearchQuery(debouncedSearchValue)
 
 	return (
 		<>
@@ -54,9 +54,9 @@ const DictionaryPage = () => {
 					</Text>
 				)}
 			</div>
-			{!!debouncedSearchValue && !!data?.length && <Feed data={data} />}
+			{!!debouncedSearchValue && !!data?.length && <DictionaryFeed data={data} />}
 
-			{isFetching && <Feed.Skeleton />}
+			{isFetching && <DictionaryFeed.Skeleton />}
 
 			{!isFetching && !!debouncedSearchValue && !data?.length && (
 				<Text className="text-center mt-12" size={'2xl'} weight={700}>
