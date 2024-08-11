@@ -1,7 +1,7 @@
 import { Routes } from '@/constants'
 
 type NavLink = {
-	href: Routes
+	href: string
 	label: string
 	id: number
 }

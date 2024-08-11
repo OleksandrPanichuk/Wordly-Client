@@ -19,7 +19,7 @@ import Link from 'next/link'
 import styles from './ProfileView.module.scss'
 
 export const ProfileView = () => {
-	const user = useAppSelector(selectAuthUser)!
+	const user = useAppSelector(selectAuthUser)
 
 	const { mutate: deleteProfile, isPending } = useDeleteProfileMutation()
 
@@ -33,10 +33,10 @@ export const ProfileView = () => {
 				<div className={styles.top}>
 					<div>
 						<Avatar className={styles.avatar}>
-							<AvatarImage src={user.avatar?.url} alt={user.username} />
-							<AvatarFallback>{user.username[0]}</AvatarFallback>
+							<AvatarImage src={user?.avatar?.url} alt={user?.username} />
+							<AvatarFallback>{user?.username[0]}</AvatarFallback>
 						</Avatar>
-						<p className={styles.username}>{user.username}</p>
+						<p className={styles.username}>{user?.username}</p>
 					</div>
 				</div>
 				<div className={styles.main}>
@@ -58,11 +58,11 @@ export const ProfileView = () => {
 							<div>
 								<Text size="xl">Email</Text>
 								<Text color="blue-450" size="2xl-lg" className={styles.email}>
-									{user.email}
+									{user?.email}
 								</Text>
 							</div>
 						</li>
-						{!!user.nativeLanguage && (
+						{!!user?.nativeLanguage && (
 							<li>
 								<div>
 									<GlobeIcon />
@@ -70,12 +70,12 @@ export const ProfileView = () => {
 								<div>
 									<Text size="xl">Native Language</Text>
 									<Badge variant={'gray'} className="w-min">
-										{getLanguageName(user.nativeLanguage)}
+										{getLanguageName(user?.nativeLanguage)}
 									</Badge>
 								</div>
 							</li>
 						)}
-						{!!user.gender && (
+						{!!user?.gender && (
 							<li>
 								<div>
 									<PersonStandingIcon />
@@ -83,7 +83,7 @@ export const ProfileView = () => {
 								<div>
 									<Text size="xl">Gender</Text>
 									<Text color="blue-450" size="2xl-lg">
-										{capitalize(user.gender)}
+										{capitalize(user?.gender)}
 									</Text>
 								</div>
 							</li>

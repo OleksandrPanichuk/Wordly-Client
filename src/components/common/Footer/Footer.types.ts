@@ -1,5 +1,6 @@
+
 export type TypeFooterItem = {
-	href: Routes
+	href: string
 	text: string
 }
 

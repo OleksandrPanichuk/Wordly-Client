@@ -2,7 +2,7 @@ import { Routes } from '@/constants'
 
 export const headerContentMap: {
 	title: string
-	pathname: Routes
+	pathname: string
 	subtitle?: string
 }[] = [
 	{

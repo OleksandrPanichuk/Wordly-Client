@@ -10,7 +10,7 @@ import {
 } from 'lucide-react'
 
 type TypeSidebarLink = {
-	href: Routes
+	href: string
 	text: string
 	icon: LucideIcon
 }
