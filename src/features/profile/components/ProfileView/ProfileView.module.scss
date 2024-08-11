@@ -13,11 +13,10 @@
 
 	> div {
 		@apply absolute top-[100%] translate-y-[-70%] left-[5%] flex items-center gap-2;
+		> .avatar {
+			@apply size-[5.5rem] border-tw-blue-450 border-[4px] border-solid text-2xl;
+		}
 	}
-}
-
-.avatar {
-	@apply w-[5.5rem]  h-[5.5rem]  border-tw-blue-450 border-[4px] border-solid text-2xl;
 }
 
 .username {
