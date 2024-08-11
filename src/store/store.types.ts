@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import {
+import type {
 	ActionCreator,
 	ActionCreatorsMapObject,
 	AsyncThunk

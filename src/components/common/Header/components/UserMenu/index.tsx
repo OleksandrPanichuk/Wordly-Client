@@ -13,9 +13,9 @@ import {
 	Separator,
 	Text
 } from '@/components/ui'
-import { selectAuthUser, useSignOut } from '@/features/auth'
+import { Routes } from '@/constants'
+import { selectAuthUser, useSignOutMutation } from '@/features/auth'
 import { cn } from '@/lib'
-import { Routes } from '@/shared/constants'
 import { useAppSelector } from '@/store'
 import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -24,7 +24,7 @@ import styles from './UserMenu.module.scss'
 
 export const UserMenu = () => {
 	const user = useAppSelector(selectAuthUser)
-	const { isPending, mutate: signOut } = useSignOut()
+	const { isPending, mutate: signOut } = useSignOutMutation()
 
 	if (!user) return null
 
@@ -95,7 +95,7 @@ export const UserMenu = () => {
 
 UserMenu.Mobile = function UserMenuMobile() {
 	const user = useAppSelector(selectAuthUser)
-	const { mutate: signOut, isPending } = useSignOut()
+	const { mutate: signOut, isPending } = useSignOutMutation()
 
 	if (!user) return null
 

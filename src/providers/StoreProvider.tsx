@@ -1,7 +1,7 @@
 'use client'
 import { authActions } from '@/features/auth'
-import { TypeUser } from '@/shared/types'
 import { store } from '@/store'
+import { TypeUser } from '@/types'
 import { useRef } from 'react'
 import { Provider } from 'react-redux'
 

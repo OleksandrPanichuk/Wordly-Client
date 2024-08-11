@@ -1,6 +1,6 @@
 import { Text } from '@/components/ui'
+import { Routes } from '@/constants'
 import { cn } from '@/lib'
-import { Routes } from '@/shared/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnchorHTMLAttributes } from 'react'
@@ -18,13 +18,13 @@ const variants = {
 	default: {
 		src: '/logo/logo.png',
 		width: 40,
-		height: 40,
+		height: 40
 	},
 	huge: {
 		src: '/logo/logo-huge.png',
 		width: 130,
-		height: 130,
-	},
+		height: 130
+	}
 } as const
 
 export const Logo = ({
@@ -42,13 +42,13 @@ export const Logo = ({
 			{...props}
 		>
 			<Image
-				alt='logo'
+				alt="logo"
 				src={variants[variant].src}
 				width={width ?? variants[variant].width}
 				height={height ?? variants[variant].height}
 			/>
 			{withText && (
-				<Text size={'lg'} weight={700} color={'black'} as='span'>
+				<Text size={'lg'} weight={700} color={'black'} as="span">
 					Wordly
 				</Text>
 			)}

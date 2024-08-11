@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Text, Title } from '@/components/ui'
-import { Routes } from '@/shared/constants'
+import { Routes } from '@/constants'
 import { MailIcon } from 'lucide-react'
 import Link from 'next/link'
 

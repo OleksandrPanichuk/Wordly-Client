@@ -1,9 +1,8 @@
-
 import { getSubscription } from '@/features/billing'
 import { PropsWithChildren } from 'react'
 import { Header, Sidebar } from './components'
 
-export const DashboardLayout =  async({ children }: PropsWithChildren) => {
+export const DashboardLayout = async ({ children }: PropsWithChildren) => {
 	const subscription = await getSubscription()
 
 	return (
@@ -11,7 +10,7 @@ export const DashboardLayout =  async({ children }: PropsWithChildren) => {
 			<Sidebar subscription={subscription} />
 			<div className="flex flex-col flex-1">
 				<Header />
-				<main className="flex-1 p-4 bg-tw-blue-50">{children}</main>
+				<main className='flex-1'>{children}</main>
 			</div>
 		</div>
 	)

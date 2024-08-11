@@ -9,10 +9,10 @@ import {
 	CardTitle,
 	Skeleton
 } from '@/components/ui'
+import { Routes } from '@/constants'
 import { selectAuthUser } from '@/features/auth'
 import { TextBox, type TypePlan } from '@/features/plans'
 import { formatCurrency } from '@/lib'
-import { Routes } from '@/shared/constants'
 import { useAppSelector } from '@/store'
 import { getProduct, lemonSqueezySetup } from '@lemonsqueezy/lemonsqueezy.js'
 import { useQuery } from '@tanstack/react-query'
@@ -32,7 +32,8 @@ export const PlanCard = ({ plan }: IPlanCardProps) => {
 	useEffect(() => {
 		lemonSqueezySetup({
 			apiKey: process.env.NEXT_PUBLIC_LEMON_SQUEEZY_API_KEY,
-			onError: (err) => console.error('Failed to connect to lemon squeezy: ', err)
+			onError: (err) =>
+				console.error('Failed to connect to lemon squeezy: ', err)
 		})
 	}, [])
 

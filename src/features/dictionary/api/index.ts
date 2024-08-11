@@ -1,2 +1,2 @@
-export * from './api'
-export * from './useDictionarySearch'
+export * from './dictionary.service'
+export * from './hooks'

@@ -1,6 +1,5 @@
-export * from './actions'
-export * from './api'
-export * from './useAddBillingInfo'
-export * from './useCheckoutMutation'
-export * from './useGetBillingInfo'
-export * from './useUpdateBillingInfo'
+export * from './billing-info.service'
+export * from './billing.actions'
+export * from './billing.service'
+export * from './hooks'
+

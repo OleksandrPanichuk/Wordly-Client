@@ -51,7 +51,7 @@ export const Header = () => {
 						src={user?.avatar?.url}
 						alt={user?.username}
 					/>
-					<AvatarFallback>{user?.username}</AvatarFallback>
+					<AvatarFallback>{user?.username[0]}</AvatarFallback>
 				</Avatar>
 				<Sidebar.Mobile />
 			</div>

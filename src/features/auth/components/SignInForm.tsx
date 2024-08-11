@@ -9,8 +9,8 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import { SignInInput, signInSchema, useSignIn } from '@/features/auth'
-import { Routes } from '@/shared/constants'
+import { Routes } from '@/constants'
+import { SignInInput, signInSchema, useSignInMutation } from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
@@ -27,7 +27,7 @@ export const SignInForm = () => {
 		formState: { isValid }
 	} = form
 
-	const { mutate: signIn, isPending } = useSignIn()
+	const { mutate: signIn, isPending } = useSignInMutation()
 
 	const onSubmit = (values: SignInInput) => signIn(values)
 
@@ -44,7 +44,7 @@ export const SignInForm = () => {
 						<FormItem>
 							<FormLabel>Email</FormLabel>
 							<FormControl>
-								<Input disabled={isPending} {...field} />
+								<Input {...field} disabled={isPending} />
 							</FormControl>
 							<FormError />
 						</FormItem>

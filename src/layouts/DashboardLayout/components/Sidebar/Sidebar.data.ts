@@ -1,4 +1,4 @@
-import { Routes } from '@/shared/constants'
+import { Routes } from '@/constants'
 import {
 	BarChartBig,
 	BookmarkIcon,
@@ -10,7 +10,7 @@ import {
 } from 'lucide-react'
 
 type TypeSidebarLink = {
-	href: Routes
+	href: string
 	text: string
 	icon: LucideIcon
 }

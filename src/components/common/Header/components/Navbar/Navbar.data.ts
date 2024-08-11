@@ -1,7 +1,7 @@
-import { Routes } from '@/shared/constants'
+import { Routes } from '@/constants'
 
 type NavLink = {
-	href: Routes
+	href: string
 	label: string
 	id: number
 }
@@ -20,11 +20,11 @@ export const links: NavLink[] = [
 	{
 		href: Routes.DICTIONARY,
 		label: 'Dictionary',
-		id :3
+		id: 3
 	},
 	{
 		href: Routes.PREMIUM,
 		label: 'Premium',
-		id:4
-	},
+		id: 4
+	}
 ]

@@ -1,48 +1,49 @@
 'use server'
+import { absoluteApiUrl } from '@/lib'
 import { cookies } from 'next/headers'
-import type { RequestOptions } from './types'
-import { APP_URL } from '@/shared/constants'
+import type { FetchConfig, FetchResponse } from './types'
 
 export async function request<T>(
 	method: string,
 	url: string,
-	options: RequestOptions = {},
-): Promise<T> {
-	'use server'
-	const {
-		headers = {},
-		body,
-		params,
-		...restOptions
-	} = options
+	config?: FetchConfig & { body?: any }
+): Promise<FetchResponse<T>> {
+	const headers = {
+		'Content-Type': 'application/json',
+		Cookie: cookies().toString(),
+		...config?.headers
+	}
+	const body = config?.body
 
-	headers.Cookie = cookies().toString()
+	let fullURL = absoluteApiUrl(url) 
 
-	// Construct the full URL with query parameters if provided
-	let fullURL = `${APP_URL}/api/${url}`
-	if (params) {
-		const queryString = new URLSearchParams(params).toString()
+	if (config?.params) {
+		const queryString = new URLSearchParams(config.params).toString()
 		fullURL += `?${queryString}`
 	}
 
-	// Set up the request options
-	const fetchOptions: RequestInit = {
+	const options: RequestInit = {
 		method,
 		headers,
-		...restOptions
-	}
-
-	if (body) {
-		fetchOptions.body = JSON.stringify(body)
-		;(fetchOptions.headers as Headers).set('Content-Type', 'application/json')
+		body: body ? JSON.stringify(body) : undefined,
+		cache: config?.cache,
+		next: config?.next
 	}
 
 	try {
-		const response = await fetch(fullURL, fetchOptions)
+		const response = await fetch(fullURL, options)
+
 		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`)
+			throw new Error(`HTTP error! status: ${response.status}`)
 		}
-		return await response.json()
+
+		const data = await response.json()
+		return {
+			data,
+			status: response.status,
+			statusText: response.statusText,
+			headers: response.headers
+		}
 	} catch (error) {
 		throw error
 	}
