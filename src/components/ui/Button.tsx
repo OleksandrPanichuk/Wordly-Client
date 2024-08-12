@@ -22,11 +22,12 @@ const buttonVariants = cva(
 				secondary:
 					'rounded-full border-[3px] border-[#1e3a8a] transition-all text-[#1e3a8a] hover:bg-[#1e3a8a] hover:text-white',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
-				link: 'text-primary underline-offset-4 hover:underline'
+				link: 'text-primary underline-offset-4 hover:underline',
+				violet: 'bg-violet-800 text-white hover:bg-violet-700'
 			},
 			size: {
 				default: 'px-4 py-2',
-				xs:"h-8 rounded-md px-3",
+				xs: 'h-8 rounded-md px-3',
 				sm: 'h-9 rounded-md px-3',
 				lg: 'h-11 rounded-md px-8',
 				xl: 'h-12 rounded-3xl px-10',

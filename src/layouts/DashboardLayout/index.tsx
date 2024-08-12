@@ -8,9 +8,9 @@ export const DashboardLayout = async ({ children }: PropsWithChildren) => {
 	return (
 		<div className="flex min-h-screen">
 			<Sidebar subscription={subscription} />
-			<div className="flex flex-col flex-1">
+			<div className="flex flex-col flex-1 overflow-x-hidden">
 				<Header />
-				<main className='flex-1'>{children}</main>
+				<main className="flex-1">{children}</main>
 			</div>
 		</div>
 	)

@@ -33,7 +33,7 @@ export const links: TypeSidebarLink[] = [
 	},
 	{
 		text: 'Billing',
-		href: Routes.BILLING,
+		href: Routes.DASHBOARD_BILLING,
 		icon: WalletIcon
 	},
 	{

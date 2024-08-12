@@ -19,7 +19,7 @@ export const headerContentMap: {
 		title: 'Bookmarks'
 	},
 	{
-		pathname: Routes.BILLING,
+		pathname: Routes.DASHBOARD_BILLING,
 		title: 'Billing'
 	},
 	{

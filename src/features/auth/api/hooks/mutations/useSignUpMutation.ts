@@ -6,7 +6,6 @@ import { useAppActions } from '@/store'
 import { TypeUser } from '@/types'
 import { UseMutationOptions } from '@tanstack/react-query'
 import { AxiosResponse } from 'axios'
-import { useRouter } from 'next/navigation'
 
 export const useSignUpMutation = (
 	options?: Omit<
@@ -15,14 +14,12 @@ export const useSignUpMutation = (
 	>
 ) => {
 	const { setUser } = useAppActions(authActions)
-	const router = useRouter()
 	return useMutation({
 		...options,
 		mutationFn: AuthApi.signUp,
 		onSuccess: (response, ...rest) => {
 			setUser(response.data)
 			options?.onSuccess?.(response, ...rest)
-			router.push(Routes.ROOT)
 		}
 	})
 }

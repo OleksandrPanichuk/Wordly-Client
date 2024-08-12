@@ -21,10 +21,13 @@ import {
 	useGetBillingInfoQuery,
 	useUpdateBillingInfoMutation
 } from '@/features/billing'
+import { getCountryCode, getCountryName } from '@/lib'
 import { useAppSelector } from '@/store'
+import { TypeCountryCode } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import isEqual from 'lodash.isequal'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 interface IBillingInfoFormProps {
 	planId?: number
@@ -45,6 +48,7 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 		onSuccess: (billingInfo) => {
 			form.reset({
 				...billingInfo,
+				country: getCountryName(billingInfo.country as TypeCountryCode),
 				email: billingInfo.email ?? user?.email
 			})
 		}
@@ -62,18 +66,28 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 	} = form
 
 	const onSubmit = async (values: BillingInfoInput) => {
-		if (!billingInfoFromDB) {
-			await createBillingInfo(values)
+		const country = getCountryCode(values.country)
+
+		if (!country) {
+			return toast.error('Invalid country')
 		}
 
-		const compareObject = { ...billingInfoFromDB }
+		if (!billingInfoFromDB) {
+			await createBillingInfo({
+				...values,
+				country
+			})
+		}
+
+		const compareObject = { ...billingInfoFromDB, country }
 		delete compareObject.userId
 		delete compareObject.id
 
 		if (billingInfoFromDB && !isEqual(compareObject, values)) {
 			await updateBillingInfo({
+				...values,
 				id: billingInfoFromDB.id,
-				...values
+				country
 			})
 		}
 

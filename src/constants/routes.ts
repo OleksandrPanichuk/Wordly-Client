@@ -46,7 +46,8 @@ export const Routes = {
 	SETTINGS: '/dashboard/settings',
 	MY_LISTS: '/dashboard/my-lists',
 	BOOKMARKS: '/dashboard/bookmarks',
-	BILLING: '/dashboard/billing',
+	DASHBOARD_BILLING: '/dashboard/billing',
+	DASHBOARD_PAYMENT: (id: string) => `/dashboard/payments/${id}`,
 	TRAINING_SESSION: '/dashboard/training-sessions',
 	STATS: '/dashboard/stats'
 } as const

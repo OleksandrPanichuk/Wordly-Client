@@ -1,11 +1,10 @@
 'use client'
 import { type BillingInfoInput } from '@/features/billing'
-import { cn } from '@/lib'
+import { cn, getCountryCode } from '@/lib'
 import type { TypeBillingInfo } from '@/types'
 import { ControllerRenderProps } from 'react-hook-form'
 import PhoneInput from 'react-phone-input-2'
 
-import { getCode } from 'country-list'
 import { useEffect, useState } from 'react'
 import styles from './PhoneNumberInput.module.scss'
 
@@ -16,6 +15,7 @@ interface IPhoneNumberInputProps
 	billingInfoFromDB?: TypeBillingInfo
 }
 
+// TODO: fix
 export const PhoneNumberInput = ({
 	disabled,
 	isInvalid,
@@ -34,7 +34,8 @@ export const PhoneNumberInput = ({
 
 	useEffect(() => {
 		if (
-			country === billingInfoFromDB?.country &&
+			country &&
+			getCountryCode(country) === billingInfoFromDB?.country &&
 			!phoneNumber &&
 			billingInfoFromDB?.phoneNumber
 		) {
@@ -46,7 +47,9 @@ export const PhoneNumberInput = ({
 		<PhoneInput
 			placeholder="Phone number"
 			countryCodeEditable={false}
-			country={getCode(country ?? billingInfoFromDB?.country ?? '')}
+			country={getCountryCode(
+				country ?? billingInfoFromDB?.country ?? ''
+			)?.toLowerCase()}
 			inputClass={cn(styles.input, isInvalid && styles.inputInvalid)}
 			specialLabel={''}
 			disabled={disabled || !country}

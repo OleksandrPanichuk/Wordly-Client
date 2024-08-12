@@ -7,7 +7,7 @@ import {
 	DialogTrigger,
 	Text
 } from '@/components/ui'
-import { capitalizeOnlyFirstLetter, highlightWordInExample } from '@/lib'
+import { capitalize, highlightWordInExample } from '@/lib'
 import { BrainIcon } from 'lucide-react'
 import { PropsWithChildren } from 'react'
 
@@ -56,7 +56,7 @@ const ExamplesModal = ({
 								'bg-white shadow-lg rounded-2xl p-4 font-medium text-lg highlight-example'
 							}
 						>
-							{highlightWordInExample(capitalizeOnlyFirstLetter(example), word)}
+							{highlightWordInExample(capitalize(example), word)}
 						</div>
 					))}
 				</div>

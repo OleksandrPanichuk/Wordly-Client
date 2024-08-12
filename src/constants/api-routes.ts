@@ -22,7 +22,8 @@ export const ApiRoutes = {
 			`/users/${userId}/billing-info/${billingInfoId}`
 	},
 	BILLING: {
-		SUBSCRIPTION: '/subscription'
+		SUBSCRIPTION: '/subscription',
+		PAYMENTS: '/payments'
 	},
 	DICTIONARY: {
 		ROOT: '/dictionary',

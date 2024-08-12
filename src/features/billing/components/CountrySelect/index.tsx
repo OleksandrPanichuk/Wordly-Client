@@ -1,6 +1,6 @@
 'use client'
 import { BillingInfoInput } from '@/features/billing'
-import { cn } from '@/lib'
+import { cn, getCountryCode, getCountryNames } from '@/lib'
 import {
 	Combobox,
 	ComboboxButton,
@@ -8,7 +8,6 @@ import {
 	ComboboxOption,
 	ComboboxOptions
 } from '@headlessui/react'
-import { getCode, getNames } from 'country-list'
 import { ChevronDownIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { ControllerRenderProps } from 'react-hook-form'
@@ -30,7 +29,7 @@ export const CountrySelect = ({
 	isInvalid,
 	disabled
 }: TypeCountrySelectProps) => {
-	const countries = getNames().sort()
+	const countries = getCountryNames().sort()
 
 	const [query, setQuery] = useState<string>('')
 	const [selected, setSelected] = useState<string>('')
@@ -43,11 +42,10 @@ export const CountrySelect = ({
 	}
 
 	useEffect(() => {
-		if(!selected && value) {
+		if (!selected && value) {
 			setSelected(value)
 		}
 	}, [value, selected])
-
 
 	const handleBlur = () => {
 		setQuery('')
@@ -100,7 +98,7 @@ export const CountrySelect = ({
 								)}
 							>
 								<img
-									src={`https://flagpedia.net/data/flags/h80/${getCode(country)?.toLowerCase()}.png`}
+									src={`https://flagpedia.net/data/flags/h80/${getCountryCode(country)?.toLowerCase()}.png`}
 									loading="lazy"
 									alt={`country-${country}`}
 									width={20}

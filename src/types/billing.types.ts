@@ -20,3 +20,23 @@ export type TypeSubscription = {
 	userId: string
 	isUnlimite: boolean
 }
+
+export enum BillingReason {
+	INITIAL = 'initial',
+	RENEWAL = 'renewal',
+	UPDATED = 'updated'
+}
+
+export type TypePayment = {
+	id: string
+	billingReason: BillingReason
+	userId: string
+	lsSubscriptionId: string
+	subscriptionId?: string
+
+	subtotal: number
+	tax: number
+	total: number
+
+	createdAt: Date
+}

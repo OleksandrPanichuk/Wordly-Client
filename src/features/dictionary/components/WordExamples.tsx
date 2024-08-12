@@ -1,6 +1,6 @@
 import { SvgIcon } from '@/components/common'
 import { ExamplesModal } from '@/components/modals'
-import { capitalizeOnlyFirstLetter, cn, highlightWordInExample } from '@/lib'
+import { capitalize, cn, highlightWordInExample } from '@/lib'
 import { TypeDictionaryWord } from '@/types'
 import { BrainIcon } from 'lucide-react'
 
@@ -83,7 +83,7 @@ export const WordExamples = ({
 								'text-black/90 pl-6 relative text-base line-clamp-1 font-semibold before:absolute before:left-0 before:w-2 before:h-2 before:top-[50%] before:rounded-full before:bg-orange-300 before:translate-y-[-50%] highlight-example'
 							}
 						>
-							{highlightWordInExample(capitalizeOnlyFirstLetter(example), name)}
+							{highlightWordInExample(capitalize(example), name)}
 						</li>
 					</ExamplesModal>
 				))}

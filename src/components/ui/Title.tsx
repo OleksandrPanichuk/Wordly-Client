@@ -16,6 +16,7 @@ const titleVariants = cva('', {
 			default: '',
 			'6xl': 'text-5xl md:text-6xl',
 			'5xl': 'text-4xl md:text-5xl',
+			"4xl":" text-3xl md:text-4xl",
 			'3xl': 'text-2xl md:text-3xl',
 			'2xl': 'text-base sm:text-lg lg:text-2xl',
 			'40px': 'text-xl sm:text-2xl lg:text-[40px]',

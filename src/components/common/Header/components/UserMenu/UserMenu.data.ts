@@ -29,7 +29,7 @@ export const links: MenuLink[] = [
 		id: 2
 	},
 	{
-		href: Routes.BILLING,
+		href: Routes.DASHBOARD_BILLING,
 		label: 'Billing',
 		icon: Wallet,
 		id: 3

@@ -15,7 +15,6 @@ export const useSignInMutation = (
 	>
 ) => {
 	const { setUser } = useAppActions(authActions)
-	const router = useRouter()
 
 	return useMutation({
 		...options,
@@ -23,7 +22,6 @@ export const useSignInMutation = (
 		onSuccess: (response, ...rest) => {
 			setUser(response.data)
 			options?.onSuccess?.(response, ...rest)
-			router.push(Routes.ROOT)
 		}
 	})
 }

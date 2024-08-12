@@ -60,6 +60,7 @@ const config = {
 				'tw-black': 'var(--tw-black)',
 				'tw-purple-400': 'var(--tw-purple-400)',
 				'tw-purple-500': 'var(--tw-purple-500)',
+				'tw-purple-50': 'var(--tw-purple-50)',
 
 				'tw-secondary-500': 'var(--secondary-500)',
 				'tw-secondary-450': 'var(--secondary-450)',

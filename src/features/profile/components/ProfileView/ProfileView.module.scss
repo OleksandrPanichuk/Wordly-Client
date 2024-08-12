@@ -20,7 +20,7 @@
 }
 
 .username {
-	@apply text-[1.5rem] sm:text-[2rem] text-white font-bold ml-2;
+	@apply text-[1.5rem] sm:text-[2rem] text-white font-bold ml-2 line-clamp-1 max-w-[400px];
 }
 
 .email {
