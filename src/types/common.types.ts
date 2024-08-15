@@ -1,4 +1,5 @@
 import { Checkout } from '@lemonsqueezy/lemonsqueezy.js'
+import { LucideIcon } from 'lucide-react'
 
 export type BreakpointsType =
 	| 'lg'
@@ -16,4 +17,10 @@ export type TypeUploadedFile = {
 }
 
 export type TypeCountryCode =
-Checkout['data']['attributes']['checkout_data']['billing_address']['country']
+	Checkout['data']['attributes']['checkout_data']['billing_address']['country']
+
+export type TypeSidebarLink = {
+	href: string
+	text: string
+	icon: LucideIcon
+}

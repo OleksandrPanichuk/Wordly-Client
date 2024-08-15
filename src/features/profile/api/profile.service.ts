@@ -2,13 +2,9 @@ import { ApiRoutes } from '@/constants'
 import { UpdateProfileInput, updateProfileSchema } from '@/features/profile'
 import { axios, fetcher } from '@/lib'
 import { TypeUploadedFile, TypeUser } from '@/types'
-import { isServer } from '@tanstack/react-query'
 
-const currentUser = async (): Promise<TypeUser> => {
-	if (isServer) {
-		return (await fetcher.get<TypeUser>(ApiRoutes.USERS.CURRENT)).data
-	}
-	return (await axios.get<TypeUser>(ApiRoutes.USERS.CURRENT)).data
+const currentUser = async (): Promise<TypeUser | null> => {
+	return await fetcher.getOrNull<TypeUser>(ApiRoutes.USERS.CURRENT)
 }
 
 const update = async (dto: UpdateProfileInput) => {

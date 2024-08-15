@@ -2,51 +2,65 @@
 
 import { Hint, Logo, Visibility } from '@/components/common'
 import { Sheet, SheetContent, SheetTrigger, Text } from '@/components/ui'
-import { Routes } from '@/constants'
+import {
+	adminPanelSidebarLinks,
+	dashboardSidebarLinks,
+	editPanelSidebarLinks,
+	Routes
+} from '@/constants'
 import { useSignOutMutation } from '@/features/auth'
 import { cn } from '@/lib'
-import type { TypeSubscription } from '@/types'
+import { TypeSidebarLink } from '@/types'
 import { CrownIcon, LogOutIcon, MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ComponentPropsWithoutRef, createContext, useContext } from 'react'
-import { links } from './Sidebar.data'
+import { ComponentPropsWithoutRef } from 'react'
+
+type SidebarLinks = 'admin' | 'edit' | 'dashboard'
 
 interface ISidebarProps {
-	subscription?: TypeSubscription
+	subscribed?: boolean
+	links: SidebarLinks
 }
 
-interface ISidebarContext {
-	subscription?: TypeSubscription
+type SidebarDesktopProps =  {
+	subscribed?: boolean
+	links: TypeSidebarLink[]
 }
 
-const SidebarContext = createContext<ISidebarContext>({})
+type SidebarLaptopProps = SidebarDesktopProps
 
-const useSidebarContext = () => useContext(SidebarContext)
+type SidebarMobileProps = SidebarDesktopProps
 
-export const Sidebar = ({ subscription }: ISidebarProps) => {
+const linksMap: Record<SidebarLinks, TypeSidebarLink[]> = {
+	admin: adminPanelSidebarLinks,
+	edit: editPanelSidebarLinks,
+	dashboard: dashboardSidebarLinks
+}
+
+export const Sidebar = ({ subscribed, links }: ISidebarProps) => {
+	const data = linksMap[links]
 	return (
-		<SidebarContext.Provider value={{ subscription }}>
-			<aside>
-				<Visibility bp={['sm', 'max-lg']}>
-					<Sidebar.Laptop />
-				</Visibility>
+		<aside>
+			<Visibility bp={['sm', 'max-lg']}>
+				<Sidebar.Laptop links={data} subscribed={subscribed} />
+			</Visibility>
 
-				<Visibility bp="lg">
-					<Sidebar.Desktop />
-				</Visibility>
-			</aside>
-		</SidebarContext.Provider>
+			<Visibility bp="lg">
+				<Sidebar.Desktop links={data} subscribed={subscribed} />
+			</Visibility>
+		</aside>
 	)
 }
 
 Sidebar.Desktop = function Desktop({
 	className,
+	subscribed,
+	links,
 	...props
-}: ComponentPropsWithoutRef<'div'>) {
+}: ComponentPropsWithoutRef<'div'> & SidebarDesktopProps) {
 	const pathname = usePathname()
 	const { mutate: signOut } = useSignOutMutation()
-	const { subscription } = useSidebarContext()
 
 	return (
 		<div
@@ -102,7 +116,7 @@ Sidebar.Desktop = function Desktop({
 				</button>
 			</div>
 
-			{!subscription && (
+			{!subscribed && (
 				<Link
 					href={Routes.PREMIUM}
 					className="rounded-3xl p-3 bg-tw-blue-450 flex items-center gap-2 w-full justify-center text-white"
@@ -115,10 +129,9 @@ Sidebar.Desktop = function Desktop({
 	)
 }
 
-Sidebar.Laptop = function Laptop() {
+Sidebar.Laptop = function Laptop({ links, subscribed }: SidebarLaptopProps) {
 	const pathname = usePathname()
 	const { mutate: signOut } = useSignOutMutation()
-	const { subscription } = useSidebarContext()
 
 	return (
 		<div className="hidden sm:flex flex-col py-4 sticky top-0 z-10 min-h-screen border-solid border-[1px] border-black/10 items-center w-[4.875rem] gap-3 lg:hidden">
@@ -158,7 +171,7 @@ Sidebar.Laptop = function Laptop() {
 				</Hint>
 			</div>
 
-			{!subscription && (
+			{!subscribed && (
 				<Hint label="Premium" side="right">
 					<Link
 						href={Routes.PREMIUM}
@@ -172,7 +185,7 @@ Sidebar.Laptop = function Laptop() {
 	)
 }
 
-Sidebar.Mobile = function Mobile() {
+Sidebar.Mobile = function Mobile({ links, subscribed }: SidebarMobileProps) {
 	return (
 		<Visibility bp="max-sm">
 			<Sheet>
@@ -180,7 +193,11 @@ Sidebar.Mobile = function Mobile() {
 					<MenuIcon />
 				</SheetTrigger>
 				<SheetContent className="p-0 ">
-					<Sidebar.Desktop className="flex sm:hidden border-none w-full" />
+					<Sidebar.Desktop
+						className="flex sm:hidden border-none w-full"
+						links={links}
+						subscribed={subscribed}
+					/>
 				</SheetContent>
 			</Sheet>
 		</Visibility>

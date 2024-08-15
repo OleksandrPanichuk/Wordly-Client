@@ -1,5 +1,5 @@
 import { ApiRoutes } from '@/constants'
-import { axios } from '@/lib'
+import { fetcher } from '@/lib'
 import {
 	DictionaryMode,
 	TypeDictionaryWord,
@@ -14,7 +14,7 @@ const searchWords = async (q: string) => {
 			q
 		}
 	})
-	return (await axios.get<TypeSearchDictionaryWord[]>(url)).data
+	return await fetcher.get<TypeSearchDictionaryWord[]>(url)
 }
 
 const getWordByName = async (
@@ -27,7 +27,7 @@ const getWordByName = async (
 			mode
 		}
 	})
-	return (await axios.get<TypeDictionaryWord>(url)).data
+	return await fetcher.get<TypeDictionaryWord>(url)
 }
 
 export const DictionaryApi = {

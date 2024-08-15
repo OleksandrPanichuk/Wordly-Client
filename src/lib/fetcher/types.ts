@@ -1,3 +1,5 @@
+import { AxiosHeaders } from "axios"
+
 export interface FetchResponse<T> {
 	data: T
 	status: number
@@ -6,7 +8,7 @@ export interface FetchResponse<T> {
 }
 
 export interface FetchConfig {
-	headers?: HeadersInit
+	headers?: AxiosHeaders
 	next?: NextFetchRequestConfig
 	cache?: RequestCache
 	params?: Record<string, any>

@@ -26,6 +26,7 @@ import { useAppSelector } from '@/store'
 import { TypeCountryCode } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import isEqual from 'lodash.isequal'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -44,26 +45,29 @@ export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
 		}
 	})
 
-	const { data: billingInfoFromDB } = useGetBillingInfoQuery({
-		onSuccess: (billingInfo) => {
-			form.reset({
-				...billingInfo,
-				country: getCountryName(billingInfo.country as TypeCountryCode),
-				email: billingInfo.email ?? user?.email
-			})
-		}
-	})
-
-	const { mutateAsync: getCheckoutUrl } = useCheckoutMutation()
-	const { mutateAsync: createBillingInfo } = useAddBillingInfoMutation()
-	const { mutateAsync: updateBillingInfo } = useUpdateBillingInfoMutation()
-
 	const {
 		control,
 		handleSubmit,
 		watch,
+		reset,
 		formState: { isSubmitting }
 	} = form
+
+	const { data: billingInfoFromDB } = useGetBillingInfoQuery()
+
+	useEffect(() => {
+		if (billingInfoFromDB) {
+			reset({
+				...billingInfoFromDB,
+				country: getCountryName(billingInfoFromDB.country as TypeCountryCode),
+				email: billingInfoFromDB.email ?? user?.email
+			})
+		}
+	}, [reset, billingInfoFromDB, user?.email])
+
+	const { mutateAsync: getCheckoutUrl } = useCheckoutMutation()
+	const { mutateAsync: createBillingInfo } = useAddBillingInfoMutation()
+	const { mutateAsync: updateBillingInfo } = useUpdateBillingInfoMutation()
 
 	const onSubmit = async (values: BillingInfoInput) => {
 		const country = getCountryCode(values.country)

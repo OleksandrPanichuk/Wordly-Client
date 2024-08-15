@@ -1,0 +1,11 @@
+.wrapper {
+	@apply flex flex-col sm:flex-row flex-wrap gap-4 p-4;
+}
+
+.card {
+	@apply w-full;
+}
+
+.item {
+	@apply sm:flex-[33%];
+}

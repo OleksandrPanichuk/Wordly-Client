@@ -1,7 +1,7 @@
+import { isServer } from '@tanstack/react-query'
+import { axios } from '../axios'
 import { request } from './request'
 import type { FetchConfig, FetchResponse } from './types'
-
-// Fetcher is used to make request inside of server action or components
 
 class Fetcher {
 	private request: typeof request
@@ -10,9 +10,26 @@ class Fetcher {
 		this.request = request
 	}
 
-	public get<T>(url: string, options?: FetchConfig): Promise<FetchResponse<T>> {
-		return this.request<T>('GET', url, options)
+	public async get<T>(url: string, options?: FetchConfig): Promise<T> {
+		if (isServer) {
+			return (await this.request<T>('GET', url, options)).data
+		}
+
+		return (await axios.get<T>(url, options)).data
 	}
+
+	public async getOrNull<T>(url:string, options?:FetchConfig) : Promise<T | null> {
+		if(isServer) {
+			try {
+				return (await this.request<T>('GET', url, options)).data
+			} catch {
+				return null
+			}
+		}
+
+		return (await axios.get<T>(url, options)).data
+	}
+
 
 	public post<T>(
 		url: string,

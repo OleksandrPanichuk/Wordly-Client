@@ -16,7 +16,14 @@ export async function getPayments(): Promise<TypePayment[]> {
 	try {
 		return await BillingApi.getPayments()
 	} catch (err) {
-		console.log("ERROR", err)
+	
 		return []
+	}
+}
+export async function getPayment(paymentId: string): Promise<TypePayment | null> {
+	try {
+		return await BillingApi.getPayment(paymentId)
+	} catch (err) {
+		return null
 	}
 }

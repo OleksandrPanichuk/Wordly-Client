@@ -16,7 +16,7 @@
 
 .options {
 	@apply absolute list-none z-[9999] bg-background shadow-md overflow-y-scroll mt-2 rounded-md p-0 w-[var(--input-width)];
-	max-height: 320px !important;
+	max-height:280px !important;
 }
 
 .option {

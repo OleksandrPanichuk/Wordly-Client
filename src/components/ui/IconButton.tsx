@@ -1,20 +1,22 @@
-import { cva, VariantProps } from 'class-variance-authority'
-import { ButtonHTMLAttributes } from 'react'
-import { icons, LucideProps } from 'lucide-react'
 import { SvgIcon, SvgIconProps } from '@/components/common'
+import { cva, VariantProps } from 'class-variance-authority'
+import { icons, LucideProps } from 'lucide-react'
+import { ButtonHTMLAttributes } from 'react'
 
 const iconButtonVariants = cva('transition-all duration-300 cursor-pointer', {
 	variants: {
-		colorScheme: {
+		variant: {
 			gray: 'text-tw-black bg-tw-gray-50 hover:bg-tw-gray-75',
-			blue: ''
+			blue: '',
+			ghost: 'hover:bg-accent hover:text-accent-foreground'
 		},
 		size: {
-			base: 'p-2.5 rounded-xl'
+			base: 'p-2.5 rounded-xl',
+			sm: 'p-2 rounded-md'
 		}
 	},
 	defaultVariants: {
-		colorScheme: 'gray',
+		variant: 'gray',
 		size: 'base'
 	}
 })
@@ -28,12 +30,12 @@ type TypeIconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 
 export const IconButton = ({
 	className,
-	colorScheme,
+	variant,
 	size,
 	...props
 }: TypeIconButtonProps) => {
 	return (
-		<button className={iconButtonVariants({ className, colorScheme, size })}>
+		<button className={iconButtonVariants({ className, variant, size })}>
 			{'lname' in props ? (
 				(() => {
 					const LucideIcon = icons[props.lname]

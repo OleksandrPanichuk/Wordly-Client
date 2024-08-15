@@ -47,7 +47,27 @@ export const Routes = {
 	MY_LISTS: '/dashboard/my-lists',
 	BOOKMARKS: '/dashboard/bookmarks',
 	DASHBOARD_BILLING: '/dashboard/billing',
+	DASHBOARD_PAYMENTS: '/dashboard/payments',
 	DASHBOARD_PAYMENT: (id: string) => `/dashboard/payments/${id}`,
 	TRAINING_SESSION: '/dashboard/training-sessions',
-	STATS: '/dashboard/stats'
+	STATS: '/dashboard/stats',
+
+	// EDIT Panel(Edit mode)
+	EDIT_PANEL: '/dashboard/editing',
+	EDIT_WORDS: '/dashboard/e/words',
+	EDIT_EXPRESSIONS: '/dashboard/e/expression',
+	EDIT_LISTS: '/dashboard/e/lists',
+	EDIT_SETS: '/dashboard/e/sets',
+	EDIT_PACKS: '/dashboard/e/packs',
+	EDIT_WORD: (wordId: string) => `/dashboard/e/words/${wordId}`,
+	EDIT_EXPRESSION: (expressionId: string) =>
+		`/dashboard/e/expressions/${expressionId}`,
+	EDIT_LIST: (listId: string) => `/dashboard/e/lists/${listId}`,
+	EDIT_PACK: (packId: string) => `/dashboard/e/packs/${packId}`,
+	EDIT_SET: (setId: string) => `/dashboard/e/sets/${setId}`,
+
+	// EDIT panel(Only EDIT access)
+	ADMIN_PANEL: '/dashboard/admin',
+	ADMIN_USERS: '/dashboard/a/users',
+	ADMIN_USER: (userId: string) => `/dashboard/a/users/${userId}`
 } as const

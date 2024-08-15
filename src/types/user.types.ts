@@ -1,4 +1,7 @@
-export type UserRole = 'USER' | 'ADMIN'
+export enum UserRole {
+	USER= 'USER',
+	ADMIN= 'ADMIN'
+}
 
 export enum Gender {
 	MALE = 'MALE',
@@ -6,11 +9,10 @@ export enum Gender {
 	OTHER = 'OTHER'
 }
 
-
 export type TypeUser = {
 	id: string
 	email: string
-	username:string
+	username: string
 	avatar?: {
 		url: string
 		key?: string
@@ -19,8 +21,16 @@ export type TypeUser = {
 	role: UserRole
 	gender?: Gender
 	nativeLanguage?: string
-	
 
 	createdAt: Date
 	updatedAt: Date
+}
+
+export type TypeEditingStats = {
+	createdWords: number
+	createdMeanings: number
+	createdExpressions: number
+	createdLists: number
+	createdPacks: number
+	createdSets: number
 }

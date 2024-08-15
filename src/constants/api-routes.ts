@@ -23,10 +23,14 @@ export const ApiRoutes = {
 	},
 	BILLING: {
 		SUBSCRIPTION: '/subscription',
-		PAYMENTS: '/payments'
+		PAYMENTS: '/payments',
+		PAYMENT: (id: string) => `/payments/${id}`
 	},
 	DICTIONARY: {
 		ROOT: '/dictionary',
 		WORD: (word: string) => `/dictionary/${word}`
+	},
+	STATISTICS: {
+		EDITING: '/statistic/editing'
 	}
 } as const

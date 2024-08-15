@@ -1,7 +1,7 @@
 import { APP_URL } from '@/constants'
 import { type ClassValue, clsx } from 'clsx'
+import { formatDate, formatDistanceToNowStrict } from 'date-fns'
 import { twMerge } from 'tailwind-merge'
-import {formatDistanceToNowStrict, formatDate} from 'date-fns'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 export function capitalize(str: string): string {
 	return str
 		.split(' ')
-		.map((el, i) => (i == 0 ? el.charAt(0).toUpperCase() + el.slice(1) : el))
+		.map((el, i) => (i == 0 ? el.charAt(0).toUpperCase() + el.slice(1).toLowerCase() : el))
 		.join(' ')
 }
 
@@ -31,6 +31,10 @@ export function formatRelativeDate(from: Date) {
 			return formatDate(from, 'MMM d, yyyy')
 		}
 	}
+}
+
+export function toDateString(date:Date) {
+	return new Date(date).toDateString()
 }
 
 export function absoluteApiUrl(url: string = '') {

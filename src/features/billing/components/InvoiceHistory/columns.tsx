@@ -14,14 +14,10 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger
 } from '@/components/ui'
-import { Routes } from '@/constants'
+import { billingReasonMap, Routes } from '@/constants'
 import { useRouter } from 'next/navigation'
 
-const billingReasonMap = {
-	[BillingReason.INITIAL]: 'red',
-	[BillingReason.RENEWAL]: 'green',
-	[BillingReason.UPDATED]: 'orange'
-} as const
+
 
 export const columns: ColumnDef<TypePayment>[] = [
 	{
@@ -53,7 +49,7 @@ export const columns: ColumnDef<TypePayment>[] = [
 				<ArrowUpDown className="ml-2 size-4" />
 			</Button>
 		),
-		cell: ({ row }) => formatCurrency(row.original.subtotal / 100)
+		cell: ({ row }) => formatCurrency(row.original.subtotal )
 	},
 	{
 		accessorKey: 'tax',
@@ -67,7 +63,7 @@ export const columns: ColumnDef<TypePayment>[] = [
 			</Button>
 		),
 		cell: ({ row }) =>
-			row.original.tax > 0 ? formatCurrency(row.original.tax / 100) : '—'
+			row.original.tax > 0 ? formatCurrency(row.original.tax ) : '—'
 	},
 	{
 		accessorKey: 'total',
@@ -80,7 +76,7 @@ export const columns: ColumnDef<TypePayment>[] = [
 				<ArrowUpDown className="ml-2 size-4" />
 			</Button>
 		),
-		cell: ({ row }) => formatCurrency(row.original.total / 100)
+		cell: ({ row }) => formatCurrency(row.original.total)
 	},
 	{
 		accessorKey: 'billingReason',

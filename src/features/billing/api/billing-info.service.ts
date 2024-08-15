@@ -3,7 +3,6 @@ import { BillingInfoInput, billingInfoSchema } from '@/features/billing'
 import { axios, fetcher } from '@/lib'
 import { store } from '@/store'
 import { TypeBillingInfo } from '@/types'
-import { isServer } from '@tanstack/react-query'
 
 const get = async (id?: string) => {
 	const userId = id ?? store?.getState()?.auth?.user?.id
@@ -12,14 +11,7 @@ const get = async (id?: string) => {
 		throw new Error('Unauthorized')
 	}
 
-	if (isServer) {
-		return (
-			await fetcher.get<TypeBillingInfo>(ApiRoutes.BILLING_INFO.ROOT(userId))
-		).data
-	}
-
-	return (await axios.get<TypeBillingInfo>(ApiRoutes.BILLING_INFO.ROOT(userId)))
-		.data
+	return await fetcher.get<TypeBillingInfo>(ApiRoutes.BILLING_INFO.ROOT(userId))
 }
 
 const create = async (dto: BillingInfoInput) => {

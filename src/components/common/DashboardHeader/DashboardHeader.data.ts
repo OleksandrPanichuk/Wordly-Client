@@ -11,6 +11,10 @@ export const headerContentMap: {
 		subtitle: 'Dashboard / Profile'
 	},
 	{
+		pathname: Routes.DASHBOARD_PAYMENTS,
+		title: 'Payments'
+	},
+	{
 		pathname: Routes.MY_LISTS,
 		title: 'My Wordlists'
 	},
@@ -29,5 +33,9 @@ export const headerContentMap: {
 	{
 		pathname: Routes.SETTINGS,
 		title: 'Settings'
+	},
+	{
+		title: 'Dashboard',
+		pathname: Routes.EDIT_PANEL
 	}
 ]
