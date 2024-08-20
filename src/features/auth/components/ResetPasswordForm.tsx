@@ -1,5 +1,10 @@
 'use client'
 import {
+	type ResetPasswordInput,
+	resetPasswordSchema,
+	useResetPasswordMutation
+} from '@/api'
+import {
 	Button,
 	Form,
 	FormControl,
@@ -9,11 +14,6 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import {
-	ResetPasswordInput,
-	resetPasswordSchema,
-	useResetPasswordMutation
-} from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 

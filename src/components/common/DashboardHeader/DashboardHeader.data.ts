@@ -37,5 +37,9 @@ export const headerContentMap: {
 	{
 		title: 'Dashboard',
 		pathname: Routes.EDIT_PANEL
+	},
+	{
+		title:"Edit words",
+		pathname: Routes.EDIT_WORDS
 	}
 ]

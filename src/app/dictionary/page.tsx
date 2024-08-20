@@ -2,21 +2,26 @@
 import { Logo } from '@/components/common'
 import { Text, Title } from '@/components/ui'
 import {
-	DictionaryInput,
 	DictionaryFeed,
+	DictionaryInput,
 	LearningCategory,
 	selectDictionarySearchValue,
-	useDictionarySearchQuery
 } from '@/features/dictionary'
 import { useDebounce } from '@/hooks'
 import { useAppSelector } from '@/store'
 import { learningCategories } from './page.data'
+import { useDictionarySearchQuery } from '@/api'
 
+// TODO: see whether infinite loading is working or not
 const DictionaryPage = () => {
 	const searchValue = useAppSelector(selectDictionarySearchValue)
 	const debouncedSearchValue = useDebounce(searchValue, 300)
 
-	const { data, isFetching } = useDictionarySearchQuery(debouncedSearchValue)
+	const { data, isFetching, ref } = useDictionarySearchQuery({
+		q: debouncedSearchValue
+	})
+
+	const hasData = !!data?.pages[0].words.length
 
 	return (
 		<>
@@ -47,24 +52,26 @@ const DictionaryPage = () => {
 			</div>
 			<div className="max-w-[47rem] mx-auto">
 				<DictionaryInput />
-				{!data?.length && !debouncedSearchValue && (
+				{!hasData && !debouncedSearchValue && (
 					<Text className="mt-10 md:mt-4 text-lg leading-8 text-gray-500 text-left px-4">
 						A free and online dictionary for learners of English with
 						definitions, pictures and example sentences.
 					</Text>
 				)}
 			</div>
-			{!!debouncedSearchValue && !!data?.length && <DictionaryFeed data={data} />}
+			{!!debouncedSearchValue && !!hasData && (
+				<DictionaryFeed ref={ref} data={data.pages.map((page) => page.words)} />
+			)}
 
 			{isFetching && <DictionaryFeed.Skeleton />}
 
-			{!isFetching && !!debouncedSearchValue && !data?.length && (
+			{!isFetching && !!debouncedSearchValue && !hasData && (
 				<Text className="text-center mt-12" size={'2xl'} weight={700}>
 					No Item Found
 				</Text>
 			)}
 
-			{!debouncedSearchValue && !data?.length && !isFetching && (
+			{!debouncedSearchValue && !hasData && !isFetching && (
 				<div className="sm:max-w-[640px] flex flex-col gap-16  md:max-w-3xl lg:max-w-5xl w-full mx-auto px-0 md:px-5 mt-24 ">
 					{learningCategories.map((el) => (
 						<LearningCategory {...el} key={el.title} />

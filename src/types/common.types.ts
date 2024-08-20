@@ -24,3 +24,12 @@ export type TypeSidebarLink = {
 	text: string
 	icon: LucideIcon
 }
+
+export enum SortByOptions {
+	ASC = 'asc',
+	DESC = 'desc'
+}
+export type TypeTranscription = {
+	en?: string
+	us?: string
+}

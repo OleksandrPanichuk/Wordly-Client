@@ -32,5 +32,8 @@ export const ApiRoutes = {
 	},
 	STATISTICS: {
 		EDITING: '/statistic/editing'
+	},
+	WORDS: {
+		ROOT: '/words'
 	}
 } as const

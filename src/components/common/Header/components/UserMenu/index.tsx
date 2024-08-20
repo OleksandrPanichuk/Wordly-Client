@@ -14,13 +14,14 @@ import {
 	Text
 } from '@/components/ui'
 import { Routes } from '@/constants'
-import { selectAuthUser, useSignOutMutation } from '@/features/auth'
+import { selectAuthUser } from '@/features/auth'
 import { cn } from '@/lib'
 import { useAppSelector } from '@/store'
 import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
 import { links } from './UserMenu.data'
 import styles from './UserMenu.module.scss'
+import { useSignOutMutation } from '@/api'
 
 export const UserMenu = () => {
 	const user = useAppSelector(selectAuthUser)

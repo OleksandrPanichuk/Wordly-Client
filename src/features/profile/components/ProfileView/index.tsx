@@ -1,5 +1,6 @@
 'use client'
 
+import { useDeleteProfileMutation } from '@/api'
 import { ConfirmModal } from '@/components/modals'
 import {
 	Avatar,
@@ -11,7 +12,6 @@ import {
 } from '@/components/ui'
 import { Routes } from '@/constants'
 import { selectAuthUser } from '@/features/auth'
-import { useDeleteProfileMutation } from '@/features/profile'
 import { capitalize, getLanguageName } from '@/lib'
 import { useAppSelector } from '@/store'
 import { EditIcon, GlobeIcon, MailIcon, PersonStandingIcon } from 'lucide-react'

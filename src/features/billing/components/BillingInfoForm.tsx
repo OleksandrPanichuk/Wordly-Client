@@ -1,6 +1,14 @@
 'use client'
 
 import {
+	type BillingInfoInput,
+	billingInfoSchema,
+	useAddBillingInfoMutation,
+	useCheckoutMutation,
+	useGetBillingInfoQuery,
+	useUpdateBillingInfoMutation
+} from '@/api'
+import {
 	Button,
 	Form,
 	FormControl,
@@ -11,15 +19,9 @@ import {
 } from '@/components/ui'
 import { selectAuthUser } from '@/features/auth'
 import {
-	BillingInfoInput,
-	billingInfoSchema,
 	billingPlans,
 	CountrySelect,
 	PhoneNumberInput,
-	useAddBillingInfoMutation,
-	useCheckoutMutation,
-	useGetBillingInfoQuery,
-	useUpdateBillingInfoMutation
 } from '@/features/billing'
 import { getCountryCode, getCountryName } from '@/lib'
 import { useAppSelector } from '@/store'

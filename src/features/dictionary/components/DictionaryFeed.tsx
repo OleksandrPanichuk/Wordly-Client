@@ -1,18 +1,21 @@
 'use client'
 
-import { DictionaryCard } from '@/features/dictionary'
+import { DictionaryCard, DictionaryCardSkeleton } from '@/features/dictionary'
 import { TypeSearchDictionaryWord } from '@/types'
 
 interface IDictionaryFeedProps {
-	data: TypeSearchDictionaryWord[]
+	data: TypeSearchDictionaryWord[][]
+	ref: (node: HTMLDivElement) => void
 }
 
-export const DictionaryFeed = ({ data }: IDictionaryFeedProps) => {
+export const DictionaryFeed = ({ data, ref }: IDictionaryFeedProps) => {
 	return (
 		<div className="flex flex-col lg:grid lg:grid-cols-2 mt-10">
-			{data.map((item, index) => (
-				<DictionaryCard key={item.id} data={item} index={index} />
-			))}
+			{data.map((words) =>
+				words.map((item, index) => (
+					<DictionaryCard key={item.id} data={item} index={index} ref={ref} />
+				))
+			)}
 		</div>
 	)
 }
@@ -22,7 +25,7 @@ DictionaryFeed.Skeleton = function Skeleton() {
 	return (
 		<div className="flex flex-col lg:grid lg:grid-cols-2 mt-10">
 			{fakeArray.map((_, index) => (
-				<DictionaryCard.Skeleton key={index} />
+				<DictionaryCardSkeleton key={index} />
 			))}
 		</div>
 	)

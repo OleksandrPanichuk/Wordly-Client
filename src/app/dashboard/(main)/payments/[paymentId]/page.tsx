@@ -1,4 +1,5 @@
-import { getPayment, PaymentView } from '@/features/billing'
+import { BillingApi } from '@/api'
+import { PaymentView } from '@/features/billing'
 import {
 	getProduct,
 	getSubscription,
@@ -17,16 +18,15 @@ lemonSqueezySetup({
 })
 
 const PaymentPage = async ({ params }: IPaymentPageProps) => {
-	const payment = await getPayment(params.paymentId)
+	const payment = await BillingApi.getPayment(params.paymentId)
 
-	console.log({payment})
+	console.log({ payment })
 
 	if (!payment) {
 		return notFound()
 	}
 
 	const subscription = await getSubscription(payment.lsSubscriptionId)
-
 
 	if (subscription.statusCode === 404 || !subscription.data) {
 		return notFound()
@@ -39,7 +39,6 @@ const PaymentPage = async ({ params }: IPaymentPageProps) => {
 		getProduct(productId),
 		getVariant(variantId)
 	])
-
 
 	if (
 		variant.statusCode === 404 ||

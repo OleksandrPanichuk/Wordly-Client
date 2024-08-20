@@ -1,11 +1,11 @@
 'use client'
 
+import { useGetWordQuery } from '@/api'
 import { Button } from '@/components/ui'
 
 import { Routes } from '@/constants'
 import {
 	ModeTabs,
-	useGetWordQuery,
 	WordExamples,
 	WordMainInfo,
 	WordMeanings

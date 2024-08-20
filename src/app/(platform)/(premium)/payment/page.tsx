@@ -1,10 +1,6 @@
+import { BillingApi } from '@/api'
 import { Text, Title } from '@/components/ui'
-import {
-	BillingInfoForm,
-	billingPlans,
-	getSubscription,
-	SelectedPlan
-} from '@/features/billing'
+import { BillingInfoForm, billingPlans, SelectedPlan } from '@/features/billing'
 import { getProduct, lemonSqueezySetup } from '@lemonsqueezy/lemonsqueezy.js'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -16,7 +12,7 @@ interface IPaymentPageProps {
 }
 
 const PaymentPage = async ({ searchParams }: IPaymentPageProps) => {
-	const subscription = await getSubscription()
+	const subscription = await BillingApi.getSubscription()
 
 	if (subscription) {
 		return notFound()
@@ -50,7 +46,7 @@ const PaymentPage = async ({ searchParams }: IPaymentPageProps) => {
 					<Text className="mb-10" color={'gray-400'} size="base-sm">
 						This information would be on your invoice
 					</Text>
-					<BillingInfoForm planId={planId}  />
+					<BillingInfoForm planId={planId} />
 				</div>
 			</div>
 			<div className="w-[90%] sm:w-[70%] lg:!w-2/5 justify-evenly lg:bg-tw-blue-50 min-h-[53vh] lg:min-h-[90vh] flex flex-col ">

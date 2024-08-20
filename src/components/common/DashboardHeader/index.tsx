@@ -22,7 +22,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { headerContentMap } from './DashboardHeader.data'
 
 interface IHeaderProps {
-	subscription: TypeSubscription | undefined
+	subscription: TypeSubscription | null
 }
 
 export const DashboardHeader = ({ subscription }: IHeaderProps) => {
@@ -35,13 +35,16 @@ export const DashboardHeader = ({ subscription }: IHeaderProps) => {
 		pathname.includes(item.pathname)
 	)
 
-	const isEditPanel = pathname.startsWith(Routes.EDIT_PANEL)
+	const isEditPanel =
+		pathname === Routes.EDIT_PANEL || pathname.startsWith('/dashboard/e')
+	const isAdminPanel =
+		pathname === Routes.ADMIN_PANEL || pathname.startsWith('/dashboard/a')
 	const isAdmin = user?.role === UserRole.ADMIN
 
 	return (
 		<header className="flex items-center p-4 w-full">
 			{!!leftSection && (
-				<div className="flex items-center gap-2">
+				<div className="hidden xs:flex items-center gap-2">
 					<div className="flex flex-col">
 						<h5 className="text-2xl font-bold text-tw-black">
 							{leftSection.title}
@@ -60,13 +63,18 @@ export const DashboardHeader = ({ subscription }: IHeaderProps) => {
 						<Link href={Routes.EDIT_PANEL}>Edit mode</Link>
 					</Button>
 				)}
-				{isEditPanel && (
+				{(isEditPanel || isAdminPanel) && (
 					<Button variant="ghost" onClick={router.back}>
 						Back
 					</Button>
 				)}
-				{isAdmin && (
-					<IconButton lname='Shield' variant={'ghost'} size='sm' onClick={() => router.push(Routes.ADMIN_PANEL)}  /> 
+				{isAdmin && !isAdminPanel && (
+					<IconButton
+						lname="Shield"
+						variant={'ghost'}
+						size="sm"
+						onClick={() => router.push(Routes.ADMIN_PANEL)}
+					/>
 				)}
 				<Link href={Routes.PROFILE}>
 					<Avatar>

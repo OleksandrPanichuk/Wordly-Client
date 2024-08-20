@@ -7,6 +7,7 @@ import { TypeSearchDictionaryWord } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { forwardRef } from 'react'
 import styles from './DictionaryCard.module.scss'
 
 interface IDictionaryCardProps {
@@ -14,34 +15,42 @@ interface IDictionaryCardProps {
 	index: number
 }
 
-export const DictionaryCard = ({ data, index }: IDictionaryCardProps) => {
-	const router = useRouter()
+export const DictionaryCard = forwardRef<HTMLDivElement, IDictionaryCardProps>(
+	({ data, index }, ref) => {
+		const router = useRouter()
 
-	return (
-		<div
-			onClick={() => router.push(Routes.DICTIONARY_WORD(data.name))}
-			className={styles.wrapper}
-		>
-			{data?.image && (
-				<div className={styles.image}>
-					<Image src={data.image} alt={data.name} fill />
+		return (
+			<div
+				onClick={() => router.push(Routes.DICTIONARY_WORD(data.name))}
+				className={styles.wrapper}
+				ref={ref}
+			>
+				{data?.image && (
+					<div className={styles.image}>
+						<Image src={data.image} alt={data.name} fill />
+					</div>
+				)}
+				<div className="md:flex-1">
+					<Title size={'3xl'} variant={'h4'} className="text-black">
+						<Link href={Routes.DICTIONARY_WORD(data.name)}>
+							{index + 1}. {capitalize(data.name)}
+						</Link>
+					</Title>
+					<Text
+						size="lg"
+						className="mt-2 text-gray-500 font-quicksand leading-8"
+					>
+						{data.meaning}
+					</Text>
 				</div>
-			)}
-			<div className="md:flex-1">
-				<Title size={'3xl'} variant={'h4'} className="text-black">
-					<Link href={Routes.DICTIONARY_WORD(data.name)}>
-						{index + 1}. {capitalize(data.name)}
-					</Link>
-				</Title>
-				<Text size="lg" className="mt-2 text-gray-500 font-quicksand leading-8">
-					{data.meaning}
-				</Text>
 			</div>
-		</div>
-	)
-}
+		)
+	}
+)
 
-DictionaryCard.Skeleton = function CardSkeleton() {
+DictionaryCard.displayName = 'DictionaryCard'
+
+export function DictionaryCardSkeleton() {
 	return (
 		<div className={styles.skeleton}>
 			<Skeleton className="w-[190px]  h-[151px]" />

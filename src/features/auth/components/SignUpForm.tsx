@@ -1,4 +1,5 @@
 'use client'
+import { type SignUpInput, signUpSchema, useSignUpMutation } from '@/api'
 import {
 	Button,
 	Form,
@@ -9,7 +10,6 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import { SignUpInput, signUpSchema, useSignUpMutation } from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 

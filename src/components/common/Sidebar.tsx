@@ -1,5 +1,6 @@
 'use client'
 
+import { useSignOutMutation } from '@/api'
 import { Hint, Logo, Visibility } from '@/components/common'
 import { Sheet, SheetContent, SheetTrigger, Text } from '@/components/ui'
 import {
@@ -8,7 +9,6 @@ import {
 	editPanelSidebarLinks,
 	Routes
 } from '@/constants'
-import { useSignOutMutation } from '@/features/auth'
 import { cn } from '@/lib'
 import { TypeSidebarLink } from '@/types'
 import { CrownIcon, LogOutIcon, MenuIcon } from 'lucide-react'
@@ -23,7 +23,7 @@ interface ISidebarProps {
 	links: SidebarLinks
 }
 
-type SidebarDesktopProps =  {
+type SidebarDesktopProps = {
 	subscribed?: boolean
 	links: TypeSidebarLink[]
 }

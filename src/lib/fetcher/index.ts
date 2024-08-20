@@ -18,8 +18,11 @@ class Fetcher {
 		return (await axios.get<T>(url, options)).data
 	}
 
-	public async getOrNull<T>(url:string, options?:FetchConfig) : Promise<T | null> {
-		if(isServer) {
+	public async getOrNull<T>(
+		url: string,
+		options?: FetchConfig
+	): Promise<T | null> {
+		if (isServer) {
 			try {
 				return (await this.request<T>('GET', url, options)).data
 			} catch {
@@ -30,6 +33,21 @@ class Fetcher {
 		return (await axios.get<T>(url, options)).data
 	}
 
+	public async getOrDefault<T>(
+		url: string,
+		defaultValue: T,
+		options?: FetchConfig
+	): Promise<T> {
+		if (isServer) {
+			try {
+				return (await this.request<T>('GET', url, options)).data
+			} catch {
+				return defaultValue
+			}
+		}
+
+		return (await axios.get<T>(url, options)).data
+	}
 
 	public post<T>(
 		url: string,

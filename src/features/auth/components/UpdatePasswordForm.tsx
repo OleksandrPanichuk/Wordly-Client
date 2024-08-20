@@ -1,5 +1,10 @@
 'use client'
 import {
+	type UpdatePasswordInput,
+	updatePasswordSchema,
+	useUpdatePasswordMutation
+} from '@/api'
+import {
 	Button,
 	Form,
 	FormControl,
@@ -9,11 +14,6 @@ import {
 	FormLabel,
 	Input
 } from '@/components/ui'
-import {
-	UpdatePasswordInput,
-	updatePasswordSchema,
-	useUpdatePasswordMutation
-} from '@/features/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 

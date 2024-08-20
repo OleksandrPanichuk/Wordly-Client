@@ -1,7 +1,7 @@
 'use client'
+import { AuthApi } from '@/api'
 import { SvgIcon } from '@/components/common'
 import { Button, Text } from '@/components/ui'
-import { AuthApi } from '@/features/auth'
 
 export const GoogleButton = () => {
 	return (

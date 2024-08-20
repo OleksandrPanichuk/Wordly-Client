@@ -1,9 +1,10 @@
+import { BillingApi } from '@/api'
 import { DashboardHeader, Sidebar } from '@/components/common'
-import { getSubscription } from '@/features/billing'
+
 import { PropsWithChildren } from 'react'
 
 export const DashboardLayout = async ({ children }: PropsWithChildren) => {
-	const subscription = await getSubscription()
+	const subscription = await BillingApi.getSubscription()
 
 	return (
 		<div className="flex min-h-screen">

@@ -24,7 +24,9 @@ export const Hint = ({
 		<TooltipProvider delayDuration={delay}>
 			<Tooltip>
 				<TooltipTrigger asChild>{children}</TooltipTrigger>
-				<TooltipContent side={side} className={className}>{label}</TooltipContent>
+				<TooltipContent side={side} className={className}>
+					{label}
+				</TooltipContent>
 			</Tooltip>
 		</TooltipProvider>
 	)

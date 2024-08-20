@@ -1,12 +1,11 @@
+import { BillingApi, currentUser } from '@/api'
 import { DashboardHeader, Sidebar } from '@/components/common'
-import { getSubscription } from '@/features/billing'
-import { currentUser } from '@/features/profile'
 import { notFound } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
 export const EditPanelLayout = async ({ children }: PropsWithChildren) => {
 	const user = await currentUser()
-	const subscription = await getSubscription()
+	const subscription = await BillingApi.getSubscription()
 
 	if (!subscription && user?.role !== 'ADMIN') {
 		return notFound()

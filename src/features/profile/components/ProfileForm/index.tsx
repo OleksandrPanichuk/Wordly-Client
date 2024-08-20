@@ -11,17 +11,19 @@ import {
 	Input
 } from '@/components/ui'
 import {
-	type UpdateProfileInput,
 	AvatarInput,
 	GenderSelect,
-	NativeLanguageSelect,
-	updateProfileSchema,
-	useUpdateProfileMutation
+	NativeLanguageSelect
 } from '@/features/profile'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
+import {
+	type UpdateProfileInput,
+	updateProfileSchema,
+	useUpdateProfileMutation
+} from '@/api'
 import { getDefaultValues } from './ProfileForm.helpers'
 import styles from './ProfileForm.module.scss'
 

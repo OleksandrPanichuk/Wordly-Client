@@ -11,7 +11,7 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 
 interface ISubscriptionInfoProps {
-	data: TypeSubscription | undefined
+	data: TypeSubscription | null
 }
 
 export const SubscriptionInfo = ({ data }: ISubscriptionInfoProps) => {

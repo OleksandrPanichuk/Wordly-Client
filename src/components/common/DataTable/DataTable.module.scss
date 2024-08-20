@@ -1,0 +1,21 @@
+.pagination {
+	&Wrapper {
+		@apply flex items-center justify-end px-2 py-4;
+	}
+	&Container {
+		@apply flex flex-col gap-y-2 xs:flex-row items-center space-x-6 lg:space-x-8;
+	}
+}
+
+.pageSize {
+	&Wrapper {
+		@apply flex items-center space-x-2;
+	}
+	&Text {
+		@apply text-sm font-medium;
+	}
+
+	&Trigger {
+		@apply h-8 w-[70px];
+	}
+}

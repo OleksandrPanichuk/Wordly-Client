@@ -1,5 +1,6 @@
+import { DashboardApi } from '@/api'
 import { Text, Title } from '@/components/ui'
-import { DashboardApi, EditingDashboardView } from '@/features/dashboard'
+import { EditingDashboardView } from '@/features/dashboard'
 
 const EditDashboardPage = async () => {
 	const data = await DashboardApi.getEditingStats()

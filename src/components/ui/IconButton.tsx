@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority'
 import { icons, LucideProps } from 'lucide-react'
 import { ButtonHTMLAttributes } from 'react'
 
-const iconButtonVariants = cva('transition-all duration-300 cursor-pointer', {
+export const iconButtonVariants = cva('transition-all duration-300 cursor-pointer', {
 	variants: {
 		variant: {
 			gray: 'text-tw-black bg-tw-gray-50 hover:bg-tw-gray-75',
@@ -35,7 +35,7 @@ export const IconButton = ({
 	...props
 }: TypeIconButtonProps) => {
 	return (
-		<button className={iconButtonVariants({ className, variant, size })}>
+		<button className={iconButtonVariants({ className, variant, size })} {...props}>
 			{'lname' in props ? (
 				(() => {
 					const LucideIcon = icons[props.lname]

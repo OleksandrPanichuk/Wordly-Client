@@ -1,16 +1,15 @@
+import { BillingApi } from '@/api'
 import { Title } from '@/components/ui'
 import {
 	BillingInfoForm,
-	getPayments,
-	getSubscription,
 	InvoiceHistory,
 	SubscriptionInfo
 } from '@/features/billing'
 
 const DashboardBillingPage = async () => {
 	const [payments, subscription] = await Promise.all([
-		getPayments(),
-		getSubscription()
+		BillingApi.getPayments(),
+		BillingApi.getSubscription()
 	])
 
 	return (
