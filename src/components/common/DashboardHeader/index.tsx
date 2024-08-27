@@ -1,11 +1,17 @@
 'use client'
 
+import { useSignOutMutation } from '@/api'
 import { Sidebar } from '@/components/common'
 import {
 	Avatar,
 	AvatarFallback,
 	AvatarImage,
 	Button,
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
 	IconButton,
 	Text
 } from '@/components/ui'
@@ -14,12 +20,13 @@ import {
 	editPanelSidebarLinks,
 	Routes
 } from '@/constants'
-import { selectAuthUser } from '@/features/auth'
-import { useAppSelector } from '@/store'
-import { TypeSubscription, UserRole } from '@/types'
+import { useAuth } from '@/providers'
+import {  UserRole } from '@/types'
+import { HomeIcon, LogOutIcon, UserIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { headerContentMap } from './DashboardHeader.data'
+import type { TypeSubscription } from '@/features/billing'
 
 interface IHeaderProps {
 	subscription: TypeSubscription | null
@@ -29,7 +36,8 @@ export const DashboardHeader = ({ subscription }: IHeaderProps) => {
 	const pathname = usePathname()
 	const router = useRouter()
 
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
+	const { mutate: signOut } = useSignOutMutation()
 
 	const leftSection = headerContentMap.find((item) =>
 		pathname.includes(item.pathname)
@@ -63,11 +71,11 @@ export const DashboardHeader = ({ subscription }: IHeaderProps) => {
 						<Link href={Routes.EDIT_PANEL}>Edit mode</Link>
 					</Button>
 				)}
-				{(isEditPanel || isAdminPanel) && (
-					<Button variant="ghost" onClick={router.back}>
-						Back
-					</Button>
-				)}
+
+				<Button variant="ghost" onClick={router.back}>
+					Back
+				</Button>
+
 				{isAdmin && !isAdminPanel && (
 					<IconButton
 						lname="Shield"
@@ -76,17 +84,45 @@ export const DashboardHeader = ({ subscription }: IHeaderProps) => {
 						onClick={() => router.push(Routes.ADMIN_PANEL)}
 					/>
 				)}
-				<Link href={Routes.PROFILE}>
-					<Avatar>
-						<AvatarImage
-							width={40}
-							height={40}
-							src={user?.avatar?.url}
-							alt={user?.username}
-						/>
-						<AvatarFallback>{user?.username[0]}</AvatarFallback>
-					</Avatar>
-				</Link>
+
+				<DropdownMenu>
+					<DropdownMenuTrigger asChild>
+						<Avatar className="cursor-pointer">
+							<AvatarImage
+								width={40}
+								height={40}
+								src={user?.avatar?.url}
+								alt={user?.username}
+							/>
+							<AvatarFallback>{user?.username[0]}</AvatarFallback>
+						</Avatar>
+					</DropdownMenuTrigger>
+					<DropdownMenuContent align="end" className='min-w-[150px]'>
+						<DropdownMenuItem asChild>
+							<Link href={Routes.ROOT}>
+								<HomeIcon className="mr-2" />
+								Home
+							</Link>
+						</DropdownMenuItem>
+						<DropdownMenuItem asChild>
+							<Link href={Routes.PROFILE}>
+								<UserIcon className="mr-2" />
+								Profile
+							</Link>
+						</DropdownMenuItem>
+						<DropdownMenuSeparator className="my-1" />
+						<DropdownMenuItem
+							asChild
+							className="hover:!bg-red-200 hover:!text-red-700 w-full"
+						>
+							<button onClick={() => signOut()}>
+								<LogOutIcon className="mr-2" />
+								Sign Out
+							</button>
+						</DropdownMenuItem>
+					</DropdownMenuContent>
+				</DropdownMenu>
+
 				<Sidebar.Mobile
 					links={isEditPanel ? editPanelSidebarLinks : dashboardSidebarLinks}
 					subscribed={!!subscription}

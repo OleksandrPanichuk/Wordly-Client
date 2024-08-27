@@ -1,12 +1,11 @@
 'use client'
 
 import { Text, Title } from '@/components/ui'
-import { selectAuthUser } from '@/features/auth'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 
 // TODO: landing page
 export default function Home() {
-	const user = useAppSelector(selectAuthUser)
+	const {user} = useAuth()
 	return (
 		<div>
 			<Title

@@ -1,14 +1,10 @@
-import type { TypeTranscription } from './common.types'
+import type { PartOfSpeech } from './common.types'
 
-export type PartOfSpeech =
-	| 'VERB'
-	| 'NOUN'
-	| 'PRONOUN'
-	| 'ADJECTIVE'
-	| 'ADVERB'
-	| 'INTERJECTION'
-	| 'PREPOSITION'
-	| 'CONJUNCTION'
+export type TypeTranscription = {
+	en?: string
+	us?: string
+}
+
 
 export type TypeWord = {
 	id: string

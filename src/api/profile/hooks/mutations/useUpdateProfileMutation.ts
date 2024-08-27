@@ -1,9 +1,8 @@
 'use client'
 import { ProfileApi } from '@/api'
 import { Routes } from '@/constants'
-import { authActions } from '@/features/auth'
 import { useMutation } from '@/hooks'
-import { useAppActions } from '@/store'
+import { useAuth } from '@/providers'
 import { TypeUser } from '@/types'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
@@ -13,7 +12,7 @@ type Options = {
 }
 
 export const useUpdateProfileMutation = ({ onSuccess }: Options = {}) => {
-	const { setUser } = useAppActions(authActions)
+	const { setUser } = useAuth()
 	const router = useRouter()
 
 	return useMutation({

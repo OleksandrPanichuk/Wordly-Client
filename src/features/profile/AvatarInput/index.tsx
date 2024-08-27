@@ -1,5 +1,6 @@
 'use client'
 
+import { UpdateProfileInput } from '@/api'
 import {
 	Avatar,
 	AvatarFallback,
@@ -7,11 +8,9 @@ import {
 	FormField,
 	FormItem
 } from '@/components/ui'
-import { UpdateProfileInput } from '@/features/profile'
 import { Control } from 'react-hook-form'
 
-import { selectAuthUser } from '@/features/auth'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { ElementRef, useRef } from 'react'
 import styles from './AvatarInput.module.scss'
 
@@ -21,7 +20,7 @@ interface IAvatarInputProps {
 }
 
 export const AvatarInput = ({ control, disabled }: IAvatarInputProps) => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 	const inputRef = useRef<ElementRef<'input'>>(null)
 
 	const handleClick = () => {
@@ -54,11 +53,10 @@ export const AvatarInput = ({ control, disabled }: IAvatarInputProps) => {
 							multiple={false}
 							accept="image/*"
 							name={field.name}
-							
 							disabled={disabled}
 						/>
 					</Avatar>
-					<button onClick={handleClick}  type="button" disabled={disabled}>
+					<button onClick={handleClick} type="button" disabled={disabled}>
 						Change
 					</button>
 				</FormItem>

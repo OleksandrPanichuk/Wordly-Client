@@ -1,6 +1,6 @@
 import { ApiRoutes } from '@/constants'
 import { fetcher } from '@/lib'
-import { DictionaryMode, TypeDictionaryWord } from '@/types'
+import type { DictionaryMode, TypeDictionaryWord } from '@/features/dictionary'
 import qs from 'query-string'
 import type { SearchWordsInput, SearchWordsResponse } from './dictionary.dto'
 

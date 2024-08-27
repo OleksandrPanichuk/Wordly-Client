@@ -1,4 +1,4 @@
-import { TypeDictionaryWord } from '@/types'
+import type { TypeDictionaryWord } from '@/features/dictionary'
 import { z } from 'zod'
 
 export const searchWordsSchema = z.object({

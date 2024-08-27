@@ -1,8 +1,8 @@
-"use client"
+'use client'
 export * from './Avatar'
 export * from './Button'
 export * from './Card'
-export * from "./Dialog"
+export * from './Dialog'
 export * from './DropdownMenu'
 export * from './Form'
 export * from './IconButton'
@@ -20,3 +20,5 @@ export * from './Title'
 export * from './Tooltip'
 export * from './Badge'
 export * from './Select'
+export * from './Textarea'
+export * from './ImageDropzone'

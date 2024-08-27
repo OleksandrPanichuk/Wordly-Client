@@ -1,12 +1,12 @@
 'use client'
 import { Routes } from '@/constants'
-import { ImageSlider, selectAuthUser } from '@/features/auth'
-import { useAppSelector } from '@/store'
+import { ImageSlider } from '@/features/auth'
+import { useAuth } from '@/providers'
 import { redirect } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
 export const AuthLayout = ({ children }: PropsWithChildren) => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 
 	if (user) return redirect(Routes.ROOT)
 

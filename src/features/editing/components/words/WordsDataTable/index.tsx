@@ -2,18 +2,17 @@
 
 import { useInfiniteWordsQuery } from '@/api'
 import { DataTable } from '@/components/common'
-import { selectAuthUser } from '@/features/auth'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { columns } from './columns'
 import styles from './WordsDataTable.module.scss'
 
 export const WordsDataTable = () => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 	const searchParams = useSearchParams()
 	const searchValue = searchParams.get('q') ?? undefined
-	
+
 	const [take, setTake] = useState<number>(10)
 
 	const {

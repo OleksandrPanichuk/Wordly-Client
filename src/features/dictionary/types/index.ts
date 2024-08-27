@@ -1,4 +1,4 @@
-import { PartOfSpeech } from './word.types'
+import { PartOfSpeech } from "@/types"
 
 export type TypeSearchDictionaryWord = {
 	id: string

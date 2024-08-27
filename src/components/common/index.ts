@@ -1,3 +1,4 @@
+// Common components
 export * from './Counter'
 export * from './DashboardHeader'
 export * from './DataTable'

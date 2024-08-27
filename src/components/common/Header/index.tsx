@@ -1,11 +1,10 @@
 'use client'
 import { Logo } from '@/components/common'
-import { selectAuthUser } from '@/features/auth'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { Navbar, Search, SignInButton, UserMenu } from './components'
 
 export const Header = () => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 	return (
 		<header className="sticky z-50 top-0 page__container p-4 sm:px-7  w-full backdrop-blur bg-white bg-opacity-80 flex items-center gap-4 h-[4.5rem]">
 			<Logo className="mr-4" withText width={35} height={35} />

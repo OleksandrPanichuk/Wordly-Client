@@ -2,7 +2,7 @@
 
 import { Button, Text, Title } from '@/components/ui'
 import { Routes } from '@/constants'
-import { TypeSubscription } from '@/types'
+import type { TypeSubscription } from '@/features/billing'
 import {
 	getSubscription,
 	lemonSqueezySetup

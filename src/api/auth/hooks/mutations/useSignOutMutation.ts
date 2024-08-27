@@ -1,14 +1,13 @@
 'use client'
 import { AuthApi } from '@/api'
-import { authActions } from '@/features/auth'
-import { useAppActions } from '@/store'
+import { useAuth } from '@/providers'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
 export const useSignOutMutation = () => {
 	const router = useRouter()
-	const { removeUser } = useAppActions(authActions)
+	const { removeUser } = useAuth()
 
 	const { mutate, ...state } = useMutation({
 		mutationFn: AuthApi.signOut,

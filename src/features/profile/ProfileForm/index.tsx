@@ -24,16 +24,18 @@ import {
 	updateProfileSchema,
 	useUpdateProfileMutation
 } from '@/api'
+import { useAuthStore } from '@/providers'
 import { getDefaultValues } from './ProfileForm.helpers'
 import styles from './ProfileForm.module.scss'
 
 export const ProfileForm = () => {
 	const router = useRouter()
+	const authStore = useAuthStore()
 
 	const form = useForm<UpdateProfileInput>({
 		resolver: zodResolver(updateProfileSchema),
 		mode: 'onBlur',
-		defaultValues: getDefaultValues()
+		defaultValues: getDefaultValues(authStore)
 	})
 
 	const {
@@ -48,7 +50,7 @@ export const ProfileForm = () => {
 	const onSubmit = (values: UpdateProfileInput) => updateProfile(values)
 
 	const handleBack = () => {
-		reset(getDefaultValues())
+		reset(getDefaultValues(authStore))
 		router.back()
 	}
 

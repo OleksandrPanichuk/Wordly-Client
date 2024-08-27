@@ -1,7 +1,7 @@
 import { SvgIcon } from '@/components/common'
 import { ExamplesModal } from '@/components/modals'
+import type { TypeDictionaryWord } from '@/features/dictionary'
 import { capitalize, cn, highlightWordInExample } from '@/lib'
-import { TypeDictionaryWord } from '@/types'
 import { BrainIcon } from 'lucide-react'
 
 interface IWordExamplesProps {

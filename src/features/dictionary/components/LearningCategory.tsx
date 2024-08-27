@@ -1,6 +1,6 @@
 import { Button, Text, Title } from '@/components/ui'
+import type { TypeLearningCategory } from '@/features/dictionary'
 import { cn } from '@/lib'
-import { TypeLearningCategory } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 

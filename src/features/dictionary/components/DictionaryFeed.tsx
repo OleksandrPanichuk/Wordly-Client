@@ -1,7 +1,10 @@
 'use client'
 
-import { DictionaryCard, DictionaryCardSkeleton } from '@/features/dictionary'
-import { TypeSearchDictionaryWord } from '@/types'
+import {
+	DictionaryCard,
+	DictionaryCardSkeleton,
+	type TypeSearchDictionaryWord
+} from '@/features/dictionary'
 
 interface IDictionaryFeedProps {
 	data: TypeSearchDictionaryWord[][]

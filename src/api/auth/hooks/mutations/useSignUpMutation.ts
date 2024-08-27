@@ -1,8 +1,7 @@
 'use client'
-import { AuthApi,type SignUpInput } from '@/api'
-import { authActions } from '@/features/auth'
+import { AuthApi, type SignUpInput } from '@/api'
 import { useMutation } from '@/hooks'
-import { useAppActions } from '@/store'
+import { useAuth } from '@/providers'
 import { TypeUser } from '@/types'
 import { UseMutationOptions } from '@tanstack/react-query'
 import { AxiosResponse } from 'axios'
@@ -13,7 +12,7 @@ export const useSignUpMutation = (
 		'mutationFn'
 	>
 ) => {
-	const { setUser } = useAppActions(authActions)
+	const { setUser } = useAuth()
 	return useMutation({
 		...options,
 		mutationFn: AuthApi.signUp,

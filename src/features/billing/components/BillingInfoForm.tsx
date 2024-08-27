@@ -17,14 +17,13 @@ import {
 	FormMessage,
 	Input
 } from '@/components/ui'
-import { selectAuthUser } from '@/features/auth'
 import {
 	billingPlans,
 	CountrySelect,
-	PhoneNumberInput,
+	PhoneNumberInput
 } from '@/features/billing'
 import { getCountryCode, getCountryName } from '@/lib'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { TypeCountryCode } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import isEqual from 'lodash.isequal'
@@ -37,7 +36,7 @@ interface IBillingInfoFormProps {
 }
 
 export const BillingInfoForm = ({ planId }: IBillingInfoFormProps) => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 
 	const form = useForm<BillingInfoInput>({
 		resolver: zodResolver(billingInfoSchema),

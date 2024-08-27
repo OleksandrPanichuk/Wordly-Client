@@ -1,20 +1,19 @@
 'use client'
+import { useDictionarySearchQuery } from '@/api'
 import { Logo } from '@/components/common'
 import { Text, Title } from '@/components/ui'
 import {
 	DictionaryFeed,
 	DictionaryInput,
+	learningCategories,
 	LearningCategory,
-	selectDictionarySearchValue,
+	useDictionaryStore
 } from '@/features/dictionary'
 import { useDebounce } from '@/hooks'
-import { useAppSelector } from '@/store'
-import { learningCategories } from './page.data'
-import { useDictionarySearchQuery } from '@/api'
 
 // TODO: see whether infinite loading is working or not
 const DictionaryPage = () => {
-	const searchValue = useAppSelector(selectDictionarySearchValue)
+	const searchValue = useDictionaryStore((s) => s.searchValue)
 	const debouncedSearchValue = useDebounce(searchValue, 300)
 
 	const { data, isFetching, ref } = useDictionarySearchQuery({

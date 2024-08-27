@@ -19,7 +19,7 @@ import {
 	TableRow,
 	Title
 } from '@/components/ui'
-import { TypePayment } from '@/types'
+import type { TypePayment } from '@/features/billing'
 import { useState } from 'react'
 import { columns } from './columns'
 

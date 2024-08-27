@@ -1,6 +1,6 @@
 import { ApiRoutes } from '@/constants'
 import { fetcher } from '@/lib'
-import { TypeEditingStats } from '@/types'
+import type { TypeEditingStats } from '@/features/dashboard'
 
 const getEditingStats = async () => {
 	return await fetcher.getOrNull<TypeEditingStats>(ApiRoutes.STATISTICS.EDITING)

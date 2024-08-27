@@ -1,5 +1,5 @@
 import { Images, Routes } from '@/constants'
-import { TypeLearningCategory } from '@/types'
+import { TypeLearningCategory } from '@/features/dictionary'
 
 export const learningCategories = [
 	{

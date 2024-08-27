@@ -8,9 +8,9 @@ import {
 	CardTitle,
 	Separator
 } from '@/components/ui'
-import { billingReasonMap } from '@/constants'
+import { billingReasonBadgeVariantsMap } from '@/constants'
 import { capitalize, formatCurrency, toDateString } from '@/lib'
-import { TypePayment } from '@/types'
+import  type { TypePayment } from '@/features/billing'
 import { Product, Variant } from '@lemonsqueezy/lemonsqueezy.js'
 import { format } from 'date-fns'
 import { billingPlans } from '@/features/billing'
@@ -47,7 +47,9 @@ export const PaymentView = ({
 					<div>
 						<div className="flex items-center gap-2">
 							<p>Billing reason:</p>
-							<Badge variant={billingReasonMap[payment.billingReason]}>
+							<Badge
+								variant={billingReasonBadgeVariantsMap[payment.billingReason]}
+							>
 								{capitalize(payment.billingReason)}
 							</Badge>
 						</div>

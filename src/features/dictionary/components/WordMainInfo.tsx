@@ -1,7 +1,7 @@
 import { SvgIcon } from '@/components/common'
 import { Skeleton, Title } from '@/components/ui'
 import { Images } from '@/constants'
-import { TypeDictionaryWord } from '@/types'
+import type { TypeDictionaryWord } from '@/features/dictionary'
 import Image from 'next/image'
 
 interface IWordMainInfoProps {

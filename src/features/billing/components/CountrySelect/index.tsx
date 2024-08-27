@@ -1,5 +1,5 @@
 'use client'
-import { BillingInfoInput } from '@/features/billing'
+import { BillingInfoInput } from '@/api'
 import { cn, getCountryCode, getCountryNames } from '@/lib'
 import {
 	Combobox,

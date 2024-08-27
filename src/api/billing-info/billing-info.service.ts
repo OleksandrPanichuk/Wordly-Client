@@ -1,12 +1,9 @@
 import { ApiRoutes } from '@/constants'
-import { BillingInfoInput, billingInfoSchema } from './billing-info.dto'
+import type { TypeBillingInfo } from '@/features/billing'
 import { axios, fetcher } from '@/lib'
-import { store } from '@/store'
-import { TypeBillingInfo } from '@/types'
+import { BillingInfoInput, billingInfoSchema } from './billing-info.dto'
 
-const get = async (id?: string) => {
-	const userId = id ?? store?.getState()?.auth?.user?.id
-
+const get = async (userId?: string) => {
 	if (!userId) {
 		throw new Error('Unauthorized')
 	}
@@ -14,9 +11,7 @@ const get = async (id?: string) => {
 	return await fetcher.get<TypeBillingInfo>(ApiRoutes.BILLING_INFO.ROOT(userId))
 }
 
-const create = async (dto: BillingInfoInput) => {
-	const userId = store.getState().auth.user?.id
-
+const create = async (dto: BillingInfoInput, userId?: string) => {
 	if (!userId) {
 		throw new Error('Unauthorized')
 	}
@@ -31,10 +26,9 @@ const create = async (dto: BillingInfoInput) => {
 
 const update = async (
 	billingInfoId: string,
-	dto: Partial<BillingInfoInput>
+	dto: Partial<BillingInfoInput>,
+	userId?: string
 ) => {
-	const userId = store.getState().auth.user?.id
-
 	if (!userId) {
 		throw new Error('Unauthorized')
 	}

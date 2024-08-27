@@ -1,7 +1,7 @@
 'use client'
 import { Counter } from '@/components/common'
 import { Card, CardContent, CardHeader, CardTitle, Text } from '@/components/ui'
-import { TypeEditingStats } from '@/types'
+import type { TypeEditingStats } from '@/features/dashboard'
 import { motion } from 'framer-motion'
 
 import { getVariants, stats } from './EditingDashboardView.data'

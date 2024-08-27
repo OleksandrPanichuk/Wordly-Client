@@ -1,10 +1,12 @@
-import { UpdateProfileInput } from '@/features/profile'
-import { store } from '@/store'
+import { UpdateProfileInput } from '@/api'
+import { AuthStore } from '@/providers'
+import { StoreApi } from 'zustand'
 
 export const getDefaultValues = (
+	store: StoreApi<AuthStore>
 ): Partial<UpdateProfileInput> => {
-	const user = store.getState().auth.user
-	
+	const user = store.getState().user
+
 	return {
 		gender: user?.gender ?? undefined,
 		nativeLanguage: user?.nativeLanguage ?? undefined,

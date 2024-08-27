@@ -11,15 +11,14 @@ import {
 	Text
 } from '@/components/ui'
 import { Routes } from '@/constants'
-import { selectAuthUser } from '@/features/auth'
 import { capitalize, getLanguageName } from '@/lib'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { EditIcon, GlobeIcon, MailIcon, PersonStandingIcon } from 'lucide-react'
 import Link from 'next/link'
 import styles from './ProfileView.module.scss'
 
 export const ProfileView = () => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 
 	const { mutate: deleteProfile, isPending } = useDeleteProfileMutation()
 

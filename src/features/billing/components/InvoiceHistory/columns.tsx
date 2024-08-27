@@ -1,6 +1,6 @@
 'use client'
 import { capitalize, formatCurrency, formatRelativeDate } from '@/lib'
-import { BillingReason, TypePayment } from '@/types'
+import type { TypePayment } from '@/features/billing'
 import { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react'
 
@@ -14,10 +14,8 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger
 } from '@/components/ui'
-import { billingReasonMap, Routes } from '@/constants'
+import { billingReasonBadgeVariantsMap, Routes } from '@/constants'
 import { useRouter } from 'next/navigation'
-
-
 
 export const columns: ColumnDef<TypePayment>[] = [
 	{
@@ -49,7 +47,7 @@ export const columns: ColumnDef<TypePayment>[] = [
 				<ArrowUpDown className="ml-2 size-4" />
 			</Button>
 		),
-		cell: ({ row }) => formatCurrency(row.original.subtotal )
+		cell: ({ row }) => formatCurrency(row.original.subtotal)
 	},
 	{
 		accessorKey: 'tax',
@@ -63,7 +61,7 @@ export const columns: ColumnDef<TypePayment>[] = [
 			</Button>
 		),
 		cell: ({ row }) =>
-			row.original.tax > 0 ? formatCurrency(row.original.tax ) : '—'
+			row.original.tax > 0 ? formatCurrency(row.original.tax) : '—'
 	},
 	{
 		accessorKey: 'total',
@@ -92,7 +90,9 @@ export const columns: ColumnDef<TypePayment>[] = [
 		cell: ({ row }) => {
 			const reason = row.original.billingReason
 			return (
-				<Badge variant={billingReasonMap[reason]}>{capitalize(reason)}</Badge>
+				<Badge variant={billingReasonBadgeVariantsMap[reason]}>
+					{capitalize(reason)}
+				</Badge>
 			)
 		}
 	},

@@ -13,12 +13,11 @@ import {
 	TooltipTrigger
 } from '@/components/ui'
 import { Images } from '@/constants'
-import { selectAuthUser } from '@/features/auth'
-import { useAppSelector } from '@/store'
 import { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, EditIcon, MoreHorizontal, TrashIcon } from 'lucide-react'
 import Image from 'next/image'
 
+import { useAuth } from '@/providers'
 import styles from './WordsDataTable.module.scss'
 
 export const columns: ColumnDef<GetAllWordsResponse['words'][0]>[] = [
@@ -45,7 +44,7 @@ export const columns: ColumnDef<GetAllWordsResponse['words'][0]>[] = [
 			)
 		},
 		cell: ({ row }) => {
-			return <Text>{row.original.name}</Text>
+			return <Text color={'black'}>{row.original.name}</Text>
 		}
 	},
 	{
@@ -57,17 +56,17 @@ export const columns: ColumnDef<GetAllWordsResponse['words'][0]>[] = [
 		),
 		cell: ({ row }) => {
 			const phonetics = row.original.transcription
-			if (!phonetics.en || !phonetics.us) {
+			if (!phonetics.en && !phonetics.us) {
 				return <>No transcription</>
 			}
 
 			return (
-				<div>
+				<div className={styles.phonetics}>
 					{phonetics?.en && (
 						<div className={styles.phoneticsImageWrapper}>
 							<Image
-								width={30}
-								height={30}
+								width={24}
+								height={24}
 								src={Images.EN_FLAG}
 								alt="en-pronunciation"
 								className={styles.phoneticsImage}
@@ -78,8 +77,8 @@ export const columns: ColumnDef<GetAllWordsResponse['words'][0]>[] = [
 					{phonetics?.us && (
 						<div className={styles.phoneticsImageWrapper}>
 							<Image
-								width={30}
-								height={30}
+								width={24}
+								height={24}
 								src={Images.US_FLAG}
 								alt="us-pronunciation"
 								className={styles.phoneticsImage}
@@ -150,7 +149,7 @@ export const columns: ColumnDef<GetAllWordsResponse['words'][0]>[] = [
 	{
 		id: 'options',
 		cell: function Options({ row }) {
-			const user = useAppSelector(selectAuthUser)
+			const { user } = useAuth()
 
 			return (
 				<DropdownMenu>
@@ -160,7 +159,10 @@ export const columns: ColumnDef<GetAllWordsResponse['words'][0]>[] = [
 							<MoreHorizontal className="size-4" />
 						</Button>
 					</DropdownMenuTrigger>
-					<DropdownMenuContent>
+					<DropdownMenuContent
+						align={'end'}
+						className={'min-w-[200px] space-y-2'}
+					>
 						<DropdownMenuItem>
 							<EditIcon className="mr-2" />
 							Edit

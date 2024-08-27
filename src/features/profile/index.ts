@@ -1,1 +1,5 @@
-export * from './components'
+export * from './AvatarInput'
+export * from './GenderSelect'
+export * from './NativeLanguageSelect'
+export * from './ProfileForm'
+export * from './ProfileView'

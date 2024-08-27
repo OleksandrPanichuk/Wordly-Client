@@ -1,10 +1,10 @@
 'use client'
-import { type BillingInfoInput } from '@/features/billing'
+import type { TypeBillingInfo } from '@/features/billing'
 import { cn, getCountryCode } from '@/lib'
-import type { TypeBillingInfo } from '@/types'
 import { ControllerRenderProps } from 'react-hook-form'
 import PhoneInput from 'react-phone-input-2'
 
+import type { BillingInfoInput } from '@/api'
 import { useEffect, useState } from 'react'
 import styles from './PhoneNumberInput.module.scss'
 

@@ -1,4 +1,4 @@
-import { TypeEditingStats } from '@/types'
+import type { TypeEditingStats } from '@/features/dashboard'
 import { Variants } from 'framer-motion'
 
 export const stats: { key: keyof TypeEditingStats; title: string }[] = [

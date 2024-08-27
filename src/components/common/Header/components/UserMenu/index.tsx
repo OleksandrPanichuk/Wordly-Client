@@ -1,5 +1,6 @@
 'use client'
 
+import { useSignOutMutation } from '@/api'
 import { Visibility } from '@/components/common'
 import {
 	Avatar,
@@ -14,17 +15,15 @@ import {
 	Text
 } from '@/components/ui'
 import { Routes } from '@/constants'
-import { selectAuthUser } from '@/features/auth'
 import { cn } from '@/lib'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
 import { links } from './UserMenu.data'
 import styles from './UserMenu.module.scss'
-import { useSignOutMutation } from '@/api'
 
 export const UserMenu = () => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 	const { isPending, mutate: signOut } = useSignOutMutation()
 
 	if (!user) return null
@@ -95,7 +94,7 @@ export const UserMenu = () => {
 }
 
 UserMenu.Mobile = function UserMenuMobile() {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 	const { mutate: signOut, isPending } = useSignOutMutation()
 
 	if (!user) return null

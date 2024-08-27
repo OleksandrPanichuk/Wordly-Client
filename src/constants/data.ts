@@ -1,6 +1,7 @@
-import { BillingReason, BreakpointsType, DictionaryMode } from '@/types'
-
-import { TypeSidebarLink } from '@/types'
+import {
+	BreakpointsType,
+	TypeSidebarLink
+} from '@/types'
 import {
 	ALargeSmallIcon,
 	BarChartBig,
@@ -15,6 +16,8 @@ import {
 	WalletIcon
 } from 'lucide-react'
 import { Routes } from './routes'
+import { DictionaryMode } from '@/features/dictionary'
+import { BillingReason } from '@/features/billing'
 
 export const adminPanelSidebarLinks: TypeSidebarLink[] = []
 
@@ -102,7 +105,7 @@ export const breakpoints: Record<BreakpointsType, string> = {
 	'max-xs': '(max-width: 439.98px)'
 }
 
-export const billingReasonMap = {
+export const billingReasonBadgeVariantsMap = {
 	[BillingReason.INITIAL]: 'red',
 	[BillingReason.RENEWAL]: 'green',
 	[BillingReason.UPDATED]: 'orange'

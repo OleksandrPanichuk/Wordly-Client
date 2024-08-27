@@ -1,0 +1,23 @@
+.wrapper {
+  @apply flex flex-col gap-3
+}
+
+.input {
+  @apply flex items-center gap-2
+}
+
+.example {
+  @apply flex items-start gap-2 justify-between list-disc;
+  > p {
+    @apply text-sm;
+    > span {
+      color: rgb(57, 21, 122);
+      font-weight: 500;
+    }
+  }
+}
+
+
+.remove {
+  @apply text-destructive size-8;
+}

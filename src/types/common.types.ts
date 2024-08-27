@@ -1,6 +1,17 @@
 import { Checkout } from '@lemonsqueezy/lemonsqueezy.js'
 import { LucideIcon } from 'lucide-react'
 
+export enum PartOfSpeech {
+	VERB = 'VERB',
+	NOUN = 'NOUN',
+	PRONOUN = 'PRONOUN',
+	ADJECTIVE = 'ADJECTIVE',
+	ADVERB = 'ADVERB',
+	INTERJECTION = 'INTERJECTION',
+	PREPOSITION = 'PREPOSITION',
+	CONJUNCTION = 'CONJUNCTION'
+}
+
 export type BreakpointsType =
 	| 'lg'
 	| 'max-lg'
@@ -28,8 +39,4 @@ export type TypeSidebarLink = {
 export enum SortByOptions {
 	ASC = 'asc',
 	DESC = 'desc'
-}
-export type TypeTranscription = {
-	en?: string
-	us?: string
 }

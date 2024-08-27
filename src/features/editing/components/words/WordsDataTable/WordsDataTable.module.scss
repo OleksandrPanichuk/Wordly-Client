@@ -2,10 +2,14 @@
 	@apply flex items-center justify-end space-x-2;
 }
 
+.phonetics {
+	@apply w-full flex justify-center flex-col items-center gap-2;
+}
+
 .phoneticsImage {
-	@apply rounded-full;
+	@apply rounded-full ;
 	&Wrapper {
-		@apply text-gray-500 text-xl font-medium font-quicksand flex gap-4;
+		@apply text-gray-500 text-sm font-medium font-quicksand flex gap-4;
 	}
 }
 
@@ -18,13 +22,13 @@
 
 .partsOfSpeech {
 	&Wrapper {
-		@apply flex flex-wrap gap-2;
+		@apply flex flex-wrap gap-2 justify-center;
 	}
 	&Tooltip {
 		@apply flex flex-col gap-2
 	}
 	&Item {
-		@apply bg-tw-blue-450  text-white py-1 px-3 rounded-xl md:text-base text-sm;
+		@apply bg-tw-blue-450  text-white py-1 px-2 rounded-xl md:text-sm  text-xs;
 		line-height: normal !important;
 	}
 }

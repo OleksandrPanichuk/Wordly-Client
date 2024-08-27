@@ -10,9 +10,8 @@ import {
 	SheetTrigger
 } from '@/components/ui'
 import { Routes } from '@/constants'
-import { selectAuthUser } from '@/features/auth'
 import { cn } from '@/lib'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { MenuIcon, UserIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { UserMenu } from '../UserMenu'
@@ -44,7 +43,7 @@ export const Navbar = () => {
 }
 
 Navbar.Mobile = function MobileNavbar() {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 	const pathname = usePathname()
 	return (
 		<Visibility bp="max-lg">

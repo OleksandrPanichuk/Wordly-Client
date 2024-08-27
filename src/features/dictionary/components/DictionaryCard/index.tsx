@@ -3,7 +3,7 @@
 import { Skeleton, Text, Title } from '@/components/ui'
 import { Routes } from '@/constants'
 import { capitalize } from '@/lib'
-import { TypeSearchDictionaryWord } from '@/types'
+import type { TypeSearchDictionaryWord } from '@/features/dictionary'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'

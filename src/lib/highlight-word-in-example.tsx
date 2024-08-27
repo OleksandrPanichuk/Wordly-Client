@@ -1,14 +1,13 @@
 import { Fragment } from 'react'
+import { compareWords, splitSentence } from '@/lib'
 
 export function highlightWordInExample(
 	example: string,
 	wordToHighlight: string
 ) {
 	const words = splitSentence(example)
-
 	const data = words.map((word, index) => {
-		const regex = new RegExp(`^${wordToHighlight}(s|ed)?(?![a-zA-Z])`, 'i')
-		return regex.test(word)
+		return compareWords(word, wordToHighlight)
 			? { value: word, highlighted: true, id: index }
 			: { value: word, id: index }
 	})
@@ -24,10 +23,4 @@ export function highlightWordInExample(
 			})}
 		</>
 	)
-}
-
-function splitSentence(sentence: string): string[] {
-	const wordPattern = /[\w\u0400-\u04FF]+|[.,!?]|[\s]+/g
-	const words = sentence.match(wordPattern)
-	return words ? words : []
 }

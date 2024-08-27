@@ -1,12 +1,11 @@
-import { selectAuthUser } from '@/features/auth'
 import { BillingInfoApi, type BillingInfoInput } from '@/api'
 import { useMutation } from '@/hooks'
-import { useAppSelector } from '@/store'
+import { useAuth } from '@/providers'
 import { useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
 export const useUpdateBillingInfoMutation = () => {
-	const user = useAppSelector(selectAuthUser)
+	const { user } = useAuth()
 	const queryClient = useQueryClient()
 
 	return useMutation({
@@ -16,7 +15,7 @@ export const useUpdateBillingInfoMutation = () => {
 		}: {
 			id: string
 		} & Partial<BillingInfoInput>) =>
-			(await BillingInfoApi.update(id, dto)).data,
+			(await BillingInfoApi.update(id, dto, user?.id)).data,
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: ['users', user?.id, 'billingInfo']

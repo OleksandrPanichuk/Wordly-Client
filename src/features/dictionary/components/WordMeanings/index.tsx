@@ -1,11 +1,12 @@
 import { SvgIcon } from '@/components/common'
 import { IconButton } from '@/components/ui'
 import { capitalize, cn } from '@/lib'
-import { PartOfSpeech, TypeDictionaryWord } from '@/types'
+import type{  TypeDictionaryWord } from '@/features/dictionary'
 import Image from 'next/image'
 import { formatOrderNumber } from './WordMeanings.helpers'
 
 import { WordExamples } from '@/features/dictionary'
+import { PartOfSpeech } from '@/types'
 
 interface IWordMeaningsProps {
 	definitions: TypeDictionaryWord['meanings'][0]['definitions']

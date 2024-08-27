@@ -34,6 +34,7 @@ export const ApiRoutes = {
 		EDITING: '/statistic/editing'
 	},
 	WORDS: {
-		ROOT: '/words'
+		ROOT: '/words',
+		BY_NAME: (name: string) => `/words/name/${name}`
 	}
 } as const

@@ -1,24 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
+import { create } from 'zustand'
 
 interface DictionaryState {
 	searchValue: string
+	setSearchValue: (value: string) => void
 }
 
-const initialState: DictionaryState = {
-	searchValue: ''
-}
-
-export const dictionarySlice = createSlice({
-	name: 'dictionary',
-	initialState,
-	reducers: {
-		setSearchValue: (state, action: PayloadAction<string>) => {
-			state.searchValue = action.payload
-		}
-	}
-})
-
-export * from './store.selectors'
-export const dictionaryActions = dictionarySlice.actions
-export const dictionaryReducer = dictionarySlice.reducer
+export const useDictionaryStore = create<DictionaryState>((set) => ({
+	searchValue: '',
+	setSearchValue: (value) => set({ searchValue: value })
+}))
