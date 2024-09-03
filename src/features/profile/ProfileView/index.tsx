@@ -1,7 +1,7 @@
 'use client'
 
 import { useDeleteProfileMutation } from '@/api'
-import { ConfirmModal } from '@/components/modals'
+
 import {
 	Avatar,
 	AvatarFallback,
@@ -11,6 +11,7 @@ import {
 	Text
 } from '@/components/ui'
 import { Routes } from '@/constants'
+import { useConfirm } from '@/hooks'
 import { capitalize, getLanguageName } from '@/lib'
 import { useAuth } from '@/providers'
 import { EditIcon, GlobeIcon, MailIcon, PersonStandingIcon } from 'lucide-react'
@@ -21,12 +22,23 @@ export const ProfileView = () => {
 	const { user } = useAuth()
 
 	const { mutate: deleteProfile, isPending } = useDeleteProfileMutation()
+	const [ConfirmDialog, confirm] = useConfirm({
+		loading: isPending
+	})
 
-	const handleDelete = () => {
+	const handleDelete = async () => {
+		const ok = await confirm()
+
+		if (!ok) {
+			return
+		}
+
 		deleteProfile({})
 	}
 
 	return (
+		<>
+		<ConfirmDialog />
 		<div className={styles.wrapper}>
 			<div className={styles.content}>
 				<div className={styles.top}>
@@ -91,11 +103,11 @@ export const ProfileView = () => {
 				</div>
 				<Text size="xs" className={styles.deleteWrapper}>
 					If you want to delete your account, click{' '}
-					<ConfirmModal loading={isPending} onConfirm={handleDelete}>
-						<button className={styles.deleteButton}>here</button>
-					</ConfirmModal>
+					<button className={styles.deleteButton} onClick={handleDelete}>
+						here
+					</button>
 				</Text>
 			</div>
-		</div>
+		</div></>
 	)
 }

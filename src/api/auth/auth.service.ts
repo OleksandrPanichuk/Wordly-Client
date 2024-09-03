@@ -8,7 +8,7 @@ import {
 	signUpSchema,
 	updatePasswordSchema
 } from '@/api'
-import { ApiRoutes } from '@/constants'
+import { ApiRoutes } from '@/constants/api-routes'
 import { absoluteApiUrl, axios } from '@/lib'
 import { TypeUser } from '@/types'
 import { AxiosResponse } from 'axios'

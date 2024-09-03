@@ -1,6 +1,6 @@
 'use server'
 
-import { SESSION_COOKIE_NAME } from '@/constants'
+import { SESSION_COOKIE_NAME } from '@/constants/data'
 import { TypeUser } from '@/types'
 import { cookies } from 'next/headers'
 import { ProfileApi } from './profile.service'

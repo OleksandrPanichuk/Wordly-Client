@@ -1,6 +1,6 @@
 'use client'
 import { DictionaryApi } from '@/api'
-import { DictionaryMode } from '@/types'
+import { DictionaryMode } from '@/features/dictionary'
 import { useQuery } from '@tanstack/react-query'
 
 type Props = {

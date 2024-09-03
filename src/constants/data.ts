@@ -1,7 +1,6 @@
-import {
-	BreakpointsType,
-	TypeSidebarLink
-} from '@/types'
+import { BillingReason } from '@/features/billing/types'
+import { DictionaryMode } from '@/features/dictionary/types'
+import { BreakpointsType, TypeSidebarLink } from '@/types'
 import {
 	ALargeSmallIcon,
 	BarChartBig,
@@ -16,8 +15,6 @@ import {
 	WalletIcon
 } from 'lucide-react'
 import { Routes } from './routes'
-import { DictionaryMode } from '@/features/dictionary'
-import { BillingReason } from '@/features/billing'
 
 export const adminPanelSidebarLinks: TypeSidebarLink[] = []
 

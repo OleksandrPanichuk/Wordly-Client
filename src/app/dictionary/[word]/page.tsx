@@ -3,14 +3,14 @@
 import { useGetWordQuery } from '@/api'
 import { Button } from '@/components/ui'
 
-import { Routes } from '@/constants'
+import { Routes } from '@/constants/routes'
 import {
 	ModeTabs,
 	WordExamples,
 	WordMainInfo,
 	WordMeanings
 } from '@/features/dictionary'
-import { DictionaryMode } from '@/types'
+import { DictionaryMode } from '@/features/dictionary'
 
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'

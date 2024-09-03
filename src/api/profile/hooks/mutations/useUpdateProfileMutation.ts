@@ -1,6 +1,6 @@
 'use client'
 import { ProfileApi } from '@/api'
-import { Routes } from '@/constants'
+import { Routes } from '@/constants/routes'
 import { useMutation } from '@/hooks'
 import { useAuth } from '@/providers'
 import { TypeUser } from '@/types'

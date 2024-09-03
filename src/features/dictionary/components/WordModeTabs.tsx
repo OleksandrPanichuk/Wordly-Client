@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui'
 import { DictionaryModes } from '@/constants'
-import { DictionaryMode } from '@/types'
+import { DictionaryMode } from '@/features/dictionary'
 
 interface IModeTabsProps {
 	onChange: (val: DictionaryMode) => void

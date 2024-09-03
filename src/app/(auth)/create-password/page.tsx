@@ -1,7 +1,7 @@
 import { Logo } from '@/components/common'
 
 import { Text, Title } from '@/components/ui'
-import { Routes } from '@/constants'
+import { Routes } from '@/constants/routes'
 import { CreatePasswordForm } from '@/features/auth'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'

@@ -1,4 +1,4 @@
-import { ApiRoutes } from '@/constants'
+import { ApiRoutes } from '@/constants/api-routes'
 import { fetcher } from '@/lib'
 import type { DictionaryMode, TypeDictionaryWord } from '@/features/dictionary'
 import qs from 'query-string'

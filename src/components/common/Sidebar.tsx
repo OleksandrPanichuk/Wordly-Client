@@ -6,9 +6,9 @@ import { Sheet, SheetContent, SheetTrigger, Text } from '@/components/ui'
 import {
 	adminPanelSidebarLinks,
 	dashboardSidebarLinks,
-	editPanelSidebarLinks,
-	Routes
-} from '@/constants'
+	editPanelSidebarLinks
+} from '@/constants/data'
+import { Routes } from '@/constants/routes'
 import { cn } from '@/lib'
 import { TypeSidebarLink } from '@/types'
 import { CrownIcon, LogOutIcon, MenuIcon } from 'lucide-react'

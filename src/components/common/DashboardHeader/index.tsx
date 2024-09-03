@@ -65,7 +65,7 @@ export const DashboardHeader = ({ subscription }: IHeaderProps) => {
 					</div>
 				</div>
 			)}
-			<div className="flex-1 flex items-center justify-end gap-3">
+			<div className="flex-1 flex items-center justify-end gap-1 md:gap-3">
 				{(subscription || isAdmin) && !isEditPanel && (
 					<Button variant="ghost" asChild>
 						<Link href={Routes.EDIT_PANEL}>Edit mode</Link>

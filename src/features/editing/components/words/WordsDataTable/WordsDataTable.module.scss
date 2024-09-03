@@ -20,15 +20,6 @@
 }
 
 
-.partsOfSpeech {
-	&Wrapper {
-		@apply flex flex-wrap gap-2 justify-center;
-	}
-	&Tooltip {
-		@apply flex flex-col gap-2
-	}
-	&Item {
-		@apply bg-tw-blue-450  text-white py-1 px-2 rounded-xl md:text-sm  text-xs;
-		line-height: normal !important;
-	}
+.content {
+	@apply rounded-md border bg-white;
 }

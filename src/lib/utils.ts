@@ -1,8 +1,8 @@
-import { APP_URL } from '@/constants'
+import { APP_URL } from '@/constants/env'
 import { type ClassValue, clsx } from 'clsx'
+import nlp from 'compromise'
 import { formatDate, formatDistanceToNowStrict } from 'date-fns'
 import { twMerge } from 'tailwind-merge'
-import nlp from 'compromise'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))

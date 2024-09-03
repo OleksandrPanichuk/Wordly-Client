@@ -12,15 +12,14 @@ import type {
 	PropsWithChildren
 } from 'react'
 
-
 type ComponentProps<T extends ElementType> = Omit<
 	ComponentPropsWithoutRef<T>,
 	'className'
 >
 
 export interface IDataTableProps<TValue> extends PropsWithChildren {
-	columns: ColumnDef<TValue >[]
-	data: TValue[] 
+	columns: ColumnDef<TValue>[]
+	data: TValue[]
 	isLoading?: boolean
 	withPagination?: boolean
 	withSorting?: boolean
@@ -31,6 +30,7 @@ export interface IDataTableContext<TValue> {
 	table: Table<TValue>
 	data: TValue[]
 	columns: ColumnDef<TValue>[]
+	isLoading?: boolean
 }
 
 export interface IDataTablePaginationProps
@@ -60,12 +60,14 @@ export interface IDataTablePageSizeSelectProps extends ComponentProps<'div'> {
 	optionProps?: Omit<SelectItemProps, 'className' | 'value'>
 }
 
-export interface IDataTableNextProps extends ComponentPropsWithoutRef<'button'> {
+export interface IDataTableNextProps
+	extends ComponentPropsWithoutRef<'button'> {
 	fetchNextPage?: () => void
 	hasNextPage?: boolean
 }
 
-export interface IDataTablePrevProps extends ComponentPropsWithoutRef<'button'> {
+export interface IDataTablePrevProps
+	extends ComponentPropsWithoutRef<'button'> {
 	fetchPreviousPage?: () => void
 	hasPreviousPage?: boolean
 }

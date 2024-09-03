@@ -1,5 +1,5 @@
-import { FormErrors } from '@/constants'
-import { testSentenceOnWord, zRequired } from '@/lib'
+import { FormErrors } from '@/constants/errors'
+import { testSentenceOnWord, zMongoId, zRequired } from '@/lib'
 import { PartOfSpeech, SortByOptions, TypeWord } from '@/types'
 import { z } from 'zod'
 
@@ -85,6 +85,16 @@ export const createWordSchemaWithRefinement = createWordSchema.refine(
 	}
 )
 
-export type CreateWordInput = z.infer<typeof createWordSchema>
+export type CreateWordInput = z.infer<typeof createWordSchema> & {
+	isAdmin: boolean
+}
 
 export const updateWordSchema = z.object({})
+
+export const deleteWordSchema = z.object({
+	id: zMongoId()
+})
+
+export type DeleteWordInput = z.infer<typeof deleteWordSchema> & {
+	isAdmin: boolean
+}

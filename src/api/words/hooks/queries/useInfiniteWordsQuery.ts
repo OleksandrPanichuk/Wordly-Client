@@ -2,22 +2,20 @@
 
 import { GetAllWordsInput, WordsApi } from '@/api'
 import { useInfiniteQueryRef } from '@/hooks'
-import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
-import { useEffect } from 'react'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 export const useInfiniteWordsQuery = (
 	dto: Omit<GetAllWordsInput, 'cursor'>
 ) => {
-	const queryClient = useQueryClient()
 	const state = useInfiniteQuery({
-		queryFn: () => WordsApi.getAll(dto),
+		queryFn: ({ pageParam }) =>
+			WordsApi.getAll({ ...dto, cursor: pageParam || undefined }),
 		queryKey: ['words', 'all', dto],
-		getNextPageParam: (prevPage) => prevPage.nextCursor,
-		getPreviousPageParam: (firstPage) => firstPage.nextCursor,
-		initialPageParam: undefined
+		getNextPageParam: (lastPage) => lastPage.nextCursor,
+		initialPageParam: ''
 	})
 
-	const {fetchNextPage, hasNextPage, isFetching, isLoading, isPlaceholderData} = state
+	const { fetchNextPage, hasNextPage, isFetching, isLoading } = state
 
 	const ref = useInfiniteQueryRef({
 		fetchNextPage,
@@ -25,26 +23,6 @@ export const useInfiniteWordsQuery = (
 		isFetching,
 		isLoading
 	})
-
-	useEffect(() => {
-		if (!isPlaceholderData && hasNextPage  && !dto?.searchValue) {
-			queryClient.prefetchInfiniteQuery({
-				queryKey: ['words','all', dto],
-				queryFn: () =>
-					WordsApi.getAll({}),
-				initialPageParam: undefined,
-				getNextPageParam:(lastPage) => lastPage.nextCursor,
-				pages: 2,
-				retry: false,
-				staleTime: 1000 * 60 * 30,
-			})
-		}
-	}, [
-		isPlaceholderData,
-		queryClient,
-		dto,
-		hasNextPage
-	])
 
 	return { ...state, ref }
 }

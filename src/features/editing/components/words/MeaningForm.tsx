@@ -18,14 +18,16 @@ import {
 	ImageDropzone,
 	Textarea
 } from '@/components/ui'
+import { PartOfSpeechSelect } from '@/features/editing'
+import { useAuth } from '@/providers'
+import { UserRole } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { DefaultValues, useForm } from 'react-hook-form'
-import { PartOfSpeechSelect } from '@/features/editing'
-import { ExamplesInput } from './ExamplesInput'
 import { useModalStore } from './CreateWordModal/CreateWordModal.store'
 import { Status } from './CreateWordModal/CreateWordModal.types'
+import { ExamplesInput } from './ExamplesInput'
 
-const getDefaultValues = (): DefaultValues<CreateWordInput> => {
+const getDefaultValues = (isAdmin: boolean): DefaultValues<CreateWordInput> => {
 	const values = useModalStore.getState().values
 	const meaning = values.meaning
 	return {
@@ -34,17 +36,19 @@ const getDefaultValues = (): DefaultValues<CreateWordInput> => {
 			definition: meaning?.definition ?? '',
 			examples: !!meaning?.examples?.length ? meaning.examples : [],
 			partOfSpeech: meaning?.partOfSpeech
-		}
+		},
+		isAdmin
 	}
 }
 
 export const MeaningForm = () => {
 	const { resetValues, values, close, setStatus } = useModalStore()
+	const { user } = useAuth()
 
 	const form = useForm<CreateWordInput>({
 		resolver: zodResolver(createWordSchemaWithRefinement),
 		mode: 'onBlur',
-		defaultValues: getDefaultValues()
+		defaultValues: getDefaultValues(user?.role === UserRole.ADMIN)
 	})
 
 	const { mutateAsync: createWord } = useCreateWordMutation()

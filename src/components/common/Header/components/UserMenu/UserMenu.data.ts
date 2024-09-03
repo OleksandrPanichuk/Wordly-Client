@@ -1,4 +1,4 @@
-import { Routes } from '@/constants'
+import { Routes } from '@/constants/routes'
 import {
 	BarChartBig,
 	Bookmark,

@@ -1,5 +1,5 @@
 import { currentUser } from '@/api'
-import { Routes } from '@/constants'
+import { Routes } from '@/constants/routes'
 import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server'
 
 export async function middleware(req: NextRequest) {

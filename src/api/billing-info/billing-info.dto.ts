@@ -1,4 +1,4 @@
-import { FormErrors } from '@/constants'
+import { FormErrors } from '@/constants/errors'
 import { zRequired } from '@/lib'
 import { PhoneNumberUtil } from 'google-libphonenumber'
 import { z } from 'zod'

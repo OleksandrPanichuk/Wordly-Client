@@ -29,19 +29,21 @@ export const SearchInput = ({
 	}
 
 	useEffect(() => {
+		const query = new URLSearchParams(searchParams.toString())
 		if (!debouncedValue && searchParams.get('q')) {
-			return router.push(pathname)
+			query.set('q', '')
+			const url = `${pathname}?${query.toString()}`
+			return router.push(url)
 		}
 
 		if (!debouncedValue) {
-			return
+			return 
 		}
 
 		if (debouncedValue === searchParams.get('q')) {
 			return
 		}
-
-		const query = new URLSearchParams(searchParams.toString())
+		
 		query.set('q', debouncedValue)
 
 		const url = `${pathname}?${query.toString()}`

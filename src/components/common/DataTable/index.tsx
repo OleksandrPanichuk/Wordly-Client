@@ -37,8 +37,7 @@ import type {
 	IDataTablePrevProps,
 	IDataTableProps
 } from './DataTable.types'
-
-// Important: This components can be only used with Tanstack react query(useInfiniteQuery or useQuery)
+import { Loader2 } from 'lucide-react'
 
 const createDataTableContext = once(<T,>() =>
 	createContext<IDataTableContext<T>>({} as IDataTableContext<T>)
@@ -64,6 +63,7 @@ export const DataTable = <TValue = unknown,>({
 	const table = useReactTable({
 		columns,
 		data,
+
 		getCoreRowModel: getCoreRowModel(),
 		...(withSorting && {
 			getSortedRowModel: getSortedRowModel(),
@@ -72,6 +72,7 @@ export const DataTable = <TValue = unknown,>({
 		...(withPagination && {
 			getPaginationRowModel: getPaginationRowModel()
 		}),
+
 		...(withFiltering && {
 			getFilteredRowModel: getFilteredRowModel(),
 			onColumnFiltersChange: setColumnsFilters
@@ -80,16 +81,16 @@ export const DataTable = <TValue = unknown,>({
 	})
 
 	return (
-		<DataTableContext.Provider value={{ table, data, columns }}>
+		<DataTableContext.Provider value={{ table, data, columns, isLoading }}>
 			<div>{children}</div>
 		</DataTableContext.Provider>
 	)
 }
 
 DataTable.Content = function DataTableContent() {
-	const { table, columns } = useDataTableContext()
+	const { table, columns, isLoading } = useDataTableContext()
 	return (
-		<div className="rounded-md border bg-white">
+		<div className={styles.content}>
 			<Table>
 				<TableHeader>
 					{table.getHeaderGroups().map((headerGroup) => (
@@ -130,6 +131,16 @@ DataTable.Content = function DataTableContent() {
 								))}
 							</TableRow>
 						))
+					) : isLoading ? (
+						<TableRow>
+							<TableCell
+								colSpan={columns.length}
+								className="h-24 flex flex-col gap-2 text-center"
+							>
+								<Loader2 className={'size-8 animate-spin text-sky-600'} />
+								<span>Loading...</span>
+							</TableCell>
+						</TableRow>
 					) : (
 						<TableRow>
 							<TableCell colSpan={columns.length} className="h-24 text-center">
@@ -236,13 +247,9 @@ DataTable.Next = function DataTableNext({
 	onClick,
 	...props
 }: IDataTableNextProps) {
-	const { table } = useDataTableContext()
-
 	const handleNext = (event: MouseEvent<HTMLButtonElement>) => {
-		fetchNextPage?.()
-		table.nextPage()
-
 		onClick?.(event)
+		fetchNextPage?.()
 	}
 
 	return (
@@ -265,12 +272,9 @@ DataTable.Prev = function DataTablePrev({
 	onClick,
 	...props
 }: IDataTablePrevProps) {
-	const { table } = useDataTableContext()
 	const handlePrev = (event: MouseEvent<HTMLButtonElement>) => {
-		fetchPreviousPage?.()
-		table.previousPage()
-
 		onClick?.(event)
+		fetchPreviousPage?.()
 	}
 	return (
 		<Button

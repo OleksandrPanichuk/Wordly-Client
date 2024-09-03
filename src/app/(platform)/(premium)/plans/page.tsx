@@ -7,8 +7,11 @@ import {
 	Reviews
 } from '@/features/plans'
 import styles from './page.module.scss'
+import { BillingApi } from '@/api'
 
-const PlansPage = () => {
+const PlansPage =  async () => {
+	const subscription = await  BillingApi.getSubscription()
+
 	return (
 		<>
 			<div className="page__container pt-10">
@@ -17,7 +20,7 @@ const PlansPage = () => {
 				</Title>
 				<div className={styles.plans}>
 					{plans.map((plan) => (
-						<PlanCard plan={plan} key={plan.planId} />
+						<PlanCard plan={plan} key={plan.planId} subscription={subscription} />
 					))}
 				</div>
 				<Help />

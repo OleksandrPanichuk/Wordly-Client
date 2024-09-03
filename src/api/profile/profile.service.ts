@@ -1,4 +1,4 @@
-import { ApiRoutes } from '@/constants'
+import { ApiRoutes } from '@/constants/api-routes'
 import { axios, fetcher } from '@/lib'
 import { TypeUploadedFile, TypeUser } from '@/types'
 import { UpdateProfileInput, updateProfileSchema } from './profile.dto'

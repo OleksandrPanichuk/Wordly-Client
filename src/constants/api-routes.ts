@@ -35,6 +35,9 @@ export const ApiRoutes = {
 	},
 	WORDS: {
 		ROOT: '/words',
-		BY_NAME: (name: string) => `/words/name/${name}`
+		ADMIN: '/words/admin',
+		BY_NAME: (name: string) => `/words/name/${name}`,
+		BY_ID: (id: string) => `/words/${id}`,
+		ADMIN_BY_ID: (id: string) => `/words/admin/${id}`
 	}
 } as const

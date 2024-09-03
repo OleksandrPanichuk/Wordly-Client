@@ -1,4 +1,4 @@
-import { ApiRoutes } from '@/constants'
+import { ApiRoutes } from '@/constants/api-routes'
 import type { TypeBillingInfo } from '@/features/billing'
 import { axios, fetcher } from '@/lib'
 import { BillingInfoInput, billingInfoSchema } from './billing-info.dto'

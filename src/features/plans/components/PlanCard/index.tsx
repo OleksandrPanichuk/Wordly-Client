@@ -10,12 +10,13 @@ import {
 	Skeleton
 } from '@/components/ui'
 import { Routes } from '@/constants'
+import { TypeSubscription } from '@/features/billing'
 import { TextBox, type TypePlan } from '@/features/plans'
 import { formatCurrency } from '@/lib'
 import { useAuth } from '@/providers'
 import { getProduct, lemonSqueezySetup } from '@lemonsqueezy/lemonsqueezy.js'
 import { useQuery } from '@tanstack/react-query'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { toast } from 'sonner'
 import { getFormattedPrice, getPriceWithoutDiscount } from './PlanCard.helpers'
@@ -23,10 +24,13 @@ import styles from './PlanCard.module.scss'
 
 interface IPlanCardProps {
 	plan: TypePlan
+	subscription: TypeSubscription | null
 }
 
-export const PlanCard = ({ plan }: IPlanCardProps) => {
+export const PlanCard = ({ plan, subscription }: IPlanCardProps) => {
 	const { user } = useAuth()
+
+	const router = useRouter()
 
 	useEffect(() => {
 		lemonSqueezySetup({
@@ -101,20 +105,19 @@ export const PlanCard = ({ plan }: IPlanCardProps) => {
 			</CardContent>
 			<CardFooter className="flex justify-end mt-6">
 				<Button
-					asChild
 					variant={plan.isBestOffer ? 'primary' : 'primary-outline'}
 					size="xl"
 					font={'base'}
 					weight={500}
 					className="sm:w-[200px] font-noto-sans"
+					disabled={!!subscription}
+					onClick={() =>
+						router.push(
+							user ? `${Routes.PAYMENT}?planId=${plan.planId}` : Routes.SIGN_IN
+						)
+					}
 				>
-					{user ? (
-						<Link href={`${Routes.PAYMENT}?planId=${plan.planId}`}>
-							Upgrade
-						</Link>
-					) : (
-						<Link href={Routes.SIGN_IN}>Sign In</Link>
-					)}
+					{user ? 'Upgrade' : 'Sign In'}
 				</Button>
 			</CardFooter>
 			<div className="absolute right-[-6px] top-4 flex flex-col gap-1 items-end">

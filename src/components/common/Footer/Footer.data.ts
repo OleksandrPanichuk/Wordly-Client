@@ -1,4 +1,4 @@
-import { Routes } from '@/constants'
+import { Routes } from '@/constants/routes'
 import { TypeFooterItem, TypeFooterKey, TypeMediaLink } from './Footer.types'
 
 export const data: Record<TypeFooterKey, TypeFooterItem[]> = {

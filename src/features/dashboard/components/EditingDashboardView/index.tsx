@@ -26,11 +26,11 @@ export const EditingDashboardView = ({ data }: IEditingDashboardViewProps) => {
 						>
 							<Card className={styles.card}>
 								<CardHeader>
-									<CardTitle>{stat.title}</CardTitle>
+									<CardTitle className={styles.title}>{stat.title}</CardTitle>
 								</CardHeader>
 								<CardContent>
-									<Text size="2xl" weight={700}>
-										<Counter value={count || 666} delay={0.5 * (index + 1)} />
+									<Text color={'black'} size="2xl" weight={700}>
+										<Counter value={count} delay={0.5 * (index + 1)} />
 									</Text>
 								</CardContent>
 							</Card>
