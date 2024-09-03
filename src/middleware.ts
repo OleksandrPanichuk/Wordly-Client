@@ -1,4 +1,4 @@
-import { currentUser } from '@/api'
+import { currentUser } from '@/api/profile/profile.actions'
 import { Routes } from '@/constants/routes'
 import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server'
 

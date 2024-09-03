@@ -15,7 +15,6 @@ interface IPhoneNumberInputProps
 	billingInfoFromDB?: TypeBillingInfo
 }
 
-// TODO: fix
 export const PhoneNumberInput = ({
 	disabled,
 	isInvalid,

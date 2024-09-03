@@ -1,5 +1,6 @@
 'use client'
 
+import { UpdateProfileInput } from '@/api'
 import {
 	FormControl,
 	FormField,
@@ -12,7 +13,6 @@ import {
 	SelectTrigger,
 	SelectValue
 } from '@/components/ui'
-import { UpdateProfileInput } from '@/features/profile'
 import { Gender } from '@/types'
 import { Control } from 'react-hook-form'
 
@@ -29,7 +29,12 @@ export const GenderSelect = ({ control, disabled }: IGenderSelectProps) => {
 			render={({ field }) => (
 				<FormItem className="flex-1">
 					<FormLabel>Gender</FormLabel>
-					<Select {...field} disabled={disabled} value={field.value} onValueChange={field.onChange}>
+					<Select
+						{...field}
+						disabled={disabled}
+						value={field.value}
+						onValueChange={field.onChange}
+					>
 						<FormControl>
 							<SelectTrigger>
 								<SelectValue placeholder="Select your gender" />
