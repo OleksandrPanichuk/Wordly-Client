@@ -15,7 +15,12 @@
 		@apply text-sm font-medium;
 	}
 
-	&Trigger {
-		@apply h-8 w-[70px];
+	& > .pageSizeTrigger {
+		height: 2rem;
+		width: 4.375rem;
 	}
+}
+
+.content {
+	@apply rounded-md border bg-white;
 }
