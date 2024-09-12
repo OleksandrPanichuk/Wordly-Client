@@ -29,6 +29,12 @@ export const getWordByNameSchema = z.object({
 
 export type GetWordByNameInput = z.infer<typeof getWordByNameSchema>
 
+export const getWordByIdSchema = z.object({
+	id: zMongoId()
+})
+
+export type GetWordByIdInput = z.infer<typeof getWordByIdSchema>
+
 export const wordTranscriptionSchema = z
 	.object({
 		en: z
@@ -37,14 +43,14 @@ export const wordTranscriptionSchema = z
 				(value) => !value || (!!value && value.length > 3),
 				FormErrors.length.word.transcription
 			)
-			.optional(),
+			.nullish(),
 		us: z
 			.string()
 			.refine(
 				(value) => !value || (!!value && value.length > 3),
 				FormErrors.length.word.transcription
 			)
-			.optional()
+			.nullish()
 	})
 	.refine((value) => !!value.en || !!value.us, {
 		message: FormErrors.invalid.word.transcription
@@ -89,7 +95,15 @@ export type CreateWordInput = z.infer<typeof createWordSchema> & {
 	isAdmin: boolean
 }
 
-export const updateWordSchema = z.object({})
+export const updateWordSchema = createWordSchema
+	.omit({ meaning: true })
+	.partial().extend({
+		id: zMongoId()
+	})
+
+export type UpdateWordInput = z.infer<typeof updateWordSchema> & {
+	isAdmin: boolean
+}
 
 export const deleteWordSchema = z.object({
 	id: zMongoId()

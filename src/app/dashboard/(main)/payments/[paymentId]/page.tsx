@@ -20,8 +20,6 @@ lemonSqueezySetup({
 const PaymentPage = async ({ params }: IPaymentPageProps) => {
 	const payment = await BillingApi.getPayment(params.paymentId)
 
-	console.log({ payment })
-
 	if (!payment) {
 		return notFound()
 	}

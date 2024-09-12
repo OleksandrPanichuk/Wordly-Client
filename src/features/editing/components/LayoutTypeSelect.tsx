@@ -9,7 +9,7 @@ import {
 	iconButtonVariants
 } from '@/components/ui'
 import { LayoutGridIcon, LucideIcon, TableIcon } from 'lucide-react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { z } from 'zod'
 import { LayoutTypes } from '../types'
@@ -26,7 +26,7 @@ const options: {
 	},
 	{
 		icon: LayoutGridIcon,
-		text: 'Feed',
+		text: 'Cards',
 		value: LayoutTypes.FEED
 	}
 ]
@@ -34,7 +34,6 @@ const options: {
 export const LayoutTypeSelect = () => {
 	const searchParams = useSearchParams()
 	const pathname = usePathname()
-	const router = useRouter()
 
 	const [value, setValue] = useState(
 		(() => {
@@ -77,7 +76,7 @@ export const LayoutTypeSelect = () => {
 					<Icon />
 				</button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align='end' className="min-w-[200px] mr-2">
+			<DropdownMenuContent align="end" className="min-w-[200px] mr-2">
 				<DropdownMenuRadioGroup value={value} onValueChange={handleValueChange}>
 					{options.map(({ icon, text, value }) => {
 						const Icon = icon

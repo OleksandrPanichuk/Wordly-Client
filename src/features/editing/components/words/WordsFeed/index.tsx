@@ -17,7 +17,7 @@ export const WordsFeed = () => {
 	const { data, ref, isFetching } = useInfiniteWordsQuery({
 		searchValue,
 		creatorId: searchValue ? undefined : user?.id,
-		take: 36
+		take: 24
 	})
 
 	return (

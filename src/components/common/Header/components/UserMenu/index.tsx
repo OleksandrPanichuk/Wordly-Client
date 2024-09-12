@@ -31,7 +31,7 @@ export const UserMenu = () => {
 	return (
 		<Visibility bp="lg">
 			<DropdownMenu>
-				<DropdownMenuTrigger className="flex items-center gap-2 max-lg:hidden">
+				<DropdownMenuTrigger className={styles.trigger}>
 					<Avatar>
 						<AvatarImage src={user.avatar?.url} />
 						<AvatarFallback>{user.username[0]}</AvatarFallback>
@@ -41,15 +41,15 @@ export const UserMenu = () => {
 						as="span"
 						size="base"
 						weight={500}
-						className="truncate max-w-[200px]"
+						className={styles.username}
 					>
 						{user.username}
 					</Text>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className="mr-2 p-0 ">
+				<DropdownMenuContent className={styles.content}>
 					<Link
 						href={Routes.PROFILE}
-						className="flex items-center gap-3 p-4 bg-tw-blue-50 "
+						className={styles.profileLink}
 					>
 						<Avatar>
 							<AvatarImage src={user.avatar?.url} />
@@ -65,7 +65,7 @@ export const UserMenu = () => {
 						</div>
 					</Link>
 					<DropdownMenuSeparator />
-					<div className="p-1 space-y-1">
+					<div className={styles.items}>
 						{links.map((link) => {
 							const Icon = link.icon
 							return (
@@ -82,7 +82,7 @@ export const UserMenu = () => {
 					<button
 						disabled={isPending}
 						onClick={signOut}
-						className={styles['sign-out-btn']}
+						className={styles.signOutBtn}
 					>
 						<LogOutIcon />
 						Sign out
@@ -101,14 +101,14 @@ UserMenu.Mobile = function UserMenuMobile() {
 
 	return (
 		<>
-			<div className="flex flex-col">
+			<div className={styles.mobileItems}>
 				{links.map((link) => {
 					const Icon = link.icon
 					return (
 						<Link
 							key={link.id}
 							href={link.href}
-							className={cn(styles.item, 'p-4')}
+							className={styles.mobileItem}
 						>
 							<Icon />
 							{link.label}
@@ -116,17 +116,17 @@ UserMenu.Mobile = function UserMenuMobile() {
 					)
 				})}
 			</div>
-			<Separator className="mt-auto" />
+			<Separator className={styles.mobileSeparator} />
 			<button
 				disabled={isPending}
 				onClick={signOut}
-				className="bg-tw-blue-50 hover:bg-rose-200 transition-all duration-300 flex items-center gap-3 px-3 py-4"
+				className={styles.mobileSignOutBtn}
 			>
 				<Avatar>
 					<AvatarImage src={user.avatar?.url} />
 					<AvatarFallback>{user.username[0]}</AvatarFallback>
 				</Avatar>
-				<div className={cn(styles.info, 'flex-1')}>
+				<div className={styles.mobileInfo}>
 					<Text as="span" weight={600} color="black">
 						{user.username}
 					</Text>
@@ -134,7 +134,7 @@ UserMenu.Mobile = function UserMenuMobile() {
 						{user.email}
 					</Text>
 				</div>
-				<LogOutIcon className="stroke-[#dc3545]" />
+				<LogOutIcon />
 			</button>
 		</>
 	)

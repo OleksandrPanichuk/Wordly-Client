@@ -6,7 +6,7 @@
 		@apply flex flex-col gap-2;
 	}
 	&Item {
-		@apply bg-tw-blue-450  text-white py-1 px-2 rounded-xl md:text-sm  text-xs;
+		@apply bg-tw-blue-450  text-white py-1 px-2 rounded-xl md:text-sm  text-xs cursor-default;
 		line-height: normal !important;
 	}
 }

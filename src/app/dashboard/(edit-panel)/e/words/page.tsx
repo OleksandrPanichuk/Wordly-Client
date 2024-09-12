@@ -1,9 +1,3 @@
-// TODO:
-// [] - Infinite words loading(pagination based) with initial data fetched on the server
-// [] - If there is search value, show user all the words, if there is not searchValue, show all the words which user has created
-// [] - Near search input field show add button which should open modal
-// [] - Table or cards layout
-
 import { SearchInput } from '@/components/common'
 import {
 	CreateWordButton,

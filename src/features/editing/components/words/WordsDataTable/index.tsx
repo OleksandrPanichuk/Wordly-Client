@@ -16,11 +16,12 @@ export const WordsDataTable = () => {
 	const [take, setTake] = useState<number>(10)
 	const [page, setPage] = useState<number>(1)
 
-	const { fetchNextPage, hasNextPage, data } = useInfiniteWordsQuery({
-		creatorId: searchValue ? undefined : user?.id,
-		searchValue,
-		take
-	})
+	const { fetchNextPage, hasNextPage, data, isFetching } =
+		useInfiniteWordsQuery({
+			creatorId: searchValue ? undefined : user?.id,
+			searchValue,
+			take
+		})
 
 	const tableData = useMemo(
 		() =>
@@ -56,7 +57,13 @@ export const WordsDataTable = () => {
 	}, [take])
 
 	return (
-		<DataTable columns={columns} data={dataToShow} withPagination withSorting>
+		<DataTable
+			columns={columns}
+			data={dataToShow}
+			isLoading={isFetching}
+			withPagination
+			withSorting
+		>
 			<DataTable.Content />
 			<DataTable.Pagination>
 				<DataTable.PageSizeSelect

@@ -1,11 +1,39 @@
+.navbar {
+	@apply flex-1 hidden lg:block;
+	> ul {
+		@apply flex items-center xl:gap-9 gap-6;
+	}
+}
+
 .link {
 	@apply font-semibold text-base hover:no-underline text-tw-blue-500 relative after:transition-all after:duration-300 after:ease-in-out after:content-[''] after:absolute after:left-0 after:right-0 after:mx-auto after:bg-tw-blue-500 after:bottom-0 after:w-[70%] after:h-[2px] after:scale-x-0 after:hover:scale-x-110;
 }
 
-.mobile-link {
-	@apply font-semibold flex gap-2 items-center text-left px-3 py-4 text-base hover:no-underline text-tw-black hover:bg-tw-blue-100 hover:text-tw-purple-400 transition-all duration-300;
-}
-
 a.active {
 	@apply text-tw-purple-400;
+}
+
+.mobile {
+	&Trigger {
+		@apply lg:hidden hover:bg-tw-blue-50 transition duration-300 p-2 rounded-md;
+	}
+	&Content {
+		@apply flex flex-col gap-0 lg:hidden p-0 overflow-auto max-w-[25rem] w-full;
+	}
+	&Link {
+		@apply font-semibold flex gap-2 items-center text-left px-3 py-4 text-base hover:no-underline text-tw-black hover:bg-tw-blue-100 hover:text-tw-purple-400 transition-all duration-300;
+	}
+	&LogoWrapper {
+		@apply px-3 mt-6 my-4;
+	}
+	&List {
+		@apply flex flex-col;
+	}
+	&Login {
+		@apply px-5 mx-3 mb-4;
+	}
+}
+
+.separator {
+	@apply mt-auto mb-4;
 }

@@ -40,3 +40,8 @@ export enum SortByOptions {
 	ASC = 'asc',
 	DESC = 'desc'
 }
+
+export enum LearnType {
+	VOCABULARY = 'VOCABULARY',
+	EXPRESSIONS = 'EXPRESSIONS'
+}

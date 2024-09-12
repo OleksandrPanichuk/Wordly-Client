@@ -6,8 +6,13 @@ import {
 	type GetAllWordsInput,
 	type GetAllWordsResponse,
 	getAllWordsSchema,
+	type GetWordByIdInput,
+	getWordByIdSchema,
 	type GetWordByNameInput,
-	getWordByNameSchema
+	getWordByNameSchema,
+	UpdateProfileInput,
+	updateProfileSchema,
+	UpdateWordInput
 } from '@/api'
 import { ApiRoutes } from '@/constants/api-routes'
 import { axios, fetcher } from '@/lib'
@@ -26,6 +31,11 @@ const getAll = async (dto: GetAllWordsInput) => {
 const getByName = async (dto: GetWordByNameInput) => {
 	getWordByNameSchema.parse(dto)
 	return await fetcher.getOrNull<TypeWord>(ApiRoutes.WORDS.BY_NAME(dto.name))
+}
+
+const getById = async (dto: GetWordByIdInput) => {
+	getWordByIdSchema.parse(dto)
+	return await fetcher.getOrNull<TypeWord>(ApiRoutes.WORDS.BY_ID(dto.id))
 }
 
 const create = async ({ isAdmin, ...dto }: CreateWordInput) => {
@@ -61,7 +71,13 @@ const create = async ({ isAdmin, ...dto }: CreateWordInput) => {
 	}
 }
 
-const update = async () => {}
+const update = async ({isAdmin, id, ...dto}: UpdateWordInput) => {
+	updateProfileSchema.parse(dto)
+	
+	const url = isAdmin ? ApiRoutes.WORDS.ADMIN_BY_ID(id) : ApiRoutes.WORDS.BY_ID(id)
+
+	return await axios.patch<TypeWord>(url, dto)
+}
 
 const deleteWord = async ({ isAdmin, ...dto }: DeleteWordInput) => {
 	deleteWordSchema.parse(dto)
@@ -74,6 +90,7 @@ const deleteWord = async ({ isAdmin, ...dto }: DeleteWordInput) => {
 export const WordsApi = {
 	getAll,
 	getByName,
+	getById,
 	create,
 	update,
 	delete: deleteWord

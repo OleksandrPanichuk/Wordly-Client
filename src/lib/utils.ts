@@ -51,12 +51,15 @@ export function splitSentence(sentence: string): string[] {
 }
 
 export function compareWords(word1: string, word2: string): boolean {
-	const doc1 = nlp(word1.toLowerCase())
-	const doc2 = nlp(word2.toLowerCase())
+	const word1LowerCase = word1.toLowerCase()
+	const word2LowerCase = word2.toLowerCase()
 
-	if (word1.toLowerCase() === word2.toLowerCase()) {
+	if (word1LowerCase === word2LowerCase) {
 		return true
 	}
+
+	const doc1 = nlp(word1LowerCase)
+	const doc2 = nlp(word2LowerCase)
 
 	const lemma1 =
 		doc1.verbs().toInfinitive().out('text') ||

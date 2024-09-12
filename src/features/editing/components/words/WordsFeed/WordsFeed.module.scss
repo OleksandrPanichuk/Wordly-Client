@@ -1,21 +1,18 @@
 @import '@/styles/mixins.scss';
 .feed {
 	gap: 1rem;
-	@include screen-xs-min {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-	}
 
-	@include screen-xs-max {
+	@include screen-md-max {
 		display: flex;
 		flex-direction: column;
 	}
 
 	@include screen-md-min {
-		grid-template-columns: repeat(3, 1fr);
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 	@include screen-lg-min {
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 	}
 }

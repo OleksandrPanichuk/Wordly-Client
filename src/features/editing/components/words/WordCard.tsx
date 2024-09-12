@@ -11,8 +11,7 @@ import {
 import { Images } from '@/constants'
 import Image from 'next/image'
 import { forwardRef } from 'react'
-import { WordActions } from './WordActions'
-import { WordsPartOfSpeech } from './WordsPartOfSpeech'
+import { WordActions, WordsPartOfSpeech } from '@/features/editing'
 
 interface IWordCardProps {
 	word: GetAllWordsResponse['words'][0]
@@ -21,32 +20,32 @@ interface IWordCardProps {
 export const WordCard = forwardRef<HTMLDivElement, IWordCardProps>(
 	({ word }, ref) => {
 		return (
-			<Card ref={ref}>
+			<Card ref={ref} className={'min-w-[100%]'}>
 				<CardHeader className="flex items-center justify-between">
-					<CardTitle>{word.name}</CardTitle>
+					<CardTitle className={'truncate leading-8'}>{word.name}</CardTitle>
 					<WordActions wordId={word.id} creatorId={word.creatorId} />
 				</CardHeader>
-				<CardContent>
+				<CardContent className="space-y-2">
 					{word.transcription?.en && (
-						<div className="text-gray-500 text-xl font-medium font-quicksand flex gap-4">
+						<div className="text-gray-500 text-sm font-medium font-quicksand flex gap-4">
 							<Image
 								width={24}
 								height={24}
 								src={Images.EN_FLAG}
 								alt="en-pronunciation"
-								className="rounded-full"
+								className="rounded-full shrink-0"
 							/>
 							{word.transcription?.en}
 						</div>
 					)}
 					{word.transcription?.us && (
-						<div className="text-gray-500 text-xl font-medium font-quicksand flex gap-4">
+						<div className="text-gray-500 text-sm font-medium font-quicksand flex gap-4">
 							<Image
 								width={24}
 								height={24}
 								src={Images.US_FLAG}
 								alt="us-pronunciation"
-								className="rounded-full"
+								className="rounded-full shrink-0 "
 							/>
 							{word.transcription?.us}
 						</div>
@@ -61,5 +60,3 @@ export const WordCard = forwardRef<HTMLDivElement, IWordCardProps>(
 )
 
 WordCard.displayName = 'WordsCard'
-
-export const WordCardSkeleton = () => {}

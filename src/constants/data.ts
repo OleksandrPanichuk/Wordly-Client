@@ -1,5 +1,4 @@
 import { BillingReason } from '@/features/billing/types'
-import { DictionaryMode } from '@/features/dictionary/types'
 import { BreakpointsType, TypeSidebarLink } from '@/types'
 import {
 	ALargeSmallIcon,
@@ -86,10 +85,6 @@ export const dashboardSidebarLinks: TypeSidebarLink[] = [
 
 export const SESSION_COOKIE_NAME = 'wordly:session'
 
-export const DictionaryModes: Record<DictionaryMode, string> = {
-	DICTIONARY: 'DICTIONARY',
-	USER: 'USER'
-} as const
 
 export const breakpoints: Record<BreakpointsType, string> = {
 	lg: '(min-width: 1024px)',

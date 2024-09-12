@@ -133,12 +133,11 @@ DataTable.Content = function DataTableContent() {
 						))
 					) : isLoading ? (
 						<TableRow>
-							<TableCell
-								colSpan={columns.length}
-								className="h-24 flex flex-col gap-2 text-center"
-							>
-								<Loader2 className={'size-8 animate-spin text-sky-600'} />
-								<span>Loading...</span>
+							<TableCell colSpan={columns.length} className="h-24 ">
+								<Loader2
+									className={'size-8 animate-spin text-sky-600 mx-auto'}
+								/>
+								<span className={'block mx-auto text-center'}>Loading...</span>
 							</TableCell>
 						</TableRow>
 					) : (
@@ -157,6 +156,9 @@ DataTable.Content = function DataTableContent() {
 // TODO:
 DataTable.Input = function DataTableInput() {
 	const { table, columns, data } = useDataTableContext()
+
+
+
 	return <></>
 }
 

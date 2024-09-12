@@ -1,19 +1,24 @@
 'use client'
 import { DictionaryApi } from '@/api'
-import { DictionaryMode } from '@/features/dictionary'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 type Props = {
-	mode: DictionaryMode
 	word: string
 }
 
-export const useGetWordQuery = ({ mode, word }: Props) => {
+export const useGetWordQuery = ({ word }: Props) => {
+	const queryClient = useQueryClient()
 	return useQuery({
-		queryKey: ['dictionary-word', mode, word],
+		queryKey: ['dictionary-word', word],
 		queryFn: async () => {
 			try {
-				return await DictionaryApi.getWordByName(word, mode)
+				const data = await DictionaryApi.getWordByName(word)
+
+				queryClient.invalidateQueries({
+					queryKey: ['words', 'all']
+				})
+
+				return data
 			} catch {
 				throw new Error('Failed to get word from dictionary')
 			}

@@ -4,15 +4,10 @@ import { request } from './request'
 import type { FetchConfig, FetchResponse } from './types'
 
 class Fetcher {
-	private request: typeof request
-
-	constructor() {
-		this.request = request
-	}
 
 	public async get<T>(url: string, options?: FetchConfig): Promise<T> {
 		if (isServer) {
-			return (await this.request<T>('GET', url, options)).data
+			return (await request<T>('GET', url, options)).data
 		}
 
 		return (await axios.get<T>(url, options)).data
@@ -24,7 +19,7 @@ class Fetcher {
 	): Promise<T | null> {
 		if (isServer) {
 			try {
-				return (await this.request<T>('GET', url, options)).data
+				return (await request<T>('GET', url, options)).data
 			} catch {
 				return null
 			}
@@ -40,7 +35,7 @@ class Fetcher {
 	): Promise<T> {
 		if (isServer) {
 			try {
-				return (await this.request<T>('GET', url, options)).data
+				return (await request<T>('GET', url, options)).data
 			} catch {
 				return defaultValue
 			}
@@ -54,7 +49,7 @@ class Fetcher {
 		body: any,
 		options: FetchConfig = {}
 	): Promise<FetchResponse<T>> {
-		return this.request<T>('POST', url, { ...options, body })
+		return request<T>('POST', url, { ...options, body })
 	}
 
 	public patch<T>(
@@ -62,7 +57,7 @@ class Fetcher {
 		body: any,
 		options: FetchConfig = {}
 	): Promise<FetchResponse<T>> {
-		return this.request<T>('PATCH', url, { ...options, body })
+		return request<T>('PATCH', url, { ...options, body })
 	}
 
 	public put<T>(
@@ -70,14 +65,14 @@ class Fetcher {
 		body: any,
 		options: FetchConfig = {}
 	): Promise<FetchResponse<T>> {
-		return this.request<T>('PUT', url, { ...options, body })
+		return request<T>('PUT', url, { ...options, body })
 	}
 
 	public delete<T>(
 		url: string,
 		options?: FetchConfig
 	): Promise<FetchResponse<T>> {
-		return this.request<T>('DELETE', url, options)
+		return request<T>('DELETE', url, options)
 	}
 }
 

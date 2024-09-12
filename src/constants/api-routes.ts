@@ -33,6 +33,9 @@ export const ApiRoutes = {
 	STATISTICS: {
 		EDITING: '/statistic/editing'
 	},
+	MEANINGS: {
+		ROOT: '/meanings',
+	},
 	WORDS: {
 		ROOT: '/words',
 		ADMIN: '/words/admin',

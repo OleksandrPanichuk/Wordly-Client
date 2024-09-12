@@ -14,15 +14,8 @@ const searchWords = async (query: SearchWordsInput) => {
 
 const getWordByName = async (
 	word: string,
-	mode: DictionaryMode = 'DICTIONARY'
 ) => {
-	const url = qs.stringifyUrl({
-		url: ApiRoutes.DICTIONARY.WORD(word),
-		query: {
-			mode
-		}
-	})
-	return await fetcher.get<TypeDictionaryWord>(url)
+	return await fetcher.get<TypeDictionaryWord>(ApiRoutes.DICTIONARY.WORD(word))
 }
 
 export const DictionaryApi = {

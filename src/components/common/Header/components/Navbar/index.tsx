@@ -21,8 +21,8 @@ export const Navbar = () => {
 	const pathname = usePathname()
 	return (
 		<Visibility bp="lg">
-			<nav className="flex-1 hidden lg:block">
-				<ul className="flex items-center xl:gap-9 gap-6">
+			<nav className={styles.navbar}>
+				<ul>
 					{links.map((link) => (
 						<li key={link.id}>
 							<Link
@@ -48,25 +48,25 @@ Navbar.Mobile = function MobileNavbar() {
 	return (
 		<Visibility bp="max-lg">
 			<Sheet>
-				<SheetTrigger className="lg:hidden hover:bg-tw-blue-50 transition duration-300 p-2 rounded-md">
+				<SheetTrigger className={styles.mobileTrigger}>
 					<MenuIcon />
 				</SheetTrigger>
 				<SheetContent
 					side="left"
-					className="flex flex-col gap-0 lg:hidden p-0 overflow-auto max-w-[25rem] w-full "
+					className={styles.mobileContent}
 				>
-					<div className="px-3 mt-6 my-4 ">
+					<div className={styles.mobileLogoWrapper}>
 						<Logo withText width={35} height={35} />
 					</div>
 					<Separator />
 					<nav>
-						<ul className="flex flex-col ">
+						<ul className={styles.mobileList}>
 							{links.map((link) => (
 								<li key={link.id}>
 									<Link
 										href={link.href}
 										className={cn(
-											styles['mobile-link'],
+											styles.mobileLink,
 											pathname.includes(link.href) && styles.active
 										)}
 									>
@@ -81,12 +81,12 @@ Navbar.Mobile = function MobileNavbar() {
 						<UserMenu.Mobile />
 					) : (
 						<>
-							<Separator className="mt-auto mb-4" />
+							<Separator className={styles.separator}/>
 							<Button
 								asChild
 								font="base"
 								variant={'primary'}
-								className="px-5 mx-3 mb-4"
+								className={styles.mobileLogin}
 							>
 								<Link href={Routes.SIGN_IN}>
 									<UserIcon />

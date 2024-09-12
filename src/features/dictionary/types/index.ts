@@ -17,7 +17,6 @@ export type TypeLearningCategory = {
 
 export type TypeDictionaryWord = {
 	id: string
-	type: DictionaryMode
 	name: string
 	partsOfSpeech: PartOfSpeech[]
 	examples?: string[]
@@ -41,5 +40,3 @@ export type TypeDictionaryWord = {
 		partOfSpeech: PartOfSpeech
 	}[]
 }
-
-export type DictionaryMode = 'USER' | 'DICTIONARY'

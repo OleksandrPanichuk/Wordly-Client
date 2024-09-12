@@ -1,17 +1,61 @@
-.item {
+.items {
+	@apply p-1 space-y-1;
+}
+.item, .mobileItem {
 	@apply text-base  font-medium hover:text-tw-purple-400 focus:text-tw-purple-400 transition-all flex gap-2;
 	> svg {
 		@apply stroke-accent-foreground;
 	}
 }
 
-.sign-out-btn {
+.signOutBtn {
 	@apply p-4 flex items-center  gap-2 w-full text-[#dc3545] font-medium text-lg hover:bg-rose-200 transition-all duration-300;
 }
 
-.info {
+.info, .mobileInfo {
 	@apply flex flex-col items-start;
 	> span {
 		@apply truncate max-w-[12.25rem];
+	}
+}
+
+.trigger {
+	@apply flex items-center gap-2 max-lg:hidden;
+}
+
+
+.username {
+	@apply truncate max-w-[200px];
+}
+
+.content {
+	@apply mr-2 p-0 ;
+}
+
+.profileLink {
+	@apply flex items-center gap-3 p-4 bg-tw-blue-50;
+}
+
+.mobile {
+	&Items {
+		@apply flex flex-col;
+	}
+	&Item {
+		@apply p-4;
+	}
+	&Separator {
+		@apply mt-auto;
+	}
+
+	&SignOutBtn {
+		@apply bg-tw-blue-50 hover:bg-rose-200 transition-all duration-300 flex items-center gap-3 px-3 py-4;
+
+		& > svg:last-child {
+			@apply stroke-[#dc3545];
+		}
+	}
+
+	&Info {
+		@apply flex-1;
 	}
 }

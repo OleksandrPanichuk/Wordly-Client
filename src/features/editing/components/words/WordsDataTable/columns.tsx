@@ -9,15 +9,22 @@ import Image from 'next/image'
 import { WordActions, WordsPartOfSpeech } from '@/features/editing'
 import styles from './WordsDataTable.module.scss'
 
-export const columns: ColumnDef<GetAllWordsResponse['words'][0] & {index: number}>[] = [
+export const columns: ColumnDef<
+	GetAllWordsResponse['words'][0] & { index: number }
+>[] = [
 	{
 		id: 'number',
-		header: () => (
-			<Text size="sm" className={styles.headerText} weight={500}>
-				№
-			</Text>
+		header: ({ column }) => (
+			<Button
+				variant="ghost"
+				onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+			>
+				<Text size="sm" className={styles.headerText} weight={500}>
+					№
+				</Text>
+			</Button>
 		),
-		cell: ({ row, table }) => {
+		cell: ({ row }) => {
 			return row.original.index + 1
 		}
 	},
@@ -109,6 +116,12 @@ export const columns: ColumnDef<GetAllWordsResponse['words'][0] & {index: number
 		},
 		cell: ({ row }) => {
 			return <Text>{row.original._count.meanings}</Text>
+		},
+		sortingFn: (rowA, rowB) => {
+			const numA = rowA.original._count.meanings
+			const numB = rowB.original._count.meanings
+
+			return numA < numB ? 1 : numA > numB ? -1 : 0
 		}
 	},
 	{
